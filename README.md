@@ -1,5 +1,5 @@
 # Kryptosystemy
-## 10.01.18
+## Zawartość repozytorium: 
 
 > 1. Szyfr Cezara(szyfr przesuwający):
 

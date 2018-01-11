@@ -37,10 +37,6 @@ namespace szyfr_deszyfr
                     tablica[i] = (char)znak;
                     Console.Write(tablica[i]);
                 }
-                else
-                {
-                    Console.Write(" ");
-                }
             }
 
             Console.WriteLine("\n\nODSZYFROWANIE WIADOMOŚCI: ");

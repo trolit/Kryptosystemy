@@ -10,7 +10,7 @@ namespace szyfr_deszyfr
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Algorytmy szyfrujące");
+            Console.WriteLine("-------------");
             Console.WriteLine("Szyfr Cezara");
             Console.WriteLine("Podaj słowo/zdanie do zaszyfrowania");
 

@@ -20,3 +20,16 @@ kryptogramu(homofonów). Liczba homofonów powinna być zależna od częstotliwo
 do zaszyfrowania. Przy każdym szyfrowaniu litery wybierany jest losowo jeden z jej homofonów. W ten sposób zostaje
 spłaszczony histogram kryptogramu, a wielokrotne szyfrowanie tego samego tekstu daje za kazdym razem inny wynik.
 Cechy te znaczaco utrudniaja kryptoanalizę. ~źródło: Wikipedia
+
+
+
+
+
+Atak na algorytmy szyfrujące(rodzaje):
+- atak w oparciu o słabość algorytmu
+- atak brute force;
+- ataki statystyczne
+- meet in the middle
+- atak przez analizę różnicową;
+- atak urodzinowy;
+- atak algebraiczny;

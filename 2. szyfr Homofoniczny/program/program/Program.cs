@@ -9,131 +9,114 @@ namespace program
     // szyfr homofoniczny(bez polskich znaków)
     // załóżmy że pierwszy program będzie miał możliwość obsługi do 100 homofonów max dla każdej litery
     // oparty na prostocie w celu zrozumienia działania 
+    
+    class Encryption
+    {
+        bool NieZnalezionoTakiejSamejLiczby = false;
 
+
+
+        public bool NieJestPusty(int zmienna)
+        {
+            bool pusty;
+
+            if(zmienna != 0)
+            {
+                pusty = false;
+            }
+            else
+            {
+                pusty = true;
+            }
+
+            return pusty;
+        }
+
+        public void WypelnijHomofonami(int[] tablica, int rozmiar)
+        {
+            Random rnd = new Random();
+            int x, i;
+
+            for (x = 0; x < rozmiar; x++)
+            {
+                int randomize = rnd.Next(1, 100);
+                for (i = 0; i < rozmiar; i++)
+                {
+                    if (tablica[i] != randomize)   // szukamy czy takiej wartości już nie ma...
+                    {
+                        i++;
+                        NieZnalezionoTakiejSamejLiczby = true;
+                    }
+                    else if (tablica[i] == randomize)
+                    {
+                        NieZnalezionoTakiejSamejLiczby = false;
+                        continue;                  // idziemy dalej (po co reszte przeszukiwać...)
+                    }
+                }
+                if (NieZnalezionoTakiejSamejLiczby)
+                {
+                    tablica[x] = randomize;
+                }
+            }
+        }
+
+        public void ZliczajWystapieniaLitery(char SprawdzCotoZaLitera, char OczekiwanaLitera, int LiczbaWystapienLitery)
+        {
+            if (SprawdzCotoZaLitera == OczekiwanaLitera)
+            {
+                LiczbaWystapienLitery++;
+            }
+            else
+            {
+                // nie rób nic
+            }
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
+            Encryption obiekt = new Encryption();
+
             int A = 0, B = 0, C = 0, D = 0, E = 0, F = 0, G = 0, H = 0, I = 0, J = 0, K = 0, L = 0, M = 0, N = 0, O = 0, P = 0, Q = 0, R = 0, S = 0, T = 0, U = 0, W = 0, X = 0, Y = 0, Z = 0;
-            Console.WriteLine("Szyfr homofoniczny(inspirowany Beale'm");
+            Console.WriteLine("Szyfr homofoniczny(inspirowany Beale'm)");
             Console.WriteLine("Podaj informacje ktora chcesz zaszyfrować");
             Console.WriteLine("-uwaga: narazie max wystąpienie danej litery to 100");
             Console.WriteLine("-uwaga: tylko DUŻE litery, bez polskich znaków");
-            string tekst = Console.ReadLine();
-            int rozmiar = tekst.Length;  // rozmiar tekstu
+            string tekst = Console.ReadLine();              // bierzemy tekst
+            int rozmiar = tekst.Length;                     // rozmiar tekstu
             char[] tablica = new char[rozmiar];
             tablica = tekst.ToCharArray();
-            int x, i; // indeks
+            int x;
 
             for (x = 0; x < rozmiar; x++)                        // zliczamy ile danych liter wystąpiło
             {
                 char sprawdz = tablica[x];
-                #region No trzeba no zliczyć ile tego jest....
-                if (sprawdz == 'A')
-                {
-                    A++;
-                }
-                else if (sprawdz == 'B')
-                {
-                    B++;
-                }
-                else if (sprawdz == 'C')
-                {
-                    C++;
-                }
-                else if (sprawdz == 'D')
-                {
-                    D++;
-                }
-                else if (sprawdz == 'E')
-                {
-                    E++;
-                }
-                else if (sprawdz == 'F')
-                {
-                    F++;
-                }
-                else if (sprawdz == 'G')
-                {
-                    G++;
-                }
-                else if (sprawdz == 'H')
-                {
-                    H++;
-                }
-                else if (sprawdz == 'I')
-                {
-                    I++;
-                }
-                else if (sprawdz == 'J')
-                {
-                    J++;
-                }
-                else if (sprawdz == 'K')
-                {
-                    K++;
-                }
-                else if (sprawdz == 'L')
-                {
-                    L++;
-                }
-                else if (sprawdz == 'M')
-                {
-                    M++;
-                }
-                else if (sprawdz == 'N')
-                {
-                    N++;
-                }
-                else if (sprawdz == 'O')
-                {
-                    O++;
-                }
-                else if (sprawdz == 'P')
-                {
-                    P++;
-                }
-                else if (sprawdz == 'Q')
-                {
-                    Q++;
-                }
-                else if (sprawdz == 'R')
-                {
-                    R++;
-                }
-                else if (sprawdz == 'S')
-                {
-                    S++;
-                }
-                else if (sprawdz == 'T')
-                {
-                    T++;
-                }
-                else if (sprawdz == 'U')
-                {
-                    U++;
-                }
-                else if (sprawdz == 'W')
-                {
-                    W++;
-                }
-                else if (sprawdz == 'X')
-                {
-                    X++;
-                }
-                else if (sprawdz == 'Y')
-                {
-                    Y++;
-                }
-                else if (sprawdz == 'Z')
-                {
-                    Z++;
-                }
-                else
-                {
-                    // nie rob nic
-                }
-                #endregion
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'A', A);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'B', B);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'C', C);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'D', D);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'E', E);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'F', F);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'G', G);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'H', H);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'I', I);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'J', J);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'K', K);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'L', L);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'M', M);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'N', N);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'O', O);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'P', P);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'Q', Q);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'R', R);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'S', S);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'T', T);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'U', U);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'W', W);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'X', X);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'Y', Y);
+                obiekt.ZliczajWystapieniaLitery(sprawdz, 'Z', Z);
             }
 
             // tworzymy tablice homofonów
@@ -167,42 +150,31 @@ namespace program
 
             Random rnd = new Random();      // tworzymy obiekt z Random
 
-            #region 1. Losowanie homofonów dla A
-            for(x = 0; x < A; x++)
+            if (obiekt.NieJestPusty(A))
             {
-                int randomize = rnd.Next(1, 100);
-                for(i = 0; i < A; i++)
-                {
-                    if(A_tab[i] != randomize)   // szukamy czy takiej wartości już nie ma...
-                    {
-                        i++;
-                    }
-                    else if(A_tab[i] == randomize)
-                    {
-                        continue;
-                    }
-                }
-                A_tab[x] = randomize;
+                obiekt.WypelnijHomofonami(A_tab, A);
             }
-            #endregion
-            #region 2. Losowanie homofonów dla B
-            for (x = 0; x < B; x++)
+            if (obiekt.NieJestPusty(B))
             {
-                int randomize = rnd.Next(1, 100);
-                for (i = 0; i < B; i++)
-                {
-                    if (B_tab[i] != randomize)   // szukamy czy takiej wartości już nie ma...
-                    {
-                        i++;
-                    }
-                    else if (B_tab[i] == randomize)
-                    {
-                        continue;
-                    }
-                }
-                B_tab[x] = randomize;
+                obiekt.WypelnijHomofonami(B_tab, B);
             }
-            #endregion
+            if (obiekt.NieJestPusty(C))
+            {
+                obiekt.WypelnijHomofonami(C_tab, C);
+            }
+            if (obiekt.NieJestPusty(D))
+            {
+                obiekt.WypelnijHomofonami(D_tab, D);
+            }
+            if (obiekt.NieJestPusty(E))
+            {
+                obiekt.WypelnijHomofonami(E_tab, E);
+            }
+
+
+
+            Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
+            Console.ReadKey();
         }
     }
 }

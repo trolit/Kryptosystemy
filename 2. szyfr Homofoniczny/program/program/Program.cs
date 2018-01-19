@@ -39,16 +39,21 @@ namespace program
 
             for (x = 0; x < rozmiar; x++)
             {
-                int randomize = rnd.Next(1, 3142);
+                RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
+                var byteArray = new byte[4];
+                provider.GetBytes(byteArray);
+
+                //convert 4 bytes to an integer
+                var randomInteger = BitConverter.ToUInt32(byteArray, 0);
 
                 for (i = 0; i < rozmiar; i++)
                 {
-                    if (tablica[i] != randomize)   // szukamy czy takiej wartości już nie ma...
+                    if (tablica[i] != randomInteger)   // szukamy czy takiej wartości już nie ma...
                     {
                         i++;
                         NieZnalezionoTakiejSamejLiczby = true;
                     }
-                    else if (tablica[i] == randomize)
+                    else if (tablica[i] == randomInteger)
                     {
                         NieZnalezionoTakiejSamejLiczby = false;
                         continue;                  // idziemy dalej (po co reszte przeszukiwać...)
@@ -56,7 +61,7 @@ namespace program
                 }
                 if (NieZnalezionoTakiejSamejLiczby)
                 {
-                    tablica[x] = randomize;
+                    tablica[x] = (int)randomInteger;
                 }
             }
         }

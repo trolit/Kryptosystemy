@@ -310,7 +310,17 @@ namespace program
             }
             #endregion
 
-            for(x = 0; x < rozmiar; x++)
+            Console.Write("\nSzyfrowanie podanej wiadomości");
+            Thread.Sleep(500);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
+            Thread.Sleep(800);
+            Console.Write("       -> OK");
+
+            for (x = 0; x < rozmiar; x++)
             {
                 char Literadozaszyfrowania = tablica[x];
 
@@ -422,6 +432,16 @@ namespace program
                 #endregion
             }
 
+            Console.Write("\nZapisywanie do pliku msg.txt");
+            Thread.Sleep(500);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
+            Thread.Sleep(800);
+            Console.Write("         -> OK");
+
             FileStream msg = new FileStream("msg.txt", FileMode.Create, FileAccess.Write);
             StreamWriter przepisz = new StreamWriter(msg);
             for(x = 0; x < rozmiar; x++)
@@ -430,6 +450,16 @@ namespace program
             }          
             przepisz.Close();
             msg.Close(); // zamykamy plik
+
+            Console.Write("\nZapisywanie do pliku kodowanie.txt");
+            Thread.Sleep(500);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
+            Thread.Sleep(800);
+            Console.Write("   -> OK\n");
 
             FileStream code = new FileStream("kodowanie.txt", FileMode.Create, FileAccess.Write);
             StreamWriter przepisz_kod = new StreamWriter(code);
@@ -644,34 +674,6 @@ namespace program
             przepisz_kod.Write("koniec wiadomosci....");
             przepisz_kod.Close();
             code.Close();
-
-            Console.Write("\nSzyfrowanie podanej wiadomości");
-            Thread.Sleep(500);
-            Console.Write(".");
-            Thread.Sleep(600);
-            Console.Write(".");
-            Thread.Sleep(600);
-            Console.Write(".");
-            Thread.Sleep(800);
-            Console.Write("       -> OK");
-            Console.Write("\nZapisywanie do pliku msg.txt");
-            Thread.Sleep(500);
-            Console.Write(".");
-            Thread.Sleep(600);
-            Console.Write(".");
-            Thread.Sleep(600);
-            Console.Write(".");
-            Thread.Sleep(800);
-            Console.Write("         -> OK");
-            Console.Write("\nZapisywanie do pliku kodowanie.txt");
-            Thread.Sleep(500);
-            Console.Write(".");
-            Thread.Sleep(600);
-            Console.Write(".");
-            Thread.Sleep(600);
-            Console.Write(".");
-            Thread.Sleep(800);
-            Console.Write("   -> OK\n");
 
             Console.WriteLine("\n------------------------------------>");
             Console.WriteLine("Tekst zaszyfrowany pomyślnie!");

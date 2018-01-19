@@ -83,13 +83,13 @@ namespace program
         public int WylosujHomofondlaLitery(int[] tablicaHomofonowa, int rozmiarTablicyHomofonowej)
         {
             Random rnd = new Random();
-            int randomize = rnd.Next(1, rozmiarTablicyHomofonowej);
-            // ma problem gdy dana litera jest tylko jeden raz bo jak wylosowac od 1,1 - wszystkie litery na 1 ustawic
+            int randomize = rnd.Next(0, rozmiarTablicyHomofonowej);
+            // ma problem gdy dana litera jest tylko jeden raz bo jak wylosowac od 1,1 - wszystkie litery na 1 ustawic??
             while(randomize > rozmiarTablicyHomofonowej)
             {
-                randomize = rnd.Next(1, rozmiarTablicyHomofonowej);
+                randomize = rnd.Next(0, rozmiarTablicyHomofonowej);
             }
-            return tablicaHomofonowa[randomize];
+            return tablicaHomofonowa[randomize];   
         }
 
         
@@ -104,7 +104,6 @@ namespace program
             Console.WriteLine("Szyfr homofoniczny(inspirowany Beale'm)");
             Console.WriteLine("Podaj informacje ktora chcesz zaszyfrować");
             Console.WriteLine("-uwaga: ???");
-            Console.WriteLine("-uwaga: narazie tylko DUŻE litery, bez polskich znaków proszę ;) ");
             Console.WriteLine("-----------------------------------------------------------------");
             string tekst = Console.ReadLine();              // bierzemy tekst
             int rozmiar = tekst.Length;                     // rozmiar tekstu
@@ -112,10 +111,44 @@ namespace program
             int[] zaszyfrowana = new int[rozmiar];
             tablica = tekst.ToCharArray();
             int x;
+            bool ignoruj = false;
 
             for (x = 0; x < rozmiar; x++)                        // zliczamy ile danych liter wystąpiło
             {
                 char sprawdz = tablica[x];
+                if((int)sprawdz >= 97 && (int)sprawdz <= 122 && ignoruj == false)
+                {
+                    Console.WriteLine("!#!#!##!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!##!##!##!!#!##!#!!#");
+                    Console.WriteLine("Zauważyliśy, że twój szyfr zawiera małe litery");
+                    Console.WriteLine("Co chcesz zrobić?");
+                    Console.WriteLine("1. zamień wszystkie małe litery na duże");
+                    Console.WriteLine("2. ignoruj blad(twój szyfr może nie mieć wszystkich liter!)");
+                    Console.WriteLine("!#!#!##!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!##!##!##!!#!##!#!!#");
+                    int decyzja = Convert.ToInt32(Console.ReadLine());
+                    if(decyzja == 1)
+                    {
+                        int i;
+                        for(i = 0; i < rozmiar; i++)
+                        {
+                            char znak = tablica[i];
+                            if((int)znak >= 97 && (int)znak <= 122)
+                            {
+                                tablica[i] = char.ToUpper(znak);
+                            }
+                        }
+                        Console.Write("\nDokonywanie konwersji");
+                        Thread.Sleep(500);
+                        Console.Write(".");
+                        Thread.Sleep(600);
+                        Console.Write(".");
+                        Thread.Sleep(700);
+                        Console.Write(".\n");
+                    }
+                    else if(decyzja == 2)
+                    {
+                        ignoruj = true; // ignorujemy male litery
+                    }
+                }
                 #region Zliczamy wystapienia liter
                 A = obiekt.ZliczajWystapieniaLitery(sprawdz, 'A', A);
                 B = obiekt.ZliczajWystapieniaLitery(sprawdz, 'B', B);
@@ -400,8 +433,7 @@ namespace program
 
             FileStream code = new FileStream("kodowanie.txt", FileMode.Create, FileAccess.Write);
             StreamWriter przepisz_kod = new StreamWriter(code);
-            przepisz_kod.Write("Dokument potrzebny do odczytania zakodowanej wiadomości\r\n");
-            przepisz_kod.Write("Poniższy spis umożliwi Ci odczytanie zaszyfrowanej wiadomości!\r\n");
+            przepisz_kod.Write("PLIK ZAWIERA KOD ODCZYTANIA SZYFRU\r\n");
             przepisz_kod.Write("Data utworzenia szyfru:\r\n");
             przepisz_kod.Write(DateTime.Now.ToString("HH:mm:ss\r\n"));
             przepisz_kod.Write(DateTime.Today.ToString("dd-MM-yyyy\r\n"));
@@ -614,13 +646,13 @@ namespace program
             code.Close();
 
             Console.WriteLine("Szyfrowanie podanej wiadomości...");
-            Thread.Sleep(500);
+            Thread.Sleep(800);
             Console.WriteLine("Zapisywanie do pliku msg.txt...");
-            Thread.Sleep(500);
+            Thread.Sleep(800);
             Console.WriteLine("Zapisywanie do pliku kodowanie.txt...");
-            Thread.Sleep(500);
+            Thread.Sleep(800);
 
-            Console.WriteLine("\n\n------------------------------------>");
+            Console.WriteLine("\n------------------------------------>");
             Console.WriteLine("Tekst zaszyfrowany pomyślnie!");
             Console.WriteLine("Uwaga:");
             Console.WriteLine("Zaszyfrowany tekst został zapisany do pliku msg.txt");

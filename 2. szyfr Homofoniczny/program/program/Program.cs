@@ -645,12 +645,33 @@ namespace program
             przepisz_kod.Close();
             code.Close();
 
-            Console.WriteLine("Szyfrowanie podanej wiadomości...");
+            Console.Write("\nSzyfrowanie podanej wiadomości");
+            Thread.Sleep(500);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
             Thread.Sleep(800);
-            Console.WriteLine("Zapisywanie do pliku msg.txt...");
+            Console.Write("       -> OK");
+            Console.Write("\nZapisywanie do pliku msg.txt");
+            Thread.Sleep(500);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
             Thread.Sleep(800);
-            Console.WriteLine("Zapisywanie do pliku kodowanie.txt...");
+            Console.Write("         -> OK");
+            Console.Write("\nZapisywanie do pliku kodowanie.txt");
+            Thread.Sleep(500);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
+            Thread.Sleep(600);
+            Console.Write(".");
             Thread.Sleep(800);
+            Console.Write("   -> OK\n");
 
             Console.WriteLine("\n------------------------------------>");
             Console.WriteLine("Tekst zaszyfrowany pomyślnie!");

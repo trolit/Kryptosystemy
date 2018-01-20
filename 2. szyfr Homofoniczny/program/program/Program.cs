@@ -99,13 +99,17 @@ namespace program
         static void Main(string[] args)
         {
             Encryption obiekt = new Encryption();
-
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetWindowSize(77, 20);  // rozmiar ekranu
             int A = 1, B = 1, C = 1, D = 1, E = 1, F = 1, G = 1, H = 1, I = 1, J = 1, K = 1, L = 1, M = 1, N = 1, O = 1, P = 1, Q = 1, R = 1, S = 1, T = 1, U = 1, W = 1, X = 1, Y = 1, Z = 1;
+            Console.WriteLine("-----------------------------------------------------------------------------");
             Console.WriteLine("Szyfr homofoniczny(inspirowany Beale'm)");
             Console.WriteLine("Podaj informacje ktora chcesz zaszyfrować");
-            Console.WriteLine("-uwaga: ???");
-            Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine("rada: najlepiej wiadomość zapisać dużymi literami");
+            Console.WriteLine("-----------------------------------------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Red;
             string tekst = Console.ReadLine();              // bierzemy tekst
+            Console.ForegroundColor = ConsoleColor.Green;
             int rozmiar = tekst.Length;                     // rozmiar tekstu
             char[] tablica = new char[rozmiar];
             int[] zaszyfrowana = new int[rozmiar];
@@ -118,14 +122,15 @@ namespace program
                 char sprawdz = tablica[x];
                 if((int)sprawdz >= 97 && (int)sprawdz <= 122 && ignoruj == false)
                 {
-                    Console.WriteLine("!#!#!##!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!##!##!##!!#!##!#!!#");
-                    Console.WriteLine("Zauważyliśy, że szyfr zawiera małe litery");
-                    Console.WriteLine("Którą operację wykonać?");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("W podanym tekście znajdują się małe litery");
+                    Console.WriteLine("Którą czynność wykonać?");
                     Console.WriteLine("1. zamień wszystkie małe litery na duże");
-                    Console.WriteLine("2. ignoruj blad(szyfr może mieć braki w literach!)");
-                    Console.WriteLine("!#!#!##!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!##!##!##!!#!##!#!!#");
+                    Console.WriteLine("2. ignoruj informacje(szyfr może mieć braki w literach!)");
+                    Console.Write("Wykonaj: ");
                     int decyzja = Convert.ToInt32(Console.ReadLine());
-                    if(decyzja == 1)
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    if (decyzja == 1)
                     {
                         int i;
                         for(i = 0; i < rozmiar; i++)
@@ -144,7 +149,9 @@ namespace program
                         Thread.Sleep(750);
                         Console.Write(".");
                         Thread.Sleep(800);
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.Write("                -> OK");
+                        Console.ForegroundColor = ConsoleColor.Green;
                     }
                     else if(decyzja == 2)
                     {
@@ -320,7 +327,9 @@ namespace program
             Thread.Sleep(600);
             Console.Write(".");
             Thread.Sleep(800);
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write("       -> OK");
+            Console.ForegroundColor = ConsoleColor.Green;
 
             for (x = 0; x < rozmiar; x++)
             {
@@ -442,7 +451,9 @@ namespace program
             Thread.Sleep(600);
             Console.Write(".");
             Thread.Sleep(800);
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write("         -> OK");
+            Console.ForegroundColor = ConsoleColor.Green;
 
             FileStream msg = new FileStream("msg.txt", FileMode.Create, FileAccess.Write);
             StreamWriter przepisz = new StreamWriter(msg);
@@ -461,7 +472,9 @@ namespace program
             Thread.Sleep(600);
             Console.Write(".");
             Thread.Sleep(800);
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Write("   -> OK\n");
+            Console.ForegroundColor = ConsoleColor.Green;
 
             FileStream code = new FileStream("kodowanie.txt", FileMode.Create, FileAccess.Write);
             StreamWriter przepisz_kod = new StreamWriter(code);
@@ -470,7 +483,7 @@ namespace program
             przepisz_kod.Write("o godzinie " + DateTime.Now.ToString("HH:mm:ss") + "\r\n");
             przepisz_kod.Write("dnia: " + DateTime.Today.ToString("dd-MM-yyyy\r\n"));
             przepisz_kod.Write("\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("A -> { ");
             for(x = 0; x < A; x++)
@@ -478,7 +491,7 @@ namespace program
                 przepisz_kod.Write(A_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("B -> { ");
             for (x = 0; x < B; x++)
@@ -486,7 +499,7 @@ namespace program
                 przepisz_kod.Write(B_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("C -> { ");
             for (x = 0; x < C; x++)
@@ -494,7 +507,7 @@ namespace program
                 przepisz_kod.Write(C_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("D -> { ");
             for (x = 0; x < D; x++)
@@ -502,7 +515,7 @@ namespace program
                 przepisz_kod.Write(D_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("E -> { ");
             for (x = 0; x < E; x++)
@@ -510,7 +523,7 @@ namespace program
                 przepisz_kod.Write(E_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("F -> { ");
             for (x = 0; x < F; x++)
@@ -518,7 +531,7 @@ namespace program
                 przepisz_kod.Write(F_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("G -> { ");
             for (x = 0; x < G; x++)
@@ -526,7 +539,7 @@ namespace program
                 przepisz_kod.Write(G_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("H -> { ");
             for (x = 0; x < H; x++)
@@ -534,7 +547,7 @@ namespace program
                 przepisz_kod.Write(H_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("I -> { ");
             for (x = 0; x < I; x++)
@@ -542,7 +555,7 @@ namespace program
                 przepisz_kod.Write(I_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("J -> { ");
             for (x = 0; x < J; x++)
@@ -550,7 +563,7 @@ namespace program
                 przepisz_kod.Write(J_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("K -> { ");
             for (x = 0; x < K; x++)
@@ -558,7 +571,7 @@ namespace program
                 przepisz_kod.Write(K_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("L -> { ");
             for (x = 0; x < L; x++)
@@ -566,7 +579,7 @@ namespace program
                 przepisz_kod.Write(L_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("M -> { ");
             for (x = 0; x < M; x++)
@@ -574,7 +587,7 @@ namespace program
                 przepisz_kod.Write(M_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("N -> { ");
             for (x = 0; x < N; x++)
@@ -582,7 +595,7 @@ namespace program
                 przepisz_kod.Write(N_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("O -> { ");
             for (x = 0; x < O; x++)
@@ -590,7 +603,7 @@ namespace program
                 przepisz_kod.Write(O_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("P -> { ");
             for (x = 0; x < P; x++)
@@ -598,7 +611,7 @@ namespace program
                 przepisz_kod.Write(P_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("Q -> { ");
             for (x = 0; x < Q; x++)
@@ -606,7 +619,7 @@ namespace program
                 przepisz_kod.Write(Q_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("R -> { ");
             for (x = 0; x < R; x++)
@@ -614,7 +627,7 @@ namespace program
                 przepisz_kod.Write(R_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("S -> { ");
             for (x = 0; x < S; x++)
@@ -622,7 +635,7 @@ namespace program
                 przepisz_kod.Write(S_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("T -> { ");
             for (x = 0; x < T; x++)
@@ -630,7 +643,7 @@ namespace program
                 przepisz_kod.Write(T_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("U -> { ");
             for (x = 0; x < U; x++)
@@ -638,7 +651,7 @@ namespace program
                 przepisz_kod.Write(U_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("W -> { ");
             for (x = 0; x < W; x++)
@@ -646,7 +659,7 @@ namespace program
                 przepisz_kod.Write(W_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("X -> { ");
             for (x = 0; x < X; x++)
@@ -654,7 +667,7 @@ namespace program
                 przepisz_kod.Write(X_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("Y -> { ");
             for (x = 0; x < Y; x++)
@@ -662,7 +675,7 @@ namespace program
                 przepisz_kod.Write(Y_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("Z -> { ");
             for (x = 0; x < Z; x++)
@@ -670,22 +683,20 @@ namespace program
                 przepisz_kod.Write(Z_tab[x] + ", ");
             }
             przepisz_kod.Write(" }\r\n");
-            przepisz_kod.Write("==========================================");
+            przepisz_kod.Write("##########################################");
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("\r\n");
-            przepisz_kod.Write("koniec wiadomosci....");
+            przepisz_kod.Write("koniec zapisywania pliku...");
             przepisz_kod.Close();
             code.Close();
 
-            Console.WriteLine("\n------------------------------------>");
-            Console.WriteLine("Tekst zaszyfrowany pomyślnie!");
-            Console.WriteLine("Uwaga:");
-            Console.WriteLine("Zaszyfrowany tekst został zapisany do pliku msg.txt");
+            Console.WriteLine("\n-----------------------------------------------------------------------------");
+            Console.WriteLine("Tekst został zaszyfrowany pomyślnie!");
             Console.WriteLine("Kod niezbędny do odszyfrowania wiadomości znajduje się w pliku kodowanie.txt");
-            Console.WriteLine("------------------------------------>");
+            Console.WriteLine("-----------------------------------------------------------------------------");
 
-            
 
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
             Console.ReadKey();
         }

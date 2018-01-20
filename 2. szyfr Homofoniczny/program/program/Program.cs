@@ -119,10 +119,10 @@ namespace program
                 if((int)sprawdz >= 97 && (int)sprawdz <= 122 && ignoruj == false)
                 {
                     Console.WriteLine("!#!#!##!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!##!##!##!!#!##!#!!#");
-                    Console.WriteLine("Zauważyliśy, że twój szyfr zawiera małe litery");
-                    Console.WriteLine("Co chcesz zrobić?");
+                    Console.WriteLine("Zauważyliśy, że szyfr zawiera małe litery");
+                    Console.WriteLine("Którą operację wykonać?");
                     Console.WriteLine("1. zamień wszystkie małe litery na duże");
-                    Console.WriteLine("2. ignoruj blad(twój szyfr może nie mieć wszystkich liter!)");
+                    Console.WriteLine("2. ignoruj blad(szyfr może mieć braki w literach!)");
                     Console.WriteLine("!#!#!##!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!#!##!##!##!!#!##!#!!#");
                     int decyzja = Convert.ToInt32(Console.ReadLine());
                     if(decyzja == 1)
@@ -137,12 +137,14 @@ namespace program
                             }
                         }
                         Console.Write("\nDokonywanie konwersji");
-                        Thread.Sleep(500);
-                        Console.Write(".");
-                        Thread.Sleep(600);
+                        Thread.Sleep(700);
                         Console.Write(".");
                         Thread.Sleep(700);
-                        Console.Write(".\n");
+                        Console.Write(".");
+                        Thread.Sleep(750);
+                        Console.Write(".");
+                        Thread.Sleep(800);
+                        Console.Write("                -> OK");
                     }
                     else if(decyzja == 2)
                     {
@@ -463,10 +465,10 @@ namespace program
 
             FileStream code = new FileStream("kodowanie.txt", FileMode.Create, FileAccess.Write);
             StreamWriter przepisz_kod = new StreamWriter(code);
-            przepisz_kod.Write("PLIK ZAWIERA KOD ODCZYTANIA SZYFRU\r\n");
-            przepisz_kod.Write("Data utworzenia szyfru:\r\n");
-            przepisz_kod.Write(DateTime.Now.ToString("HH:mm:ss\r\n"));
-            przepisz_kod.Write(DateTime.Today.ToString("dd-MM-yyyy\r\n"));
+            przepisz_kod.Write("PLIK NIEZBEDNY DO ODCZYTANIA ZASZYFROWANEJ WIADOMOSCI\r\n");
+            przepisz_kod.Write("Plik utworzono:\r\n");
+            przepisz_kod.Write("o godzinie " + DateTime.Now.ToString("HH:mm:ss") + "\r\n");
+            przepisz_kod.Write("dnia: " + DateTime.Today.ToString("dd-MM-yyyy\r\n"));
             przepisz_kod.Write("\r\n");
             przepisz_kod.Write("==========================================");
             przepisz_kod.Write("\r\n");

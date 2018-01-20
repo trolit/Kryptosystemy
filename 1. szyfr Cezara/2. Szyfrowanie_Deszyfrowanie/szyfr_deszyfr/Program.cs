@@ -10,11 +10,15 @@ namespace szyfr_deszyfr
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("-------------");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetWindowSize(77, 20);
+            Console.WriteLine("-----------------------------------------------------------------------------");
             Console.WriteLine("Szyfr Cezara");
             Console.WriteLine("Podaj słowo/zdanie do zaszyfrowania");
-
-            string slowo = Console.ReadLine();                    
+            Console.WriteLine("-----------------------------------------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Red;
+            string slowo = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Green;
             char[] tablica = slowo.ToCharArray();           // dokonujemy konwersji do char
             int i;
             char probka;
@@ -25,10 +29,12 @@ namespace szyfr_deszyfr
                 probka = tablica[i];
                 tablica[i] = Char.ToUpper(probka);
             }
-            
-
-            Console.WriteLine("\nTWOJA ZASZYFROWANA WIADOMOŚĆ: ");
-            for(i = 0; i < rozmiar; i++)                    // szyfrowanie i wypisanie zaszyfrowanego słowa
+      
+            Console.WriteLine("\n\n-----------------------------------------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("TWOJA ZASZYFROWANA WIADOMOŚĆ: ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            for (i = 0; i < rozmiar; i++)                    // szyfrowanie i wypisanie zaszyfrowanego słowa
             { 
                 int znak = tablica[i];
                 if (znak >= 65 && znak <= 90)
@@ -38,8 +44,12 @@ namespace szyfr_deszyfr
                     Console.Write(tablica[i]);
                 }
             }
-
-            Console.WriteLine("\n\nODSZYFROWANIE WIADOMOŚCI: ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n-----------------------------------------------------------------------------");     
+            Console.WriteLine("-----------------------------------------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("TWOJA WIADOMOŚĆ PO ODSZYFROWANIU: ");
+            Console.ForegroundColor = ConsoleColor.Green;
             for (i = 0; i < rozmiar; i++)                    // odszyfrowanie i wypisanie odszyfrowanego słowa
             {
                 int znak = tablica[i];
@@ -54,8 +64,9 @@ namespace szyfr_deszyfr
                     Console.Write(" ");
                 }
             }
-
-            Console.WriteLine();
+            Console.WriteLine("\n-----------------------------------------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Naciśnij dowolny klawisz...");
             Console.ReadKey();
         }
     }

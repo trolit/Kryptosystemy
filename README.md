@@ -13,7 +13,7 @@ literą kodowaną będzie „c” (kod ASCII 99) itd.... Nie gwarantuje on obecn
 
 
 
-> 2. Szyfr Homofoniczny(inspiracja od szyfru Beale'a)
+> 2. Szyfr Homofoniczny(inspiracja od szyfru Beale'a):
 
 Szyfr homofoniczny to szyfr podstawieniowy, w którym każdej literze tekstu jawnego odpoiwada inny zbiór symboli
 kryptogramu(homofonów). Liczba homofonów powinna być zależna od częstotliwości występowania danej litery w tekście
@@ -22,6 +22,12 @@ spłaszczony histogram kryptogramu, a wielokrotne szyfrowanie tego samego tekstu
 Cechy te znaczaco utrudniaja kryptoanalizę. ~źródło: Wikipedia
 
 
+
+> 3. Szyfr ROT13(szyfr przesuwający):
+
+Szyfrowanie to polega na przesuwaniu każdej litery tekstu jawneg o 13 pozycji do przodu. Działanie zatem jest bardzo
+proste co powoduje, że sam szyfr jest mało bezpieczny. Mechanizm ten jest bardzo podobny do szyfru Cezara. ROT13 
+różni się jedynie wartością o jaką przesuwane są litery. ~źródło: securelist
 
 
 

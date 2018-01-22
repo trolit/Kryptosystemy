@@ -10,44 +10,60 @@ namespace rot13_program
 
     class ROT13
     {
-
+        // pusto
 
     }
 
     class Program
     {
         static void Main(string[] args)
-        { 
-            Console.WriteLine("Podaj tekst do zaszyfrowania przez ROT13");
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Podaj tekst do zaszyfrowania przez algorytm ROT13");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.SetWindowSize(77, 20);
             string tekst = Console.ReadLine();
             int rozmiar = tekst.Length;
             char[] tablica = new char[rozmiar];
-            char[] tablica_znakowa = new char[26];
             tablica = tekst.ToCharArray();
             int x;
-            char znak = 'm';
 
-            for(x = 0; x < 26; x++)   // tablica znakow
-            {
-                int wartosc = (int)znak;       
-                if (znak == 'z')
-                {
-                    wartosc = (int)'a';
-                    wartosc -= 1;
-                }
-                wartosc += 1;
-                znak = (char)wartosc;
-                tablica_znakowa[x] = znak;
-            }
-            // tablica_znakowa[25] = m
-
-            for(x = 0; x < rozmiar; x++)
+            for(x = 0; x < rozmiar; x++)                // SZYFROWANIE ROT13
             {
                 char litera = tablica[x];
-
-
+                if(litera >= 97 && litera <= 122)
+                {
+                    int wartosc = (int)litera + 13;
+                    if(wartosc > 122)
+                    {
+                        wartosc -= 26;
+                    }
+                    tablica[x] = (char)wartosc;
+                }
+                else if(litera >= 65 && litera <= 90)
+                {
+                    int wartosc = (int)litera + 13;
+                    if(wartosc > 90)
+                    {
+                        wartosc -= 26;
+                    }
+                    tablica[x] = (char)wartosc;
+                }
+                else
+                {
+                    tablica[x] = (char)litera;
+                }
             }
+
+            Console.WriteLine("\nZaszyfrowany tekst przy pomocy ROT13:");
+            Console.ForegroundColor = ConsoleColor.Red;
+            for (x = 0; x < rozmiar; x++)
+            {
+                Console.Write(tablica[x]);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n\nNaciśnij dowolny klawisz...");
             Console.ReadKey();
         }
     }

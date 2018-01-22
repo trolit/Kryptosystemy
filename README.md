@@ -31,6 +31,12 @@ różni się jedynie wartością o jaką przesuwane są litery. ~źródło: secu
 
 
 
+> 4. Szyfr ROT47:
+
+zamienia każdy znak ASCII z przedziału 33-126 na znak znajdujący się 47 pozycji dalej, ale nie dalej niż do 126 pozycji.
+Podobnie jak ROT13 jest on samoodwracalny, tzn: **rot47(rot47(m))** ~źródło: Wikipedia
+
+
 Atak na algorytmy szyfrujące(rodzaje):
 - atak w oparciu o słabość algorytmu
 - atak brute force;

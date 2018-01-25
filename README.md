@@ -37,6 +37,16 @@ zamienia każdy znak ASCII z przedziału 33-126 na znak znajdujący się 47 pozy
 Podobnie jak ROT13 jest on samoodwracalny, tzn: **rot47(rot47(m))** ~źródło: Wikipedia
 
 
+
+> 4. Szyfr ADFGVX:
+
+używany przez Niemcy podczas I Wojny Światowej, szyfr ten jest udoskonaleniem ADFGX. Dzialanie szyfru opiera sie na nadaniu
+kazdej literze pary liter A D F G V X. Tworzona jest tabela i zaszyfrowane slowo. Bez tabeli nie mozna odczytac co dane kombinacje
+liter oznaczaja. Dla utrudnienia dzieli sie zaszyfrowane slowo po 6 pozycji (czyli ADFGVX itd...)
+
+
+
+
 Atak na algorytmy szyfrujące(rodzaje):
 - atak w oparciu o słabość algorytmu
 - atak brute force;

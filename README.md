@@ -3,7 +3,7 @@
 
 **szyfrowanie** to po prostu metoda zapisu tekstu jawnego w taki sposób, 
 by stał się on nieczytelny dla osób trzecich i jednocześnie z powrotem 
-jawny po właściwej weryfikacji. ~securelist.pl
+jawny po właściwej weryfikacji. ~**securelist.pl**
 
 > 1. Szyfr Cezara(szyfr przesuwający):
 
@@ -19,7 +19,7 @@ Szyfr homofoniczny to szyfr podstawieniowy, w którym każdej literze tekstu jaw
 kryptogramu(homofonów). Liczba homofonów powinna być zależna od częstotliwości występowania danej litery w tekście
 do zaszyfrowania. Przy każdym szyfrowaniu litery wybierany jest losowo jeden z jej homofonów. W ten sposób zostaje
 spłaszczony histogram kryptogramu, a wielokrotne szyfrowanie tego samego tekstu daje za kazdym razem inny wynik.
-Cechy te znaczaco utrudniaja kryptoanalizę. ~źródło: Wikipedia
+Cechy te znaczaco utrudniaja kryptoanalizę. ~źródło: **Wikipedia**
 
 
 
@@ -27,14 +27,14 @@ Cechy te znaczaco utrudniaja kryptoanalizę. ~źródło: Wikipedia
 
 Szyfrowanie to polega na przesuwaniu każdej litery tekstu jawneg o 13 pozycji do przodu. Działanie zatem jest bardzo
 proste co powoduje, że sam szyfr jest mało bezpieczny. Mechanizm ten jest bardzo podobny do szyfru Cezara. ROT13 
-różni się jedynie wartością o jaką przesuwane są litery. ~źródło: securelist
+różni się jedynie wartością o jaką przesuwane są litery. ~źródło: **securelist**
 
 
 
 > 4. Szyfr ROT47:
 
 zamienia każdy znak ASCII z przedziału 33-126 na znak znajdujący się 47 pozycji dalej, ale nie dalej niż do 126 pozycji.
-Podobnie jak ROT13 jest on samoodwracalny, tzn: **rot47(rot47(m))** ~źródło: Wikipedia
+Podobnie jak ROT13 jest on samoodwracalny, tzn: **rot47(rot47(m))** ~źródło: **Wikipedia**
 
 
 
@@ -42,7 +42,7 @@ Podobnie jak ROT13 jest on samoodwracalny, tzn: **rot47(rot47(m))** ~źródło: 
 
 używany przez Niemcy podczas I Wojny Światowej, szyfr ten jest udoskonaleniem ADFGX. Dzialanie szyfru opiera sie na nadaniu
 kazdej literze pary liter A D F G V X. Tworzona jest tabela i zaszyfrowane slowo. Bez tabeli nie mozna odczytac co dane kombinacje
-liter oznaczaja. Dla utrudnienia dzieli sie zaszyfrowane slowo po 6 pozycji (czyli ADFGVX itd...)
+liter oznaczaja. Dla utrudnienia dzieli sie zaszyfrowane slowo po 6 pozycji (czyli ADFGVX itd...) ~źródło: **securelist**
 
 
 

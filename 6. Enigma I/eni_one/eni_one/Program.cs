@@ -13,6 +13,11 @@ namespace eni_one
         public char Rotor1_StartPosition;
         public char Rotor2_StartPosition;
         public char Rotor3_StartPosition;
+
+        //  rotor 1 A -> L
+        //  rotor 2 L -> D
+        //  rotor 3 D -> K
+
     }
 
     class Program

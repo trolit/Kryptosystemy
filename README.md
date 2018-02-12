@@ -53,7 +53,8 @@ liter oznaczaja. Dla utrudnienia dzieli sie zaszyfrowane slowo po 6 pozycji (czy
 
 > 6. Enigma(trzy wirniki):
 
-
+niemiecka maszyna szyfrująca opracowana przez Artura Scherbiusa w 1918 roku
+**~warto zajrzeć:** http://www.lootwock.pl/zal1.pdf
 
 
 

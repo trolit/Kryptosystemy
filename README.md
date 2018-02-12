@@ -51,12 +51,12 @@ używany przez Niemcy podczas I Wojny Światowej, szyfr ten jest udoskonaleniem 
 kazdej literze pary liter A D F G V X. Tworzona jest tabela i zaszyfrowane slowo. Bez tabeli nie mozna odczytac co dane kombinacje
 liter oznaczaja. Dla utrudnienia dzieli sie zaszyfrowane slowo po 6 pozycji (czyli ADFGVX itd...) ~źródło: **securelist**
 
-> 6. Enigma(trzy wirniki):
+> 6. Enigma:
 
-niemiecka maszyna szyfrująca opracowana przez Artura Scherbiusa w 1918 roku
-
-**~warto zajrzeć:** http://www.lootwock.pl/zal1.pdf
-
+niemiecka maszyna szyfrująca opracowana przez Artura Scherbiusa w 1918 roku **~warto zajrzeć:** http://www.lootwock.pl/zal1.pdf
+Zasada działania jest następująca, mamy do dyspozycji tzw. wirniki i "odwracacz". Wirniki każdy kolejno przesuwał kodowaną
+literę a następnie po przejściu na odwracacz, zmieniał pozycje ustawienia wirnika tak aby kolejnym razem litera np. A została zakodowana w inny
+sposób. 
 
 
 Atak na algorytmy szyfrujące(rodzaje):

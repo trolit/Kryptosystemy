@@ -8,6 +8,10 @@ jawny po właściwej weryfikacji. ~**securelist.pl**
 > We wszystkich systemach szyfrów stosuje się założenie, iż wiadomość została przechwycona. 
 Zatem celem staje się uniemożliwienie lub jak największe utrudnienie czy rozciągnięcie w czasie odszyfrowania wiadomości.
 
+
+
+
+
 > 1. Szyfr Cezara(szyfr przesuwający):
 
 Jeden z najstarszych szyfrów. Jest zbudowany na zasadzie że, każdą literę tekstu niezaszyfrowanego zastępujemy inną przesuniętą
@@ -47,7 +51,7 @@ używany przez Niemcy podczas I Wojny Światowej, szyfr ten jest udoskonaleniem 
 kazdej literze pary liter A D F G V X. Tworzona jest tabela i zaszyfrowane slowo. Bez tabeli nie mozna odczytac co dane kombinacje
 liter oznaczaja. Dla utrudnienia dzieli sie zaszyfrowane slowo po 6 pozycji (czyli ADFGVX itd...) ~źródło: **securelist**
 
-> 6. Enigma(trzy wirniki, bez odwracania):
+> 6. Enigma(trzy wirniki):
 
 
 

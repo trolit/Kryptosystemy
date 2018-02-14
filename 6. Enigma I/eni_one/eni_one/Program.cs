@@ -42,16 +42,38 @@ namespace eni_one
         // lub gdy przekroczy Z
         public char Rotor2_Encryption(char Letter)
         {
+            Value = (int)Letter;
+            Value += 11;
 
-            return 'a';
+            if (Value > (int)'Z')
+            {
+                Value -= 26;
+            }
+            else if (Value == (int)'F')
+            {
+                Value += 1;
+            }
+
+            return (char)Value;
         }
 
         // punkt przeniesienia obrotu: W
         // lub gdy przekroczy Z
         public char Rotor3_Encryption(char Letter)
         {
+            Value = (int)Letter;
+            Value += 11;
 
-            return 'a';
+            if (Value > (int)'Z')
+            {
+                Value -= 26;
+            }
+            else if (Value == (int)'W')
+            {
+                Value += 1;
+            }
+
+            return (char)Value;
         }
     }
 
@@ -63,8 +85,9 @@ namespace eni_one
             EnigmaCore varx = new EnigmaCore();
 
             Console.WriteLine("E  N I G M  A");
-            Console.WriteLine("trzy wirniki, bez łącznicy kablowej");
-            Console.WriteLine("Ustal klucz kodowania np. AGR(podawaj po jednej literze zatwierdzając)");
+            Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania(narazie)");
+            Console.WriteLine("Punkty przeniesienia obrotu dla wirników: R-F-W i oczywiście przekroczenie Z");
+            Console.WriteLine("Ustal klucz kodowania np. AGR(podawaj po jednej literze zatwierdzając przyciskiem ENTER)");
             body.Rotor1_StartPosition = Convert.ToChar(Console.ReadLine());
             body.Rotor2_StartPosition = Convert.ToChar(Console.ReadLine());
             body.Rotor3_StartPosition = Convert.ToChar(Console.ReadLine());
@@ -96,9 +119,11 @@ namespace eni_one
                 if(varx.reverse == false && varx.rotor_counter == 3)
                 {
                     ToEncrypt = body.Rotor3_Encryption(ToEncrypt);
-                    varx.reverse = true;
+                    varx.reverse = false;
                 }
 
+
+                Console.Write(ToEncrypt);
             }
 
             Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");

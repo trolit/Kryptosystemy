@@ -101,7 +101,7 @@ namespace eni_one
             char[] Chars_To_Encrypt = new char[rozmiar];
             Chars_To_Encrypt = tekst.ToCharArray();
 
-            // Szyfrowanie
+            // Szyfrowanie 
             int i;
             for(i = 0; i < rozmiar; i++)
             {

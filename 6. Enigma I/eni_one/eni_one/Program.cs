@@ -8,7 +8,7 @@ namespace eni_one
 {
     class EnigmaCore
     {
-        public bool reverse = false;
+        public bool reverse = false;        // odwracanie (faza budowy)
         public int rotor_counter = 1;
         public char Rotor1_StartPosition;
         public char Rotor2_StartPosition;
@@ -87,7 +87,9 @@ namespace eni_one
             Console.WriteLine("E  N I G M  A");
             Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania(narazie)");
             Console.WriteLine("Punkty przeniesienia obrotu dla wirników: R-F-W i oczywiście przekroczenie Z");
-            Console.WriteLine("Ustal klucz kodowania np. AGR(podawaj po jednej literze zatwierdzając przyciskiem ENTER)");
+            Console.WriteLine("Ustal klucz kodowania np. AGR(podawaj po jednej literze");
+            Console.WriteLine("Zatwierdzaj przyciskiem ENTER");
+
             body.Rotor1_StartPosition = Convert.ToChar(Console.ReadLine());
             body.Rotor2_StartPosition = Convert.ToChar(Console.ReadLine());
             body.Rotor3_StartPosition = Convert.ToChar(Console.ReadLine());
@@ -122,11 +124,12 @@ namespace eni_one
                     varx.reverse = false;
                 }
 
+                varx.rotor_counter = 1;
 
                 Console.Write(ToEncrypt);
             }
 
-            Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
+            Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
             Console.ReadKey();
         }
     }

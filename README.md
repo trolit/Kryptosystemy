@@ -65,6 +65,13 @@ jedna z czterech wariancji szyfru podstawieniowego Quagmire. Do szyfrowania uży
 słowo kluczowe. Połączenie te zwiększa skutecznosć szyfrowania. Implementacja ze strony: http://mattomatti.com/pl/a35bv?plang=cs#elcode0
 
 
+> 8. C#-owy Keylogger
+
+Keylogger to oprogramowanie, które pozwala rejestrować klawisze naciskane przez użytkownika. Może posłużyć do zbierania haseł, poufnych danych
+albo jako kontrola aktywności pracowników przez pracodawcę. Możemy spotkać keylogger'y w oprogramowaniu ale i także specjalne wersje sprzętowe
+które podpina się jak zwykłą pamięć FLASH. W przypadku keylogger'a w oprogramowaniu jeżeli nie nazwany odpowiednio - łatwo go można wykryć w 
+menedrzeże zadań. Jeśli obawiamy się "podsłuchu" przez keylogger'a jest masa stron na temat jak wyśledzić takie oprogramowanie oraz jak temu
+zaradzić. Historia kliknięć znajduje się w pliku log ~źródło: https://null-byte.wonderhowto.com/how-to/create-simple-hidden-console-keylogger-c-sharp-0132757/
 
 Atak na algorytmy szyfrujące(rodzaje):
 - atak w oparciu o słabość algorytmu

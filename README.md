@@ -59,6 +59,13 @@ literę a następnie po przejściu na odwracacz, zmieniał pozycje ustawienia wi
 sposób. 
 
 
+> 7. Szyfr Quagmire II
+
+jedna z czterech wariancji szyfru podstawieniowego Quagmire. Do szyfrowania używane jest hasło oraz
+słowo kluczowe. Połączenie te zwiększa skutecznosć szyfrowania. Implementacja ze strony: http://mattomatti.com/pl/a35bv?plang=cs#elcode0
+
+
+
 Atak na algorytmy szyfrujące(rodzaje):
 - atak w oparciu o słabość algorytmu
 - atak brute force;

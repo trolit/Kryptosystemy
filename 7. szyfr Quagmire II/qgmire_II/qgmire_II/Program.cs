@@ -65,6 +65,7 @@ namespace qgmire_II
         {
             Console.WriteLine("Szyfrownie Quagmire II");
             Console.WriteLine("źródło implementacji: mattomatti");
+            Console.WriteLine("tylko duże litery!");
 
             string haslo = "", klucz = "", tekst = "";
             Console.Write("Podaj słowo szyfrujące: ");
@@ -79,8 +80,8 @@ namespace qgmire_II
             string tekstJawny = Quagmire.rozszyfruj(szyfrogram, alfabet, tabela, klucz.Length);
             Console.Write("\nSzyfrogram to: {0}\n", szyfrogram);
             Console.Write("\nPo rozszyfrowaniu: {0}\n", tekstJawny);
-            Console.ReadKey();
 
+            Console.WriteLine();
             Console.WriteLine("Nacisnij klawisz aby zakonczyc dzialanie programu...");
             Console.ReadKey();
         }

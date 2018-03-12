@@ -8,23 +8,24 @@ namespace eni_one
 {
     class EnigmaCore
     {
-        public bool reverse = false;        // odwracanie (faza budowy)
+        public bool reverse = false;       
         public int rotor_counter = 1;
         public char Rotor1_StartPosition;
         public char Rotor2_StartPosition;
         public char Rotor3_StartPosition;
         public int Value;
 
-        //  rotor 1 A -> L  (A B C D E F G H I J K L) -  +11
-        //  rotor 2 L -> D  (A B C D E F G H I J K L) -  -8
-        //  rotor 3 D -> K  (D E F G H I J K L)       -  +7
+        //  rotor 1 A -> G  przejście +26
+        //  rotor 2 L -> D  przejście +26
+        //  rotor 3 D -> K  przejście +26
 
+        // Wirnik 1
         // punkt przeniesienia obrotu: R
         // lub gdy przekroczy Z
         public char Rotor1_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 11;
+            Value += 26;
 
             if(Value > (int)'Z')
             {
@@ -38,12 +39,13 @@ namespace eni_one
             return (char)Value;
         }
 
+        // Wirnik 2
         // punkt przeniesienia obrotu: F
         // lub gdy przekroczy Z
         public char Rotor2_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 11;
+            Value += 26;
 
             if (Value > (int)'Z')
             {
@@ -57,12 +59,13 @@ namespace eni_one
             return (char)Value;
         }
 
+        // Wirnik 3
         // punkt przeniesienia obrotu: W
         // lub gdy przekroczy Z
         public char Rotor3_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 11;
+            Value += 26;
 
             if (Value > (int)'Z')
             {
@@ -84,15 +87,16 @@ namespace eni_one
             EnigmaCore body = new EnigmaCore();
             EnigmaCore varx = new EnigmaCore();
 
-            Console.WriteLine("E  N I G M  A");
-            Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania(narazie)");
-            Console.WriteLine("Punkty przeniesienia obrotu dla wirników: R-F-W i oczywiście przekroczenie Z");
-            Console.WriteLine("Ustal klucz kodowania np. AGR(podawaj po jednej literze");
-            Console.WriteLine("Zatwierdzaj przyciskiem ENTER");
-
-            body.Rotor1_StartPosition = Convert.ToChar(Console.ReadLine());
-            body.Rotor2_StartPosition = Convert.ToChar(Console.ReadLine());
-            body.Rotor3_StartPosition = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine("E N I G M A");
+            Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania narazie");
+            Console.WriteLine("Punkty przeniesienia obrotu dla wirników: R-F-W i oczywiście dla przekroczenia Z");
+            Console.WriteLine("Ustal klucz kodowania np. AGR");
+            string coding_key = Console.ReadLine();
+            char[] coding_table = new char[2];
+            coding_table = coding_key.ToCharArray();
+            body.Rotor1_StartPosition = coding_table[0];
+            body.Rotor2_StartPosition = coding_table[1];
+            body.Rotor3_StartPosition = coding_table[2];
             Console.WriteLine("Klucz kodowania: " + body.Rotor1_StartPosition + body.Rotor2_StartPosition + body.Rotor3_StartPosition);
 
             Console.WriteLine("Podaj tekst do zaszyfrowania(tylko duże litery)");
@@ -102,33 +106,9 @@ namespace eni_one
             Chars_To_Encrypt = tekst.ToCharArray();
 
             // Szyfrowanie 
-            int i;
-            for(i = 0; i < rozmiar; i++)
-            {
-                char ToEncrypt = Chars_To_Encrypt[i];
-                if(varx.reverse == false && varx.rotor_counter == 1)
-                {
-                    ToEncrypt = body.Rotor1_Encryption(ToEncrypt);
-                    varx.rotor_counter = 2;
-                }
+            // tutaj kod
 
-                if(varx.reverse == false && varx.rotor_counter == 2)
-                {
-                    ToEncrypt = body.Rotor2_Encryption(ToEncrypt);
-                    varx.rotor_counter = 3;
-                }
-
-                if(varx.reverse == false && varx.rotor_counter == 3)
-                {
-                    ToEncrypt = body.Rotor3_Encryption(ToEncrypt);
-                    varx.reverse = false;
-                }
-
-                varx.rotor_counter = 1;
-
-                Console.Write(ToEncrypt);
-            }
-
+        
             Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
             Console.ReadKey();
         }

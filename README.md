@@ -10,6 +10,9 @@ Zatem celem staje się uniemożliwienie lub jak największe utrudnienie czy rozc
 
 
 
+**złośliwe/szkodliwe oprogramowanie** to aplikacje i skrypty mające szkodliwe lub przestępcze działanie
+w stosunku do systemu komputerowego lub jego użytkownika.
+
 
 
 > 1. Szyfr Cezara(szyfr przesuwający):

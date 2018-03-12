@@ -29,7 +29,7 @@ namespace klog_I
              Application.Run();
              UnhookWindowsHookEx(_hookID);
 
-             Console.ReadKey();
+             // Console.ReadKey();
          }
 
          private static IntPtr SetHook(LowLevelKeyboardProc proc)

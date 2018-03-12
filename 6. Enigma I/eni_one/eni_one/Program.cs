@@ -8,60 +8,52 @@ namespace eni_one
 {
     class EnigmaCore
     {
-        public bool reverse = false;       
-        public int rotor_counter = 1;
+        public bool reverse = false;
+        public int turn_rotor = 1;
         public char Rotor1_StartPosition;
         public char Rotor2_StartPosition;
         public char Rotor3_StartPosition;
         public int Value;
 
-        //  rotor 1 A -> G  przejście +26
-        //  rotor 2 L -> D  przejście +26
-        //  rotor 3 D -> K  przejście +26
+        //  rotor 1 A -> G  przejście +6
+        //  rotor 2 L -> D  przejście +6
+        //  rotor 3 D -> K  przejście +6
 
         // Wirnik 1
-        // punkt przeniesienia obrotu: R
-        // lub gdy przekroczy Z
         public char Rotor1_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 26;
+            Value += 10;             // przesuniecie o 10 pozycji
 
-            if(Value > (int)'Z')
+            if(Value > (int)'Z')     // jeśli wirnik1 osiągnie pełny obrót
             {
+                char temporary = Rotor2_StartPosition;
+                int next = (int)temporary + 1;
+                Rotor2_StartPosition = (char)next;
                 Value -= 26;
-            }
-            else if(Value == (int)'R')
-            {
-                Value += 1;
             }
 
             return (char)Value;
         }
 
         // Wirnik 2
-        // punkt przeniesienia obrotu: F
-        // lub gdy przekroczy Z
         public char Rotor2_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 26;
+            Value += 10;            // przesuniecie o 10 pozycji
 
             if (Value > (int)'Z')
             {
+                char temporary = Rotor3_StartPosition;
+                int next = (int)temporary + 1;
+                Rotor3_StartPosition = (char)next;
                 Value -= 26;
-            }
-            else if (Value == (int)'F')
-            {
-                Value += 1;
             }
 
             return (char)Value;
         }
 
         // Wirnik 3
-        // punkt przeniesienia obrotu: W
-        // lub gdy przekroczy Z
         public char Rotor3_Encryption(char Letter)
         {
             Value = (int)Letter;

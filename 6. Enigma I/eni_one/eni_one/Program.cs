@@ -17,7 +17,8 @@ namespace eni_one
         public char Rotor1_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 10;             // przesuniecie o 10 pozycji
+            Value += 8;             // przesuniecie o 10 pozycji
+           
 
             if(Value > (int)'Z')     // jeśli wirnik1 osiągnie pełny obrót
             {
@@ -90,9 +91,14 @@ namespace eni_one
             // Szyfrowanie 
             // tutaj kod
             int i;
-            for(i = 1; i < rozmiar; i++)
+            for(i = 0; i < rozmiar; i++)
             {
+                char letter = Chars_To_Encrypt[i];
+                body.Rotor1_Encryption(letter);
+                body.Rotor2_Encryption(letter);
+                body.Rotor3_Encryption(letter);
 
+                Console.Write(letter);
             }
         
             Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");

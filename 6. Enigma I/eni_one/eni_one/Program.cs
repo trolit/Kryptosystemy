@@ -8,16 +8,10 @@ namespace eni_one
 {
     class EnigmaCore
     {
-        public bool reverse = false;
-        public int turn_rotor = 1;
         public char Rotor1_StartPosition;
         public char Rotor2_StartPosition;
         public char Rotor3_StartPosition;
         public int Value;
-
-        //  rotor 1 A -> G  przejście +6
-        //  rotor 2 L -> D  przejście +6
-        //  rotor 3 D -> K  przejście +6
 
         // Wirnik 1
         public char Rotor1_Encryption(char Letter)
@@ -57,15 +51,11 @@ namespace eni_one
         public char Rotor3_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 26;
+            Value += 5;
 
             if (Value > (int)'Z')
             {
                 Value -= 26;
-            }
-            else if (Value == (int)'W')
-            {
-                Value += 1;
             }
 
             return (char)Value;
@@ -99,7 +89,11 @@ namespace eni_one
 
             // Szyfrowanie 
             // tutaj kod
+            int i;
+            for(i = 1; i < rozmiar; i++)
+            {
 
+            }
         
             Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
             Console.ReadKey();

@@ -13,25 +13,37 @@ namespace eni_one
         public char Rotor3_Position;
         public int Value;
 
-        // Wirnik 1
+        // Wirnik 1 + obsługa wirnika 2
         public char Rotor1_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 6;                              // przesuniecie o 6 pozycji otrzymanego znaku
-            char x = Rotor1_Position;
-            int y = (int)x + 6;
+            Value += 4;                              // przesuniecie o 4 pozycji otrzymanego znaku
+            char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika
+            int y = (int)x + 4;                      // przesuwamy wirnik o 4 do przodu
             Rotor1_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu (6)
 
-            if((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 osiągnie pełny obrót
+            if((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90
             {
-                char temporary = Rotor2_Position;
-                int next = (int)temporary + 1;
-                Rotor2_Position = (char)next;
+                char temporary = Rotor2_Position;    // weź aktualną pozycję wirnika2
+                int next = (int)temporary + 1;       // przerzuć go do przodu o 1
+                if(next > (int)'Z')                  // jeśli wirnik2 przekroczy wartość 90
+                {
+                    next -= 26;                      // zresetuj wirnik2
+                }
+                Rotor2_Position = (char)next;        // wirnik2 zresetowany
 
-                temporary = Rotor1_Position;
-                next = (int)temporary - 26;
-                Rotor1_Position = (char)next;
-                Value -= 26;
+
+                if((int)Rotor1_Position > (int)'Z')  // zaopiekowanie się wirnikiem1
+                {
+                    temporary = Rotor1_Position;
+                    next = (int)temporary - 26;
+                    Rotor1_Position = (char)next;
+                }
+
+                if(Value > 90)                       // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
+                {
+                    Value -= 26;
+                }
             }
 
             return (char)Value;
@@ -41,9 +53,9 @@ namespace eni_one
         public char Rotor2_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 8;                              // przesuniecie o 8 pozycji
+            Value += 3;                              // przesuniecie o 8 pozycji
             char x = Rotor2_Position;
-            int y = (int)x + 8;
+            int y = (int)x + 3;
             Rotor2_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu (8)
 
             if ((int)Rotor2_Position > (int)'Z')
@@ -65,9 +77,9 @@ namespace eni_one
         public char Rotor3_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 5;
+            Value += 2;
             char x = Rotor3_Position;
-            int y = (int)x + 5;
+            int y = (int)x + 2;
             Rotor3_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu (5)
 
             if ((int)Rotor3_Position > (int)'Z')
@@ -116,7 +128,6 @@ namespace eni_one
                 letter = body.Rotor1_Encryption(letter);
                 letter = body.Rotor2_Encryption(letter);
                 letter = body.Rotor3_Encryption(letter);
-
                 Console.Write(letter);
             }
         

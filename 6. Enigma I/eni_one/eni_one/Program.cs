@@ -8,12 +8,12 @@ namespace eni_one
 {
     class EnigmaCore
     {
-        public char Rotor1_Position;
+        public char Rotor1_Position;    
         public char Rotor2_Position;
         public char Rotor3_Position;
         public int Value;
 
-        // Wirnik 1 + obsługa wirnika 2
+        // Wirnik 1 (+ obsługa wirnika 2)
         public char Rotor1_Encryption(char Letter)
         {
             Value = (int)Letter;
@@ -53,10 +53,10 @@ namespace eni_one
         public char Rotor2_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 3;                              // przesuniecie o 8 pozycji
-            char x = Rotor2_Position;
-            int y = (int)x + 3;
-            Rotor2_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu (8)
+            Value += 3;                              // przesuniecie o 3 pozycji
+            char x = Rotor2_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 2
+            int y = (int)x + 3;                      // wirnik2 zostaje przesunięty o 3 pozycje do przodu
+            Rotor2_Position = (char)y;               // przypisujemy do wirnika2 zaktualizowaną pozycję
 
             if ((int)Rotor2_Position > (int)'Z')
             {
@@ -98,20 +98,19 @@ namespace eni_one
     {
         static void Main(string[] args)
         {
-            EnigmaCore body = new EnigmaCore();
-            EnigmaCore varx = new EnigmaCore();
+            EnigmaCore body = new EnigmaCore();     // ciało Enigmy
+            EnigmaCore varx = new EnigmaCore();     // do interesujących zmiennych
 
             Console.WriteLine("E N I G M A");
-            Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania narazie");
-            Console.WriteLine("Punkty przeniesienia obrotu dla wirników: R-F-W i oczywiście dla przekroczenia Z");
-            Console.WriteLine("Ustal klucz kodowania np. AGR");
+            Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania(narazie)");
+            Console.WriteLine("Proszę ustalić klucz kodowania np. AGR");
             string coding_key = Console.ReadLine();
             char[] coding_table = new char[2];
             coding_table = coding_key.ToCharArray();
             body.Rotor1_Position = coding_table[0];
             body.Rotor2_Position = coding_table[1];
             body.Rotor3_Position = coding_table[2];
-            Console.WriteLine("Klucz kodowania: " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
+            Console.WriteLine("Ustalony klucz kodowania: " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
 
             Console.WriteLine("Podaj tekst do zaszyfrowania(tylko duże litery)");
             string tekst = Console.ReadLine();
@@ -130,7 +129,9 @@ namespace eni_one
                 letter = body.Rotor3_Encryption(letter);
                 Console.Write(letter);
             }
-        
+
+            Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
+            Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
             Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
             Console.ReadKey();
         }

@@ -8,10 +8,10 @@ namespace eni_one
 {
     class EnigmaCore
     {
-        public char Rotor1_Position;    
-        public char Rotor2_Position;
-        public char Rotor3_Position;
-        public int Value;
+        public char Rotor1_Position = '#';    
+        public char Rotor2_Position = '#';
+        public char Rotor3_Position = '#';
+        public int Value = 0;
 
         // Wirnik 1 (+ obsługa wirnika 2)
         public char Rotor1_Encryption(char Letter)
@@ -21,7 +21,6 @@ namespace eni_one
             char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika
             int y = (int)x + 4;                      // przesuwamy wirnik o 4 do przodu
             Rotor1_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu (6)
-
             if((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90
             {
                 char temporary = Rotor2_Position;    // weź aktualną pozycję wirnika2
@@ -93,11 +92,11 @@ namespace eni_one
             int y = (int)x + 2;                      // wirnik3 zostaje przesunięty o 2 pozycje do przodu
             Rotor3_Position = (char)y;               // przypisujemy do wirnika3 zaktualizowaną pozycję
 
-            if ((int)Rotor3_Position > (int)'Z')
+            if ((int)Rotor3_Position > (int)'Z')     // jeśli wirnik3 przekroczy wartość 90
             {
                 char temporary = Rotor3_Position;
                 int next = (int)temporary - 26;
-                Rotor2_Position = (char)next;
+                Rotor3_Position = (char)next;
             }
 
             if (Value > 90)                          // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
@@ -116,7 +115,7 @@ namespace eni_one
             EnigmaCore body = new EnigmaCore();     // ciało Enigmy
             EnigmaCore varx = new EnigmaCore();     // do interesujących zmiennych
 
-            Console.WriteLine("E N I G M A");
+            Console.WriteLine("PROJEKT ENIGMA");
             Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania(narazie)");
             Console.WriteLine("Proszę ustalić klucz kodowania np. AGR");
             string coding_key = Console.ReadLine();
@@ -146,8 +145,8 @@ namespace eni_one
             }
 
             Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
-            Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
-            Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
+            Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
+            Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
             Console.ReadKey();
         }
     }

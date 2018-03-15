@@ -49,7 +49,7 @@ namespace eni_one
             return (char)Value;
         }
 
-        // Wirnik 2
+        // Wirnik 2 (+ obsługa wirnika3)
         public char Rotor2_Encryption(char Letter)
         {
             Value = (int)Letter;
@@ -58,16 +58,27 @@ namespace eni_one
             int y = (int)x + 3;                      // wirnik2 zostaje przesunięty o 3 pozycje do przodu
             Rotor2_Position = (char)y;               // przypisujemy do wirnika2 zaktualizowaną pozycję
 
-            if ((int)Rotor2_Position > (int)'Z')
+            if ((int)Rotor2_Position > (int)'Z')     // jeśli wirnik2 przekroczy wartość 90
             {
                 char temporary = Rotor3_Position;
                 int next = (int)temporary + 1;
-                Rotor3_Position = (char)next;
+                if (next > (int)'Z')                  // jeśli wirnik3 przekroczy wartość 90
+                {
+                    next -= 26;                       // zresetuj wirnik3
+                }
+                Rotor3_Position = (char)next;         // wirnik3 zresetowany
 
-                temporary = Rotor2_Position;
-                next = (int)temporary - 26;
-                Rotor2_Position = (char)next;
-                Value -= 26;
+                if ((int)Rotor2_Position > (int)'Z')  // zaopiekowanie się wirnikiem2
+                {
+                    temporary = Rotor2_Position;
+                    next = (int)temporary - 26;
+                    Rotor2_Position = (char)next;
+                }
+
+                if (Value > 90)                       // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
+                {
+                    Value -= 26;
+                }
             }
 
             return (char)Value;
@@ -77,16 +88,20 @@ namespace eni_one
         public char Rotor3_Encryption(char Letter)
         {
             Value = (int)Letter;
-            Value += 2;
-            char x = Rotor3_Position;
-            int y = (int)x + 2;
-            Rotor3_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu (5)
+            Value += 2;                              // przesuniecie o 2 pozycji
+            char x = Rotor3_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 3
+            int y = (int)x + 2;                      // wirnik3 zostaje przesunięty o 2 pozycje do przodu
+            Rotor3_Position = (char)y;               // przypisujemy do wirnika3 zaktualizowaną pozycję
 
             if ((int)Rotor3_Position > (int)'Z')
             {
                 char temporary = Rotor3_Position;
                 int next = (int)temporary - 26;
                 Rotor2_Position = (char)next;
+            }
+
+            if (Value > 90)                          // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
+            {
                 Value -= 26;
             }
 

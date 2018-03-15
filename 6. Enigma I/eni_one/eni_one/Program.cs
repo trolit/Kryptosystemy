@@ -26,22 +26,13 @@ namespace eni_one
             Rotor1_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu (6)
             if((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90
             {
-                char temporary = Rotor2_Position;    // weź aktualną pozycję wirnika2
-                int next = (int)temporary + 1;       // przerzuć go do przodu o 1
-                if(next > (int)'Z')                  // jeśli wirnik2 przekroczy wartość 90
-                {
-                    Rotor2_rotate = true;            // zezwól na obrócenie wirnika2
-                }
-                Rotor2_Position = (char)next;        // wirnik2 zresetowany
-
-
-                if((int)Rotor1_Position > (int)'Z')  // zaopiekowanie się wirnikiem1
-                {
-                    temporary = Rotor1_Position;
-                    next = (int)temporary - 26;
-                    Rotor1_Position = (char)next;
-                }
-
+                Rotor2_rotate = true;                // zezwól na obrócenie wirnika2
+ 
+                // zaopiekowanie się wirnikiem1          
+                char temporary = Rotor1_Position;
+                int next = (int)temporary - 26;
+                Rotor1_Position = (char)next;
+                
                 if(Value > 90)                       // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
                 {
                     Value -= 26;
@@ -63,20 +54,12 @@ namespace eni_one
 
             if ((int)Rotor2_Position > (int)'Z')     // jeśli wirnik2 przekroczy wartość 90
             {
-                char temporary = Rotor3_Position;
-                int next = (int)temporary + 1;
-                if (next > (int)'Z')                  // jeśli wirnik3 przekroczy wartość 90
-                {
-                    Rotor3_rotate = true;             // zezwól na obrócenie wirnika3
-                }
-                Rotor3_Position = (char)next;         // wirnik3 zresetowany
+                Rotor3_rotate = true;                // zezwól na obrócenie wirnika3
 
-                if ((int)Rotor2_Position > (int)'Z')  // zaopiekowanie się wirnikiem2
-                {
-                    temporary = Rotor2_Position;
-                    next = (int)temporary - 26;
-                    Rotor2_Position = (char)next;
-                }
+                // zaopiekowanie się wirnikiem2
+                char temporary = Rotor2_Position;
+                int next = (int)temporary - 26;
+                Rotor2_Position = (char)next;
 
                 if (Value > 90)                       // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
                 {
@@ -161,7 +144,7 @@ namespace eni_one
                 Console.Write(letter);
             }
 
-            Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
+            Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
             Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
             Console.ReadKey();
         }

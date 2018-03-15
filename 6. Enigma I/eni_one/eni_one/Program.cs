@@ -105,7 +105,7 @@ namespace eni_one
 
             Console.WriteLine("PROJEKT ENIGMA");
             Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania(narazie)");
-            Console.WriteLine("Proszę ustalić klucz kodowania np. AGR");
+            Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
             string coding_key = Console.ReadLine();
             char[] coding_table = new char[2];
             coding_table = coding_key.ToCharArray();
@@ -128,15 +128,13 @@ namespace eni_one
                 char letter = Chars_To_Encrypt[i];
                 letter = body.Rotor1_Encryption(letter);
 
-                // tu nie wchodzi :(
-                if (varx.Rotor2_rotate)
+                if (body.Rotor2_rotate == true)
                 {
-                    Console.WriteLine("wszedlem");
+                    Console.WriteLine("wszedlem!!");
                     letter = body.Rotor2_Encryption(letter);
                 }
-
-                // tu nie wchodzi :( 
-                if (varx.Rotor3_rotate)
+ 
+                if (body.Rotor3_rotate == true)
                 {
                     letter = body.Rotor3_Encryption(letter);
                 }

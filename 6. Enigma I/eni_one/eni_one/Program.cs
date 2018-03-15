@@ -18,7 +18,7 @@ namespace eni_one
         // Wirnik 1 (+ obsługa wirnika 2)
         public char Rotor1_Encryption(char Letter)
         {
-            Value = (int)Letter;
+            Value = (int)Letter;                     // bierzemy wartość ASCII znaku
             Value += 4;                              // przesuniecie o 4 pozycji otrzymanego znaku
             char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika
             int y = (int)x + 4;                      // przesuwamy wirnik o 4 do przodu

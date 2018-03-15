@@ -11,6 +11,8 @@ namespace eni_one
         public char Rotor1_Position = '#';    
         public char Rotor2_Position = '#';
         public char Rotor3_Position = '#';
+        public bool Rotor2_rotate = false;
+        public bool Rotor3_rotate = false;
         public int Value = 0;
 
         // Wirnik 1 (+ obsługa wirnika 2)
@@ -27,6 +29,7 @@ namespace eni_one
                 int next = (int)temporary + 1;       // przerzuć go do przodu o 1
                 if(next > (int)'Z')                  // jeśli wirnik2 przekroczy wartość 90
                 {
+                    Rotor2_rotate = true;            // zezwól na obrócenie wirnika2
                     next -= 26;                      // zresetuj wirnik2
                 }
                 Rotor2_Position = (char)next;        // wirnik2 zresetowany
@@ -51,6 +54,7 @@ namespace eni_one
         // Wirnik 2 (+ obsługa wirnika3)
         public char Rotor2_Encryption(char Letter)
         {
+            Rotor2_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
             Value = (int)Letter;
             Value += 3;                              // przesuniecie o 3 pozycji
             char x = Rotor2_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 2
@@ -63,6 +67,7 @@ namespace eni_one
                 int next = (int)temporary + 1;
                 if (next > (int)'Z')                  // jeśli wirnik3 przekroczy wartość 90
                 {
+                    Rotor3_rotate = true;             // zezwól na obrócenie wirnika3
                     next -= 26;                       // zresetuj wirnik3
                 }
                 Rotor3_Position = (char)next;         // wirnik3 zresetowany
@@ -86,6 +91,7 @@ namespace eni_one
         // Wirnik 3
         public char Rotor3_Encryption(char Letter)
         {
+            Rotor3_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
             Value = (int)Letter;
             Value += 2;                              // przesuniecie o 2 pozycji
             char x = Rotor3_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 3
@@ -139,8 +145,17 @@ namespace eni_one
             {
                 char letter = Chars_To_Encrypt[i];
                 letter = body.Rotor1_Encryption(letter);
-                letter = body.Rotor2_Encryption(letter);
-                letter = body.Rotor3_Encryption(letter);
+
+                if (varx.Rotor2_rotate)
+                {
+                    letter = body.Rotor2_Encryption(letter);
+                }
+
+                if (varx.Rotor3_rotate)
+                {
+                    letter = body.Rotor3_Encryption(letter);
+                }
+
                 Console.Write(letter);
             }
 

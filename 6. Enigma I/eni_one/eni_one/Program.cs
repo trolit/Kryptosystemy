@@ -8,6 +8,7 @@ namespace eni_one
 {
     class EnigmaCore
     {
+        // zmienne Enigmy
         public char Rotor1_Position = '#';    
         public char Rotor2_Position = '#';
         public char Rotor3_Position = '#';
@@ -30,7 +31,6 @@ namespace eni_one
                 if(next > (int)'Z')                  // jeśli wirnik2 przekroczy wartość 90
                 {
                     Rotor2_rotate = true;            // zezwól na obrócenie wirnika2
-                    next -= 26;                      // zresetuj wirnik2
                 }
                 Rotor2_Position = (char)next;        // wirnik2 zresetowany
 
@@ -68,7 +68,6 @@ namespace eni_one
                 if (next > (int)'Z')                  // jeśli wirnik3 przekroczy wartość 90
                 {
                     Rotor3_rotate = true;             // zezwól na obrócenie wirnika3
-                    next -= 26;                       // zresetuj wirnik3
                 }
                 Rotor3_Position = (char)next;         // wirnik3 zresetowany
 
@@ -146,11 +145,14 @@ namespace eni_one
                 char letter = Chars_To_Encrypt[i];
                 letter = body.Rotor1_Encryption(letter);
 
+                // tu nie wchodzi :(
                 if (varx.Rotor2_rotate)
                 {
+                    Console.WriteLine("wszedlem");
                     letter = body.Rotor2_Encryption(letter);
                 }
 
+                // tu nie wchodzi :( 
                 if (varx.Rotor3_rotate)
                 {
                     letter = body.Rotor3_Encryption(letter);
@@ -159,7 +161,6 @@ namespace eni_one
                 Console.Write(letter);
             }
 
-            Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
             Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
             Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
             Console.ReadKey();

@@ -126,20 +126,26 @@ namespace eni_one
             for(i = 0; i < rozmiar; i++)
             {
                 char letter = Chars_To_Encrypt[i];
-                letter = body.Rotor1_Encryption(letter);
-
-                if (body.Rotor2_rotate == true)
+                if ((int)letter >= 65 && (int)letter <= 90)
                 {
-                    Console.WriteLine("wszedlem!!");
-                    letter = body.Rotor2_Encryption(letter);
-                }
- 
-                if (body.Rotor3_rotate == true)
-                {
-                    letter = body.Rotor3_Encryption(letter);
-                }
+                    letter = body.Rotor1_Encryption(letter);
 
-                Console.Write(letter);
+                    if (body.Rotor2_rotate == true)
+                    {
+                        letter = body.Rotor2_Encryption(letter);
+                    }
+
+                    if (body.Rotor3_rotate == true)
+                    {
+                        letter = body.Rotor3_Encryption(letter);
+                    }
+
+                    Console.Write(letter);
+                }
+                else
+                {
+                    Console.Write(letter);
+                }
             }
 
             Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");

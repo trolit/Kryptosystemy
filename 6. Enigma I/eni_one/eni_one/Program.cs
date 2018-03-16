@@ -8,41 +8,52 @@ namespace eni_one
 {
     class EnigmaCore
     {
-        // zmienne Enigmy
+        //-------------------------------------------------//
+        // Zmienne Enigma
         public char Rotor1_Position = '#';    
         public char Rotor2_Position = '#';
         public char Rotor3_Position = '#';
         public bool Rotor2_rotate = false;
         public bool Rotor3_rotate = false;
         public int Value = 0;
+        //-------------------------------------------------//
 
-        // Wirnik 1 (+ obsługa wirnika 2)
+
+
+        //-------------------------------------------------//
+        // Wirnik 1 (+ obsługa Wirnika 2)
+        // Przejście o: tu wprowadź wartość
+        //-------------------------------------------------//
         public char Rotor1_Encryption(char Letter)
         {
-            Value = (int)Letter;                     // bierzemy wartość ASCII znaku
-            Value += 4;                              // przesuniecie o 4 pozycji otrzymanego znaku
+            Value = (int)Letter;                     // bierzemy wartość ASCII znaku i przypisujemy do zmiennej Value
+            Value += 4;                              // przesuniecie o 4 pozycji otrzymanego znaku 
             char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika
-            int y = (int)x + 4;                      // przesuwamy wirnik o 4 do przodu
-            Rotor1_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu (6)
+            int y = (int)x + 4;                      // przesuwamy wirnik o 4 pozycje do przodu
+            Rotor1_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu 
             if((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90
             {
                 Rotor2_rotate = true;                // zezwól na obrócenie wirnika2
  
-                // zaopiekowanie się wirnikiem1          
+                // zaopiekowanie się stanem wirnika1      
                 char temporary = Rotor1_Position;
-                int next = (int)temporary - 26;
+                int next = (int)temporary - 26;      // obróć mechanizm 
                 Rotor1_Position = (char)next;
                 
-                if(Value > 90)                       // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
-                {
-                    Value -= 26;
+                if(Value > 90)                       // jeśli Value osiągnęło 91 wracamy do A(65) bo 
+                {                                    // najgorszy przypadek: 91-26=65, każdy inny 92 itd
+                    Value -= 26;                     // będzie w zasięgu naszej ASCII
                 }
             }
-
             return (char)Value;
         }
+        //-------------------------------------------------//
 
+
+        //-------------------------------------------------//
         // Wirnik 2 (+ obsługa wirnika3)
+        // Przejście o: tu wprowadź wartość
+        //-------------------------------------------------//
         public char Rotor2_Encryption(char Letter)
         {
             Rotor2_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
@@ -66,11 +77,15 @@ namespace eni_one
                     Value -= 26;
                 }
             }
-
             return (char)Value;
         }
+        //-------------------------------------------------//
 
+
+        //-------------------------------------------------//
         // Wirnik 3
+        // Przejście o: tu wprowadź wartość
+        //-------------------------------------------------//
         public char Rotor3_Encryption(char Letter)
         {
             Rotor3_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
@@ -91,9 +106,9 @@ namespace eni_one
             {
                 Value -= 26;
             }
-
             return (char)Value;
         }
+        //-------------------------------------------------//
     }
 
     class Program
@@ -130,6 +145,7 @@ namespace eni_one
                 {
                     letter = body.Rotor1_Encryption(letter);
 
+                    // gdy rotor2 może wykonać operacje
                     if (body.Rotor2_rotate == true)
                     {
                         letter = body.Rotor2_Encryption(letter);

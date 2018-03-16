@@ -117,12 +117,16 @@ namespace eni_one
         {
             EnigmaCore body = new EnigmaCore();     // ciało Enigmy
 
-            Console.WriteLine("==================================================================");
+            Console.WriteLine("============================================================================");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                         PROJEKT ENIGMA");
+            Console.WriteLine("                       Opracowano: 03.2018");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("==================================================================");
-            Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania(narazie)");
+            Console.WriteLine("============================================================================");
+            Console.WriteLine("Szczegóły odnośnie projektu:");
+            Console.WriteLine("Obecna implementacja Enigmy składa się z trzech wirników(niem. Walzen),");
+            Console.WriteLine("bez reflektora(niem. Umkehrwalze) i łącznicy kablowej(niem. Steckerbrett)");
+            Console.WriteLine("============================================================================");
             Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
             string coding_key = Console.ReadLine();
             char[] coding_table = new char[2];
@@ -131,10 +135,10 @@ namespace eni_one
             body.Rotor2_Position = coding_table[1];
             body.Rotor3_Position = coding_table[2];
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Ustalony klucz kodowania: " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
+            Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine("Podaj tekst do zaszyfrowania(tylko duże litery)");
+            Console.WriteLine("\nPodaj tekst do zaszyfrowania(tylko duże litery)");
             string tekst = Console.ReadLine();
             int rozmiar = tekst.Length;
             char[] Chars_To_Encrypt = new char[rozmiar];

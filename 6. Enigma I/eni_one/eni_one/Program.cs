@@ -119,62 +119,82 @@ namespace eni_one
 
             Console.WriteLine("============================================================================");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("                         PROJEKT ENIGMA");
-            Console.WriteLine("                       Opracowano: 03.2018");
+            Console.WriteLine("                               PROJEKT ENIGMA");
+            Console.WriteLine("                             Opracowano: 03.2018");
+            Console.WriteLine("                                 Wersja: 1.0");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("============================================================================");
             Console.WriteLine("Szczegóły odnośnie projektu:");
-            Console.WriteLine("Obecna implementacja Enigmy składa się z trzech wirników(niem. Walzen),");
+            Console.WriteLine("Obecna implementacja Enigmy(1.0) składa się z trzech wirników(niem. Walzen),");
             Console.WriteLine("bez reflektora(niem. Umkehrwalze) i łącznicy kablowej(niem. Steckerbrett)");
-            Console.WriteLine("============================================================================");
-            Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
-            string coding_key = Console.ReadLine();
-            char[] coding_table = new char[2];
-            coding_table = coding_key.ToCharArray();
-            body.Rotor1_Position = coding_table[0];
-            body.Rotor2_Position = coding_table[1];
-            body.Rotor3_Position = coding_table[2];
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
+            Console.WriteLine("warto mieć na uwadzę, że Enigma miała różne wersje w rzeczywistości. Jedną");
+            Console.WriteLine("z najtrudniejszych do rozszyfrowania była Enigma dla Kriegsmarine z racji");
+            Console.WriteLine("wprowadzenia tzw. kodu dziennego");
+            Console.WriteLine("Szczegóły i więcej informacji odnośnie Enigmy znajdziesz w linkach, które");
+            Console.WriteLine("zostały zamieszczone w dokumencie projektu oraz w książce pod tytułem: ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("ENIGMA - Bliżej prawdy(autor: Marek Grajek)");
             Console.ForegroundColor = ConsoleColor.White;
-
-            Console.WriteLine("\nPodaj tekst do zaszyfrowania(tylko duże litery)");
-            string tekst = Console.ReadLine();
-            int rozmiar = tekst.Length;
-            char[] Chars_To_Encrypt = new char[rozmiar];
-            Chars_To_Encrypt = tekst.ToCharArray();
-
-            // Szyfrowanie 
-            // tutaj kod
-            int i;
-            for(i = 0; i < rozmiar; i++)
+            Console.WriteLine("============================================================================");
+            Console.WriteLine("Menu wyboru: ");
+            Console.WriteLine("1. Zaszyfruj wiadomość.");
+            Console.WriteLine("2. Odszyfruj wiadomość.");
+            Console.WriteLine("3. Łącznica kablowa(wkrótce...)");
+            Console.WriteLine("4. Koniec programu.");
+            Console.WriteLine("============================================================================");
+            int wybor = Convert.ToInt32(Console.ReadLine());
+            if (wybor == 1)
             {
-                char letter = Chars_To_Encrypt[i];
-                if ((int)letter >= 65 && (int)letter <= 90)
+                Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
+                string coding_key = Console.ReadLine();
+                char[] coding_table = new char[2];
+                coding_table = coding_key.ToCharArray();
+                body.Rotor1_Position = coding_table[0];
+                body.Rotor2_Position = coding_table[1];
+                body.Rotor3_Position = coding_table[2];
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine("\nPodaj tekst do zaszyfrowania(tylko duże litery)");
+                string tekst = Console.ReadLine();
+                int rozmiar = tekst.Length;
+                char[] Chars_To_Encrypt = new char[rozmiar];
+                Chars_To_Encrypt = tekst.ToCharArray();
+
+                // Szyfrowanie 
+                // tutaj kod
+                int i;
+                for (i = 0; i < rozmiar; i++)
                 {
-                    letter = body.Rotor1_Encryption(letter);
-
-                    // gdy rotor2 może wykonać operacje
-                    if (body.Rotor2_rotate == true)
+                    char letter = Chars_To_Encrypt[i];
+                    if ((int)letter >= 65 && (int)letter <= 90)
                     {
-                        letter = body.Rotor2_Encryption(letter);
-                    }
+                        letter = body.Rotor1_Encryption(letter);
 
-                    if (body.Rotor3_rotate == true)
+                        // gdy rotor2 może wykonać operacje
+                        if (body.Rotor2_rotate == true)
+                        {
+                            letter = body.Rotor2_Encryption(letter);
+                        }
+
+                        if (body.Rotor3_rotate == true)
+                        {
+                            letter = body.Rotor3_Encryption(letter);
+                        }
+
+                        Console.Write(letter);
+                    }
+                    else
                     {
-                        letter = body.Rotor3_Encryption(letter);
+                        Console.Write(letter);
                     }
-
-                    Console.Write(letter);
-                }
-                else
-                {
-                    Console.Write(letter);
                 }
             }
-
-            Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
-            Console.WriteLine("Naciśnij dowolny klawisz aby zakończyć...");
+            else if(wybor == 4)
+            {
+                Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
+            }
             Console.ReadKey();
         }
     }

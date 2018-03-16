@@ -11,7 +11,7 @@ namespace eni_one
         //-------------------------------------------------------------------------------------------------//
         // Zmienne Enigma
         public char Rotor1_Position = '#';           // śledzi aktualną pozycję wirnika 1  
-        public char Rotor2_Position = '#';
+        public char Rotor2_Position = '#';           
         public char Rotor3_Position = '#';
         public bool Rotor2_rotate = false;           // domyślnie false!
         public bool Rotor3_rotate = false;           // domyślnie false!
@@ -21,20 +21,21 @@ namespace eni_one
 
         //-------------------------------------------------------------------------------------------------//
         // Wirnik 1 (+ obsługa Wirnika 2)
-        // Przejście o: tu wprowadź wartość
+        // Przejście o: (tu należy wprowadzić wartość)
         //-------------------------------------------------------------------------------------------------//
         public char Rotor1_Encryption(char Letter)
         {
+                                                     // ZASADA DZIAŁANIA WIRNIKA 1:
             Value = (int)Letter;                     // bierzemy wartość ASCII znaku i przypisujemy do zmiennej Value
-            Value += 4;                              // przesuniecie o 4 pozycji otrzymanego znaku 
-            char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika
-            int y = (int)x + 4;                      // przesuwamy wirnik o 4 pozycje do przodu
-            Rotor1_Position = (char)y;               // przestawienie wirnika o tyle samo do przodu 
+            Value += 4;                              // wykonujemy przesuniecie o n(4) pozycji otrzymanego znaku 
+            char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika 1
+            int y = (int)x + 4;                      // przesuwamy pozycje wirnika i dodajemy do niej n(4)
+            Rotor1_Position = (char)y;               // przestawiamy wirnik o tyle samo do przodu 
             if((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90
             {
                 Rotor2_rotate = true;                // zezwól na obrócenie wirnika2
  
-                // zaopiekowanie się stanem wirnika1      
+                // zaopiekowanie się stanem Wirnika 1      
                 char temporary = Rotor1_Position;
                 int next = (int)temporary - 26;      // obróć mechanizm 
                 Rotor1_Position = (char)next;
@@ -50,8 +51,8 @@ namespace eni_one
 
 
         //-------------------------------------------------------------------------------------------------//
-        // Wirnik 2 (+ obsługa wirnika3)
-        // Przejście o: tu wprowadź wartość
+        // Wirnik 2 (+ obsługa Wirnika 3)
+        // Przejście o: (tu należy wprowadzić wartość)
         //-------------------------------------------------------------------------------------------------//
         public char Rotor2_Encryption(char Letter)
         {
@@ -137,7 +138,7 @@ namespace eni_one
             Console.WriteLine("============================================================================");
             Console.WriteLine("Menu wyboru: ");
             Console.WriteLine("1. Zaszyfruj wiadomość.");
-            Console.WriteLine("2. Odszyfruj wiadomość.");
+            Console.WriteLine("2. Odszyfruj wiadomość(wkrótce...).");
             Console.WriteLine("3. Łącznica kablowa(wkrótce...)");
             Console.WriteLine("4. Koniec programu.");
             Console.WriteLine("============================================================================");
@@ -202,7 +203,38 @@ namespace eni_one
                 body.Rotor2_Position = coding_table[1];
                 body.Rotor3_Position = coding_table[2];
 
+                Console.WriteLine("\nPodaj tekst do odszyfrowania(tylko duże litery!)");
+                string tekst = Console.ReadLine();
+                int rozmiar = tekst.Length;
+                char[] Chars_To_Encrypt = new char[rozmiar];
+                Chars_To_Encrypt = tekst.ToCharArray();
 
+                // Odszyfrowanie 
+                // tutaj kod
+                int i;
+                for (i = 0; i < rozmiar; i++)
+                {
+                    char letter = Chars_To_Encrypt[i];
+                    if ((int)letter >= 65 && (int)letter <= 90)
+                    {
+                        letter = body.Rotor1_Encryption(letter);
+                        // gdy rotor2 może wykonać operacje
+                        if (body.Rotor2_rotate == true)
+                        {
+                            letter = body.Rotor2_Encryption(letter);
+                        }
+                        if (body.Rotor3_rotate == true)
+                        {
+                            letter = body.Rotor3_Encryption(letter);
+                        }
+                        Console.Write(letter);
+                    }
+                    else
+                    {
+                        Console.Write(letter);
+                    }
+                }
+                Console.WriteLine("\nOdszyfrowanie zakończone.");
             }
             else if(wybor == 4)
             {

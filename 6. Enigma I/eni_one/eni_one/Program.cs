@@ -58,7 +58,7 @@ namespace eni_one
         {
             Rotor2_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
             Value = (int)Letter;
-            Value += 3;                              // przesuniecie o 3 pozycji
+            Value += 3;                              // przesuniecie o 3 pozycje litery
             char x = Rotor2_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 2
             int y = (int)x + 3;                      // wirnik2 zostaje przesunięty o 3 pozycje do przodu
             Rotor2_Position = (char)y;               // przypisujemy do wirnika2 zaktualizowaną pozycję
@@ -116,9 +116,12 @@ namespace eni_one
         static void Main(string[] args)
         {
             EnigmaCore body = new EnigmaCore();     // ciało Enigmy
-            EnigmaCore varx = new EnigmaCore();     // do interesujących zmiennych
 
-            Console.WriteLine("PROJEKT ENIGMA");
+            Console.WriteLine("==================================================================");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("                         PROJEKT ENIGMA");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("==================================================================");
             Console.WriteLine("trzy wirniki, bez łącznicy kablowej i odwracania(narazie)");
             Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
             string coding_key = Console.ReadLine();
@@ -127,7 +130,9 @@ namespace eni_one
             body.Rotor1_Position = coding_table[0];
             body.Rotor2_Position = coding_table[1];
             body.Rotor3_Position = coding_table[2];
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Ustalony klucz kodowania: " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
+            Console.ForegroundColor = ConsoleColor.White;
 
             Console.WriteLine("Podaj tekst do zaszyfrowania(tylko duże litery)");
             string tekst = Console.ReadLine();

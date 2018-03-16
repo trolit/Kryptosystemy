@@ -8,22 +8,21 @@ namespace eni_one
 {
     class EnigmaCore
     {
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
         // Zmienne Enigma
-        public char Rotor1_Position = '#';    
+        public char Rotor1_Position = '#';           // śledzi aktualną pozycję wirnika 1  
         public char Rotor2_Position = '#';
         public char Rotor3_Position = '#';
-        public bool Rotor2_rotate = false;
-        public bool Rotor3_rotate = false;
-        public int Value = 0;
-        //-------------------------------------------------//
+        public bool Rotor2_rotate = false;           // domyślnie false!
+        public bool Rotor3_rotate = false;           // domyślnie false!
+        public int Value = 0;                        // przechowuje wartości liczbowe liter, domyślnie 0
+        //-------------------------------------------------------------------------------------------------//
 
 
-
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
         // Wirnik 1 (+ obsługa Wirnika 2)
         // Przejście o: tu wprowadź wartość
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
         public char Rotor1_Encryption(char Letter)
         {
             Value = (int)Letter;                     // bierzemy wartość ASCII znaku i przypisujemy do zmiennej Value
@@ -47,13 +46,13 @@ namespace eni_one
             }
             return (char)Value;
         }
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
 
 
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
         // Wirnik 2 (+ obsługa wirnika3)
         // Przejście o: tu wprowadź wartość
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
         public char Rotor2_Encryption(char Letter)
         {
             Rotor2_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
@@ -79,13 +78,13 @@ namespace eni_one
             }
             return (char)Value;
         }
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
 
 
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
         // Wirnik 3
         // Przejście o: tu wprowadź wartość
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
         public char Rotor3_Encryption(char Letter)
         {
             Rotor3_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
@@ -108,7 +107,7 @@ namespace eni_one
             }
             return (char)Value;
         }
-        //-------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------//
     }
 
     class Program

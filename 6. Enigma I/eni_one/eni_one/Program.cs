@@ -133,7 +133,7 @@ namespace eni_one
             Console.WriteLine("Szczegóły i więcej informacji odnośnie Enigmy znajdziesz w linkach, które");
             Console.WriteLine("zostały zamieszczone w dokumencie projektu oraz w książce pod tytułem: ");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("ENIGMA - Bliżej prawdy(autor: Marek Grajek)");
+            Console.WriteLine("=> ENIGMA - Bliżej prawdy(autor: Marek Grajek)");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("============================================================================");
             Console.WriteLine("Menu wyboru: ");
@@ -156,7 +156,7 @@ namespace eni_one
                 Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
                 Console.ForegroundColor = ConsoleColor.White;
 
-                Console.WriteLine("\nPodaj tekst do zaszyfrowania(tylko duże litery)");
+                Console.WriteLine("\nPodaj tekst do zaszyfrowania(tylko duże litery!)");
                 string tekst = Console.ReadLine();
                 int rozmiar = tekst.Length;
                 char[] Chars_To_Encrypt = new char[rozmiar];
@@ -190,6 +190,18 @@ namespace eni_one
                         Console.Write(letter);
                     }
                 }
+            }
+            else if(wybor == 2)
+            {
+                Console.WriteLine("Proszę podać klucz kodowania niezbędny do odszyfrowania wiadomości\nnp. AGR - tylko duże litery!");
+                string coding_key = Console.ReadLine();
+                char[] coding_table = new char[2];
+                coding_table = coding_key.ToCharArray();
+                body.Rotor1_Position = coding_table[0];
+                body.Rotor2_Position = coding_table[1];
+                body.Rotor3_Position = coding_table[2];
+
+
             }
             else if(wybor == 4)
             {

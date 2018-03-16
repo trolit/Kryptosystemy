@@ -190,6 +190,8 @@ namespace eni_one
                         Console.Write(letter);
                     }
                 }
+
+                Console.WriteLine("\nSzyfrowanie wiadomości zakończone.");
             }
             else if(wybor == 2)
             {

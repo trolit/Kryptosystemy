@@ -367,6 +367,9 @@ namespace eni_one
                 char[] Chars_To_Encrypt = new char[rozmiar];
                 Chars_To_Encrypt = tekst.ToCharArray();
 
+                // tablica zapisujaca zaszyfrowany kod
+                char[] encrypted_array = new char[rozmiar];
+
                 // Szyfrowanie 
                 // tutaj kod
                 int i;
@@ -409,9 +412,14 @@ namespace eni_one
                         Console.WriteLine("[whitespace]-ignore");
                         Console.ReadKey();
                     }
+
+                    // tu tablice
+                    encrypted_array[i] = letter;
                 }
 
                 Console.WriteLine("\n[track]-end of process.");
+                string encrypted = new string(encrypted_array);
+                Console.WriteLine("[output]-" + encrypted);
                 Console.ReadKey();
             }
             else if(wybor == 4)

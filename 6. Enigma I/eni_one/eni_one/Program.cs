@@ -39,12 +39,13 @@ namespace eni_one
                 char temporary = Rotor1_Position;
                 int next = (int)temporary - 26;      // obróć mechanizm 
                 Rotor1_Position = (char)next;
-                
-                if(Value > 90)                       // jeśli Value osiągnęło 91 wracamy do A(65) bo 
-                {                                    // najgorszy przypadek: 91-26=65, każdy inny 92 itd
-                    Value -= 26;                     // będzie w zasięgu naszej ASCII
-                }
             }
+
+            if (Value > 90)                       // jeśli Value osiągnęło 91 wracamy do A(65) bo 
+            {                                    // najgorszy przypadek: 91-26=65, każdy inny 92 itd
+                Value -= 26;                     // będzie w zasięgu naszej ASCII
+            }
+
             return (char)Value;
         }
         //-------------------------------------------------------------------------------------------------//
@@ -71,12 +72,13 @@ namespace eni_one
                 char temporary = Rotor2_Position;
                 int next = (int)temporary - 26;
                 Rotor2_Position = (char)next;
-
-                if (Value > 90)                       // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
-                {
-                    Value -= 26;
-                }
             }
+
+            if (Value > 90)                       // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
+            {
+                Value -= 26;
+            }
+
             return (char)Value;
         }
         //-------------------------------------------------------------------------------------------------//

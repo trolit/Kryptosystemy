@@ -26,8 +26,6 @@ namespace eni_one
         public char Rotor1_Encryption(char Letter)
         {
                                                      // ZASADA DZIAŁANIA WIRNIKA 1:
-            Value = (int)Letter;                     // bierzemy wartość ASCII znaku i przypisujemy do zmiennej Value
-            Value += 14;                             // wykonujemy przesuniecie o n(4) pozycji otrzymanego znaku 
             char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika 1
             int y = (int)x + 7;                      // przesuwamy pozycje wirnika o 7
             Rotor1_Position = (char)y;               // przestawiamy wirnik o tyle samo do przodu 
@@ -44,12 +42,6 @@ namespace eni_one
                 Rotor1_Position = (char)next;
             }
 
-            if (Value > 90)                         // jeśli Value osiągnęło 91 wracamy do A(65) bo 
-            {                                       // najgorszy przypadek: 91-26=65, każdy inny 92 itd
-                Value -= 26;                        // będzie w zasięgu naszej ASCII
-            }
-
-
             Value = Rotor1_Position;   // ta linijka wow?
             return (char)Value;
         }
@@ -63,8 +55,6 @@ namespace eni_one
         public char Rotor2_Encryption(char Letter)
         {
             Rotor2_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
-            Value = (int)Letter;
-            Value += 3;                              // przesuniecie o 3 pozycje litery
             char x = Rotor2_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 2
             int y = (int)x + 4;                      // wirnik2 zostaje przesunięty o 6 pozycje do przodu
             Rotor2_Position = (char)y;               // przypisujemy do wirnika2 zaktualizowaną pozycję
@@ -77,11 +67,6 @@ namespace eni_one
                 char temporary = Rotor2_Position;
                 int next = (int)temporary - 26;
                 Rotor2_Position = (char)next;
-            }
-
-            if (Value > 90)                       // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
-            {
-                Value -= 26;
             }
 
             Value = Rotor2_Position;
@@ -97,8 +82,6 @@ namespace eni_one
         public char Rotor3_Encryption(char Letter)
         {
             Rotor3_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
-            Value = (int)Letter;
-            Value += 2;                              // przesuniecie o 2 pozycji
             char x = Rotor3_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 3
             int y = (int)x + 3;                      // wirnik3 zostaje przesunięty o 9 pozycje do przodu
             Rotor3_Position = (char)y;               // przypisujemy do wirnika3 zaktualizowaną pozycję
@@ -108,11 +91,6 @@ namespace eni_one
                 char temporary = Rotor3_Position;
                 int next = (int)temporary - 26;
                 Rotor3_Position = (char)next;
-            }
-
-            if (Value > 90)                          // jeśli Value osiągnie 91 wracamy do A(65) bo 91-26=65
-            {
-                Value -= 26;
             }
 
             Value = Rotor3_Position;

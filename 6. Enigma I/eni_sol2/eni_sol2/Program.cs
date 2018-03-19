@@ -44,6 +44,7 @@ namespace eni_one
             {
                 Letter = (char)array[Value];
             }
+
             else
             {
                 Value = 0;

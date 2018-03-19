@@ -411,7 +411,7 @@ namespace eni_one
                     }
                 }
 
-                Console.WriteLine("\n[track]-stop.");
+                Console.WriteLine("\n[track]-end of process.");
                 Console.ReadKey();
             }
             else if(wybor == 4)

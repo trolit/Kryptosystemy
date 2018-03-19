@@ -28,8 +28,16 @@ namespace eni_one
         //-------------------------------------------------------------------------------------------------//
         public char Rotor1_Encryption(char Letter, char[] array)
         {
-            
+            Rotor1_Counter += 1;                                        // zwiększamy licznik o 1
+            if(Rotor1_Counter > 90)
+            {
+                array = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+                Rotor1_Counter = 65;
+            }
 
+            // array[0] = 65;
+            // array[1] = 66;
+            // itd..
             
             Value += 3;
             if(Value <= 25)

@@ -118,11 +118,13 @@ namespace eni_one
             Console.WriteLine("[rotor1]-rotor1_position+7: " + Rotor1_Position);
             Console.ReadKey();
 
+            bool is_true = false;
             Console.Write("[rotor1]-rotor1_position > Z?: ");   
             if ((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90(czyli
                                                       // w nomenklaturze fizycznej budowy wirnika
                                                       // pozycje 26)
             {
+                is_true = true;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("YES.");
                 Console.ReadKey();
@@ -138,10 +140,13 @@ namespace eni_one
                 Console.WriteLine("[rotor1]-Rotor1_Position: " + Rotor1_Position);
                 Console.ReadKey();
             }
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("NO.\n");
-            Console.ReadKey();
-            Console.ForegroundColor = ConsoleColor.White;
+            if (is_true == false)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("NO.\n");
+                Console.ReadKey();
+                Console.ForegroundColor = ConsoleColor.White;
+            }
 
             Value = Rotor1_Position;   // ta linijka wow?
             return (char)Value;
@@ -167,9 +172,11 @@ namespace eni_one
             Console.WriteLine("[rotor2]-rotor2_position+4: " + Rotor2_Position);
             Console.ReadKey();
 
+            bool is_true = false;
             Console.Write("[rotor2]-rotor2_position > Z?: ");
             if ((int)Rotor2_Position > (int)'Z')     // jeśli wirnik2 przekroczy wartość 90
             {
+                is_true = true;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("YES.");
                 Console.ReadKey();
@@ -187,10 +194,13 @@ namespace eni_one
                 Console.WriteLine("[rotor2]-Rotor2_Position: " + Rotor2_Position);
                 Console.ReadKey();
             }
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("NO.\n");
-            Console.ReadKey();
-            Console.ForegroundColor = ConsoleColor.White;
+            if (is_true == false)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("NO.\n");
+                Console.ReadKey();
+                Console.ForegroundColor = ConsoleColor.White;
+            }
 
             Value = Rotor2_Position;
             return (char)Value;
@@ -216,9 +226,11 @@ namespace eni_one
             Console.WriteLine("[rotor3]-rotor3_position+3: " + Rotor3_Position);
             Console.ReadKey();
 
+            bool is_true = false;
             Console.Write("[rotor3]-rotor3_position > Z?: ");
             if ((int)Rotor3_Position > (int)'Z')     // jeśli wirnik3 przekroczy wartość 90
             {
+                is_true = true;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("YES.");
                 Console.ReadKey();
@@ -231,10 +243,13 @@ namespace eni_one
                 Console.WriteLine("[rotor3]-Rotor3_Position: " + Rotor3_Position);
                 Console.ReadKey();
             }
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("NO.\n");
-            Console.ReadKey();
-            Console.ForegroundColor = ConsoleColor.White;
+            if (is_true == false)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("NO.\n");
+                Console.ReadKey();
+                Console.ForegroundColor = ConsoleColor.White;
+            }
 
             Value = Rotor3_Position;
             return (char)Value;
@@ -394,7 +409,7 @@ namespace eni_one
                     }
                 }
 
-                Console.WriteLine("\n--------->STOP.");
+                Console.WriteLine("\n[track]-stop.");
                 Console.ReadKey();
             }
             else if(wybor == 4)

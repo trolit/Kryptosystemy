@@ -29,7 +29,7 @@ namespace eni_one
             Value = (int)Letter;                     // bierzemy wartość ASCII znaku i przypisujemy do zmiennej Value
             Value += 4;                              // wykonujemy przesuniecie o n(4) pozycji otrzymanego znaku 
             char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika 1
-            int y = (int)x + 4;                      // przesuwamy pozycje wirnika i dodajemy do niej n(4)
+            int y = (int)x + 7;                      // przesuwamy pozycje wirnika o 7
             Rotor1_Position = (char)y;               // przestawiamy wirnik o tyle samo do przodu 
             if((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90
             {
@@ -61,7 +61,7 @@ namespace eni_one
             Value = (int)Letter;
             Value += 3;                              // przesuniecie o 3 pozycje litery
             char x = Rotor2_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 2
-            int y = (int)x + 3;                      // wirnik2 zostaje przesunięty o 3 pozycje do przodu
+            int y = (int)x + 6;                      // wirnik2 zostaje przesunięty o 6 pozycje do przodu
             Rotor2_Position = (char)y;               // przypisujemy do wirnika2 zaktualizowaną pozycję
 
             if ((int)Rotor2_Position > (int)'Z')     // jeśli wirnik2 przekroczy wartość 90
@@ -94,7 +94,7 @@ namespace eni_one
             Value = (int)Letter;
             Value += 2;                              // przesuniecie o 2 pozycji
             char x = Rotor3_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 3
-            int y = (int)x + 2;                      // wirnik3 zostaje przesunięty o 2 pozycje do przodu
+            int y = (int)x + 9;                      // wirnik3 zostaje przesunięty o 9 pozycje do przodu
             Rotor3_Position = (char)y;               // przypisujemy do wirnika3 zaktualizowaną pozycję
 
             if ((int)Rotor3_Position > (int)'Z')     // jeśli wirnik3 przekroczy wartość 90

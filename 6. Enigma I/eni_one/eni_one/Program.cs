@@ -67,19 +67,6 @@ namespace eni_one
             int y = (int)x + 6;                      // wirnik2 zostaje przesunięty o 6 pozycje do przodu
             Rotor2_Position = (char)y;               // przypisujemy do wirnika2 zaktualizowaną pozycję
 
-            // ----------> TESTY
-            x = Rotor1_Position;                     // bierzemy aktualne miejsce wirnika 1
-            y = (int)x + 1;                          // przesuwamy pozycje wirnika o 7
-            Rotor1_Position = (char)y;               // przestawiamy wirnik o tyle samo do przodu 
-
-            // wnioski:
-            // zwiększenie rozproszenia liter zaszyfrowanych
-            // czyli to ma działać na zasadzie, że jeśli wirnik1
-            // przekroczy 26 to uruchamiany zostaje wirnik2 
-            // który się przemieszcza i dodatkowo przemieszcza
-            // się wirnik1
-            // <----------
-
             if ((int)Rotor2_Position > (int)'Z')     // jeśli wirnik2 przekroczy wartość 90
             {
                 Rotor3_rotate = true;                // zezwól na obrócenie wirnika3

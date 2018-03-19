@@ -111,36 +111,36 @@ namespace eni_one
         {
             // ZASADA DZIAŁANIA WIRNIKA 1:
             char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika 1
-            Console.WriteLine("[wirnik1]-rotor1_position: " + x);
-            Console.ReadLine();
+            Console.WriteLine("[rotor1]-rotor1_position: " + x);
+            Console.ReadKey();
             int y = (int)x + 7;                      // przesuwamy pozycje wirnika o 7
             Rotor1_Position = (char)y;               // przestawiamy wirnik o tyle samo do przodu 
-            Console.WriteLine("[wirnik1]-rotor1_position+7: " + Rotor1_Position);
-            Console.ReadLine();
+            Console.WriteLine("[rotor1]-rotor1_position+7: " + Rotor1_Position);
+            Console.ReadKey();
 
-            Console.WriteLine("[wirnik1]-rotor1_position > Z?: ");
-            Console.ReadLine();
+            Console.Write("[rotor1]-rotor1_position > Z?: ");   
             if ((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90(czyli
                                                       // w nomenklaturze fizycznej budowy wirnika
                                                       // pozycje 26)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("YES.");
+                Console.ReadKey();
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.ReadLine();
                 Rotor2_rotate = true;                // zezwól na obrócenie wirnika2
-                Console.WriteLine("[wirnik1]-rotor2_rotation ON");
+                Console.WriteLine("[rotor1]-rotor2_rotation TRUE");
                 // zaopiekowanie się stanem Wirnika 1      
                 char temporary = Rotor1_Position;
-                Console.WriteLine("[wirnik1]-Rotor1_Position: " + Rotor1_Position + "-26");
-                Console.ReadLine();
+                Console.WriteLine("[rotor1]-Rotor1_Position: " + Rotor1_Position + "-26");
+                Console.ReadKey();
                 int next = (int)temporary - 26;      // obróć mechanizm 
                 Rotor1_Position = (char)next;
-                Console.WriteLine("[wirnik1]-Rotor1_Position: " + Rotor1_Position);
-                Console.ReadLine();
+                Console.WriteLine("[rotor1]-Rotor1_Position: " + Rotor1_Position);
+                Console.ReadKey();
             }
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("NO.");
+            Console.ReadKey();
             Console.ForegroundColor = ConsoleColor.White;
 
             Value = Rotor1_Position;   // ta linijka wow?
@@ -156,20 +156,41 @@ namespace eni_one
         //-------------------------------------------------------------------------------------------------//
         public char Rotor2_Encryption_tracked(char Letter)
         {
+            Console.WriteLine("[rotor2]-rotor2_rotation: FALSE");
+            Console.ReadKey();
             Rotor2_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
             char x = Rotor2_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 2
+            Console.WriteLine("[rotor2]-rotor2_position: " + x);
+            Console.ReadKey();
             int y = (int)x + 4;                      // wirnik2 zostaje przesunięty o 6 pozycje do przodu
             Rotor2_Position = (char)y;               // przypisujemy do wirnika2 zaktualizowaną pozycję
+            Console.WriteLine("[rotor2]-rotor2_position+4: " + Rotor2_Position);
+            Console.ReadKey();
 
+            Console.Write("[rotor2]-rotor2_position > Z?: ");
             if ((int)Rotor2_Position > (int)'Z')     // jeśli wirnik2 przekroczy wartość 90
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("YES.");
+                Console.ReadKey();
+                Console.ForegroundColor = ConsoleColor.White;
                 Rotor3_rotate = true;                // zezwól na obrócenie wirnika3
+                Console.WriteLine("[rotor2]-rotor3_rotation TRUE");
+                Console.ReadKey();
 
                 // zaopiekowanie się wirnikiem2
                 char temporary = Rotor2_Position;
+                Console.WriteLine("[rotor2]-Rotor2_Position: " + Rotor2_Position + "-26");
+                Console.ReadKey();
                 int next = (int)temporary - 26;
                 Rotor2_Position = (char)next;
+                Console.WriteLine("[rotor2]-Rotor2_Position: " + Rotor2_Position);
+                Console.ReadKey();
             }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("NO.");
+            Console.ReadKey();
+            Console.ForegroundColor = ConsoleColor.White;
 
             Value = Rotor2_Position;
             return (char)Value;
@@ -184,11 +205,18 @@ namespace eni_one
         //-------------------------------------------------------------------------------------------------//
         public char Rotor3_Encryption_tracked(char Letter)
         {
+            Console.WriteLine("[rotor3]-rotor3_rotation: FALSE");
+            Console.ReadKey();
             Rotor3_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
             char x = Rotor3_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 3
+            Console.WriteLine("[rotor3]-rotor3_position: " + x);
+            Console.ReadKey();
             int y = (int)x + 3;                      // wirnik3 zostaje przesunięty o 9 pozycje do przodu
             Rotor3_Position = (char)y;               // przypisujemy do wirnika3 zaktualizowaną pozycję
+            Console.WriteLine("[rotor3]-rotor3_position+3: " + Rotor3_Position);
+            Console.ReadKey();
 
+            Console.Write("[rotor3]-rotor3_position > Z?: ");
             if ((int)Rotor3_Position > (int)'Z')     // jeśli wirnik3 przekroczy wartość 90
             {
                 char temporary = Rotor3_Position;
@@ -322,7 +350,7 @@ namespace eni_one
                     if ((int)letter >= 65 && (int)letter <= 90)
                     {
                         Console.WriteLine("[input]: " + letter);
-                        Console.ReadLine();
+                        Console.ReadKey();
                         letter = body.Rotor1_Encryption_tracked(letter);
                         Console.WriteLine("[rotor1]-exit: " + copy + "->" + letter);
                         copy = letter;
@@ -331,30 +359,31 @@ namespace eni_one
                         if (body.Rotor2_rotate == true)
                         {
                             Console.WriteLine("[rotor2]-in: " + letter);
-                            Console.ReadLine();
+                            Console.ReadKey();
                             letter = body.Rotor2_Encryption_tracked(letter);                          
                             Console.WriteLine("[rotor2]-exit: " + copy + "->" + letter);
-                            Console.ReadLine();
+                            Console.ReadKey();
                             copy = letter;
                         }
 
                         if (body.Rotor3_rotate == true)
                         {
                             Console.WriteLine("[rotor3]-in: " + letter);
-                            Console.ReadLine();
+                            Console.ReadKey();
                             letter = body.Rotor3_Encryption_tracked(letter);
                             Console.WriteLine("[rotor3]-exit: " + copy + "->" + letter);
-                            Console.ReadLine();
+                            Console.ReadKey();
                         }
                     }
                     else
                     {
                         Console.WriteLine("[whitespace]-ignore");
-                        Console.ReadLine();
+                        Console.ReadKey();
                     }
                 }
 
-                Console.WriteLine("\nKoniec operacji.");
+                Console.WriteLine("\n--------->STOP.");
+                Console.ReadKey();
             }
             else if(wybor == 4)
             {

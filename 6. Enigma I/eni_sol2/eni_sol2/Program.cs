@@ -16,6 +16,9 @@ namespace eni_one
         public bool Rotor2_rotate = false;           // domyślnie false!
         public bool Rotor3_rotate = false;           // domyślnie false!
         public int Value = 0;                        // przechowuje wartości liczbowe liter, domyślnie 0
+        public int Rotor1_Counter;
+        public int Rotor2_Counter;
+        public int Rotor3_Counter;
         //-------------------------------------------------------------------------------------------------//
 
 
@@ -25,9 +28,20 @@ namespace eni_one
         //-------------------------------------------------------------------------------------------------//
         public char Rotor1_Encryption(char Letter, char[] array)
         {
-            Value = (int)Letter;
-            Value += 5;
             
+
+            
+            Value += 3;
+            if(Value <= 25)
+            {
+                Letter = (char)array[Value];
+            }
+            else
+            {
+                Value = 0;
+                Value += 3;
+                Letter = (char)array[Value];
+            }
 
             return (char)Value;
         }
@@ -150,6 +164,10 @@ namespace eni_one
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
                 Console.ForegroundColor = ConsoleColor.White;
+
+                body.Rotor1_Counter = (int)body.Rotor1_Position;
+                body.Rotor2_Counter = (int)body.Rotor2_Position;
+                body.Rotor3_Counter = (int)body.Rotor3_Position;
 
                 Console.WriteLine("\nPodaj tekst do zaszyfrowania(tylko duże litery!)");
                 string tekst = Console.ReadLine();

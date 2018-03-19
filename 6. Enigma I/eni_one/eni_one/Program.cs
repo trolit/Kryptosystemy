@@ -139,7 +139,7 @@ namespace eni_one
                 Console.ReadKey();
             }
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("NO.");
+            Console.Write("NO.\n");
             Console.ReadKey();
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -188,7 +188,7 @@ namespace eni_one
                 Console.ReadKey();
             }
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("NO.");
+            Console.Write("NO.\n");
             Console.ReadKey();
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -219,10 +219,22 @@ namespace eni_one
             Console.Write("[rotor3]-rotor3_position > Z?: ");
             if ((int)Rotor3_Position > (int)'Z')     // jeśli wirnik3 przekroczy wartość 90
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("YES.");
+                Console.ReadKey();
+                Console.ForegroundColor = ConsoleColor.White;
                 char temporary = Rotor3_Position;
+                Console.WriteLine("[rotor3]-Rotor3_Position: " + Rotor3_Position + "-26");
+                Console.ReadKey();
                 int next = (int)temporary - 26;
                 Rotor3_Position = (char)next;
+                Console.WriteLine("[rotor3]-Rotor3_Position: " + Rotor3_Position);
+                Console.ReadKey();
             }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("NO.\n");
+            Console.ReadKey();
+            Console.ForegroundColor = ConsoleColor.White;
 
             Value = Rotor3_Position;
             return (char)Value;

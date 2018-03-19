@@ -285,7 +285,7 @@ namespace eni_one
             Console.WriteLine("============================================================================");
             Console.WriteLine("Menu wyboru: ");
             Console.WriteLine("1. Zaszyfruj wiadomość -tracking.");
-            Console.WriteLine("2. Zaszyfruj wiadomość +tracking(wkrótce...).");
+            Console.WriteLine("2. Zaszyfruj wiadomość +tracking(dostępne).");
             Console.WriteLine("3. Odszyfruj wiadomość(wkrótce...).");
             Console.WriteLine("4. Łącznica kablowa(wkrótce...)");
             Console.WriteLine("5. Koniec programu.");

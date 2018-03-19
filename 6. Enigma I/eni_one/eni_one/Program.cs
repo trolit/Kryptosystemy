@@ -115,7 +115,7 @@ namespace eni_one
             Console.ReadKey();
             int y = (int)x + 7;                      // przesuwamy pozycje wirnika o 7
             Rotor1_Position = (char)y;               // przestawiamy wirnik o tyle samo do przodu 
-            Console.WriteLine("[rotor1]-rotor1_position+7: " + Rotor1_Position);
+            Console.WriteLine("[rotor1]-rotor1_position + 7: " + Rotor1_Position);
             Console.ReadKey();
 
             bool is_true = false;
@@ -133,11 +133,11 @@ namespace eni_one
                 Console.WriteLine("[rotor1]-rotor2_rotation TRUE");
                 // zaopiekowanie się stanem Wirnika 1      
                 char temporary = Rotor1_Position;
-                Console.WriteLine("[rotor1]-Rotor1_Position: " + Rotor1_Position + "-26");
+                Console.WriteLine("[rotor1]-rotor1_Position: " + Rotor1_Position + " - 26");
                 Console.ReadKey();
                 int next = (int)temporary - 26;      // obróć mechanizm 
                 Rotor1_Position = (char)next;
-                Console.WriteLine("[rotor1]-Rotor1_Position: " + Rotor1_Position);
+                Console.WriteLine("[rotor1]-rotor1_Position: " + Rotor1_Position);
                 Console.ReadKey();
             }
             if (is_true == false)
@@ -169,7 +169,7 @@ namespace eni_one
             Console.ReadKey();
             int y = (int)x + 4;                      // wirnik2 zostaje przesunięty o 6 pozycje do przodu
             Rotor2_Position = (char)y;               // przypisujemy do wirnika2 zaktualizowaną pozycję
-            Console.WriteLine("[rotor2]-rotor2_position+4: " + Rotor2_Position);
+            Console.WriteLine("[rotor2]-rotor2_position + 4: " + Rotor2_Position);
             Console.ReadKey();
 
             bool is_true = false;
@@ -187,11 +187,11 @@ namespace eni_one
 
                 // zaopiekowanie się wirnikiem2
                 char temporary = Rotor2_Position;
-                Console.WriteLine("[rotor2]-Rotor2_Position: " + Rotor2_Position + "-26");
+                Console.WriteLine("[rotor2]-rotor2_Position: " + Rotor2_Position + " - 26");
                 Console.ReadKey();
                 int next = (int)temporary - 26;
                 Rotor2_Position = (char)next;
-                Console.WriteLine("[rotor2]-Rotor2_Position: " + Rotor2_Position);
+                Console.WriteLine("[rotor2]-rotor2_Position: " + Rotor2_Position);
                 Console.ReadKey();
             }
             if (is_true == false)
@@ -223,7 +223,7 @@ namespace eni_one
             Console.ReadKey();
             int y = (int)x + 3;                      // wirnik3 zostaje przesunięty o 9 pozycje do przodu
             Rotor3_Position = (char)y;               // przypisujemy do wirnika3 zaktualizowaną pozycję
-            Console.WriteLine("[rotor3]-rotor3_position+3: " + Rotor3_Position);
+            Console.WriteLine("[rotor3]-rotor3_position + 3: " + Rotor3_Position);
             Console.ReadKey();
 
             bool is_true = false;
@@ -236,11 +236,11 @@ namespace eni_one
                 Console.ReadKey();
                 Console.ForegroundColor = ConsoleColor.White;
                 char temporary = Rotor3_Position;
-                Console.WriteLine("[rotor3]-Rotor3_Position: " + Rotor3_Position + "-26");
+                Console.WriteLine("[rotor3]-rotor3_Position: " + Rotor3_Position + " - 26");
                 Console.ReadKey();
                 int next = (int)temporary - 26;
                 Rotor3_Position = (char)next;
-                Console.WriteLine("[rotor3]-Rotor3_Position: " + Rotor3_Position);
+                Console.WriteLine("[rotor3]-rotor3_Position: " + Rotor3_Position);
                 Console.ReadKey();
             }
             if (is_true == false)
@@ -268,7 +268,7 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                               PROJEKT ENIGMA");
             Console.WriteLine("                             Opracowano: 03.2018");
-            Console.WriteLine("                                 Wersja: 1.1");
+            Console.WriteLine("                                Wersja: 1.12");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("============================================================================");
             Console.WriteLine("Szczegóły odnośnie projektu:");
@@ -376,7 +376,9 @@ namespace eni_one
                     char copy = letter;
                     if ((int)letter >= 65 && (int)letter <= 90)
                     {
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("[input]: " + letter);
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadKey();
                         letter = body.Rotor1_Encryption_tracked(letter);
                         Console.WriteLine("[rotor1]-exit: " + copy + "->" + letter);

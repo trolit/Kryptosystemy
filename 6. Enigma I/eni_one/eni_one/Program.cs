@@ -21,6 +21,7 @@ namespace eni_one
 
         //-------------------------------------------------------------------------------------------------//
         // Wirnik 1 (+ obsługa Wirnika 2)
+        // "FAST ROTOR"
         // Przejście o: (tu należy wprowadzić wartość)
         //-------------------------------------------------------------------------------------------------//
         public char Rotor1_Encryption(char Letter)
@@ -50,6 +51,7 @@ namespace eni_one
 
         //-------------------------------------------------------------------------------------------------//
         // Wirnik 2 (+ obsługa Wirnika 3)
+        // "MEDIUM ROTOR"
         // Przejście o: (tu należy wprowadzić wartość)
         //-------------------------------------------------------------------------------------------------//
         public char Rotor2_Encryption(char Letter)
@@ -77,6 +79,7 @@ namespace eni_one
 
         //-------------------------------------------------------------------------------------------------//
         // Wirnik 3
+        // "SLOW ROTOR"
         // Przejście o: tu wprowadź wartość
         //-------------------------------------------------------------------------------------------------//
         public char Rotor3_Encryption(char Letter)
@@ -109,7 +112,7 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                               PROJEKT ENIGMA");
             Console.WriteLine("                             Opracowano: 03.2018");
-            Console.WriteLine("                                 Wersja: 1.0");
+            Console.WriteLine("                                 Wersja: 1.1");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("============================================================================");
             Console.WriteLine("Szczegóły odnośnie projektu:");
@@ -126,9 +129,10 @@ namespace eni_one
             Console.WriteLine("============================================================================");
             Console.WriteLine("Menu wyboru: ");
             Console.WriteLine("1. Zaszyfruj wiadomość.");
-            Console.WriteLine("2. Odszyfruj wiadomość(wkrótce...).");
-            Console.WriteLine("3. Łącznica kablowa(wkrótce...)");
-            Console.WriteLine("4. Koniec programu.");
+            Console.WriteLine("2. Zaszyfruj wiadomość +tracking(wkrótce...).");
+            Console.WriteLine("3. Odszyfruj wiadomość(wkrótce...).");
+            Console.WriteLine("4. Łącznica kablowa(wkrótce...)");
+            Console.WriteLine("5. Koniec programu.");
             Console.WriteLine("============================================================================");
             int wybor = Convert.ToInt32(Console.ReadLine());
             if (wybor == 1)

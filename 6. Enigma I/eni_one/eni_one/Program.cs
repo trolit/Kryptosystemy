@@ -119,7 +119,7 @@ namespace eni_one
             Console.ReadKey();
 
             bool is_true = false;
-            Console.Write("[rotor1]-rotor1_position > Z?: ");   
+            Console.Write("[rotor1]-rotor1_position(" + Rotor1_Position + ") > Z?: ");   
             if ((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90(czyli
                                                       // w nomenklaturze fizycznej budowy wirnika
                                                       // pozycje 26)
@@ -130,7 +130,7 @@ namespace eni_one
                 Console.ReadKey();
                 Console.ForegroundColor = ConsoleColor.White;
                 Rotor2_rotate = true;                // zezwól na obrócenie wirnika2
-                Console.WriteLine("[rotor1]-rotor2_rotation TRUE");
+                Console.WriteLine("\n[rotor1]-rotor2_rotation TRUE");
                 // zaopiekowanie się stanem Wirnika 1      
                 char temporary = Rotor1_Position;
                 Console.WriteLine("[rotor1]-rotor1_Position: " + Rotor1_Position + " - 26");
@@ -173,7 +173,7 @@ namespace eni_one
             Console.ReadKey();
 
             bool is_true = false;
-            Console.Write("[rotor2]-rotor2_position > Z?: ");
+            Console.Write("[rotor2]-rotor2_position(" + Rotor2_Position + ") > Z?: ");
             if ((int)Rotor2_Position > (int)'Z')     // jeśli wirnik2 przekroczy wartość 90
             {
                 is_true = true;
@@ -182,7 +182,7 @@ namespace eni_one
                 Console.ReadKey();
                 Console.ForegroundColor = ConsoleColor.White;
                 Rotor3_rotate = true;                // zezwól na obrócenie wirnika3
-                Console.WriteLine("[rotor2]-rotor3_rotation TRUE");
+                Console.WriteLine("\n[rotor2]-rotor3_rotation TRUE");
                 Console.ReadKey();
 
                 // zaopiekowanie się wirnikiem2
@@ -227,7 +227,7 @@ namespace eni_one
             Console.ReadKey();
 
             bool is_true = false;
-            Console.Write("[rotor3]-rotor3_position > Z?: ");
+            Console.Write("[rotor3]-rotor3_position(" + Rotor3_Position + ") > Z?: ");
             if ((int)Rotor3_Position > (int)'Z')     // jeśli wirnik3 przekroczy wartość 90
             {
                 is_true = true;

@@ -346,7 +346,7 @@ namespace eni_one
             else if(wybor == 2)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("TRYB TRACKING: ");
+                Console.WriteLine("informacja o trybie TRACKING: ");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("każdą informację zatwierdzaj przyciskiem ENTER jeśli chcesz przejść dalej.");
                 Console.WriteLine("<<kliknij enter>>");

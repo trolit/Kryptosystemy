@@ -379,7 +379,7 @@ namespace eni_one
                     char copy = letter;
                     if ((int)letter >= 65 && (int)letter <= 90)
                     {
-                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("[input]: " + letter);
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadKey();
@@ -419,7 +419,15 @@ namespace eni_one
 
                 Console.WriteLine("\n[track]-end of process.");
                 string encrypted = new string(encrypted_array);
-                Console.WriteLine("[output]-" + encrypted);
+
+                Console.Write("[output]: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(tekst);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(" -> ");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write(encrypted + "\n");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadKey();
             }
             else if(wybor == 4)

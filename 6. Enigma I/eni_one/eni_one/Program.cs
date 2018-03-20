@@ -264,7 +264,6 @@ namespace eni_one
         {
             EnigmaCore body = new EnigmaCore();     // ciało Enigmy
 
-            Console.WriteLine("============================================================================");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                               PROJEKT ENIGMA");
             Console.WriteLine("                             Opracowano: 03.2018");
@@ -272,7 +271,7 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("============================================================================");
             Console.WriteLine("Szczegóły odnośnie projektu:");
-            Console.WriteLine("Obecna implementacja Enigmy(1.0) składa się z trzech wirników(niem. Walzen),");
+            Console.WriteLine("Obecna implementacja Enigmy(1.12) składa się z trzech wirników(niem. Walzen),");
             Console.WriteLine("bez reflektora(niem. Umkehrwalze) i łącznicy kablowej(niem. Steckerbrett)");
             Console.WriteLine("warto mieć na uwadzę, że Enigma miała różne wersje w rzeczywistości. Jedną");
             Console.WriteLine("z najtrudniejszych do rozszyfrowania była Enigma dla Kriegsmarine z racji");
@@ -282,6 +281,8 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("=> ENIGMA - Bliżej prawdy(autor: Marek Grajek)");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("ENIGMA z WW2 miała słabość, która polegała na tym, że szyfrowana litera");
+            Console.WriteLine("nigdy nie mogła być zaszyfrowana w samą siebie. Tu jest na to szansa!");
             Console.WriteLine("============================================================================");
             Console.WriteLine("Menu wyboru: ");
             Console.WriteLine("1. Zaszyfruj wiadomość -tracking.");

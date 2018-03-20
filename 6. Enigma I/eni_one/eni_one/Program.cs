@@ -349,8 +349,8 @@ namespace eni_one
                 Console.WriteLine("TRYB TRACKING: ");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("każdą informację zatwierdzaj przyciskiem ENTER jeśli chcesz przejść dalej.");
-                Console.ReadLine();
-
+                Console.WriteLine("<<kliknij enter>>");
+                Console.ReadKey();
                 Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
                 string coding_key = Console.ReadLine();
                 char[] coding_table = new char[2];
@@ -417,8 +417,8 @@ namespace eni_one
                     // tu tablice
                     encrypted_array[i] = letter;
                 }
-
-                Console.WriteLine("\n[track]-end of process.");
+                Console.WriteLine("######################");
+                Console.WriteLine("[track]-end of process.");
                 string encrypted = new string(encrypted_array);
 
                 Console.Write("[output]: ");

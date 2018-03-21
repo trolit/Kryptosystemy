@@ -282,7 +282,6 @@ namespace eni_one
             Console.WriteLine("*ENIGMA z WW2 miała słabość, która polegała na tym, że szyfrowana litera");
             Console.WriteLine("nigdy nie mogła być zaszyfrowana w samą siebie.");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("Tu jest na to szansa!\n");
             Console.WriteLine("============================================================================");
             Console.WriteLine("Menu wyboru: ");
             Console.WriteLine("1. Zaszyfruj wiadomość -tracking.");

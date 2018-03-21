@@ -332,15 +332,17 @@ namespace eni_one
                             letter = body.Rotor3_Encryption(letter);
                         }
 
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                         Console.Write(letter);
                     }
                     else
                     {
                         Console.Write(letter);
                     }
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
-                Console.WriteLine("\nSzyfrowanie wiadomości zakończone.");
+                Console.WriteLine("\n\n\nSzyfrowanie wiadomości zakończone.");
             }
             // ---------------------------------->
             else if(wybor == 2)

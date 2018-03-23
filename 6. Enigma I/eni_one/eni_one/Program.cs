@@ -256,6 +256,40 @@ namespace eni_one
         }
         //-------------------------------------------------------------------------------------------------//
         #endregion
+
+
+        public char Rotor1_Decryption(char Letter)
+        {
+            // ZASADA DZIAŁANIA WIRNIKA 1:
+            char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika 1
+            int y = (int)x + 8;                      // przesuwamy pozycje wirnika o 7 w tył
+            Rotor1_Position = (char)y;               // przestawiamy wirnik
+
+            if ((int)Rotor1_Position < (int)'A')      // jeśli wirnik1 < A 
+            {
+                Rotor2_rotate = true;                // zezwól na obrócenie wirnika2
+
+                // zaopiekowanie się stanem Wirnika 1      
+                char temporary = Rotor1_Position;
+                int next = (int)temporary + 26;      // obróć mechanizm 
+                Rotor1_Position = (char)next;
+            }
+
+            Value = Rotor1_Position;   // ta linijka wow?
+            return (char)Value;
+        }
+
+        public char Rotor2_Decryption(char Letter)
+        {
+
+            return (char)Value;
+        }
+
+        public char Rotor3_Decryption(char Letter)
+        {
+
+            return (char)Value;
+        }
     }
 
     class Program
@@ -284,12 +318,16 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("============================================================================");
             Console.WriteLine("Menu wyboru: ");
-            Console.WriteLine("1. Zaszyfruj wiadomość -tracking.");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("1. Zaszyfruj wiadomość.");
             Console.WriteLine("2. Zaszyfruj wiadomość +tracking.");
-            Console.WriteLine("3. Odszyfruj wiadomość(wkrótce...).");
-            Console.WriteLine("4. Łącznica kablowa(wkrótce...)");
-            Console.WriteLine("5. Koniec programu.");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("3. Odszyfruj wiadomość.");
+            Console.WriteLine("4. Odszyfruj wiadomość +tracking.");
+            Console.WriteLine("5. Łącznica kablowa.");
+            Console.WriteLine("6. Koniec programu.");
             Console.WriteLine("============================================================================");
+            Console.WriteLine("kolorem zielonym oznaczono dostępne funkcje");
             int wybor = Convert.ToInt32(Console.ReadLine());
             if (wybor == 1)
             {
@@ -431,6 +469,58 @@ namespace eni_one
                 Console.Write(encrypted + "\n");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadKey();
+            }
+            else if(wybor == 3)
+            {
+                Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
+                string coding_key = Console.ReadLine();
+                char[] coding_table = new char[2];
+                coding_table = coding_key.ToCharArray();
+                body.Rotor1_Position = coding_table[0];
+                body.Rotor2_Position = coding_table[1];
+                body.Rotor3_Position = coding_table[2];
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine("\nPodaj tekst do odszyfrowania(tylko duże litery!)");
+                string tekst = Console.ReadLine();
+                int rozmiar = tekst.Length;
+                char[] Chars_To_Encrypt = new char[rozmiar];
+                Chars_To_Encrypt = tekst.ToCharArray();
+
+                // Szyfrowanie 
+                // tutaj kod
+                int i;
+                for (i = 0; i < rozmiar; i++)
+                {
+                    char letter = Chars_To_Encrypt[i];
+                    if ((int)letter >= 65 && (int)letter <= 90)
+                    {
+                        letter = body.Rotor1_Decryption(letter);
+
+                        // gdy rotor2 może wykonać operacje
+                        if (body.Rotor2_rotate == true)
+                        {
+                            letter = body.Rotor2_Encryption(letter);
+                        }
+
+                        if (body.Rotor3_rotate == true)
+                        {
+                            letter = body.Rotor3_Encryption(letter);
+                        }
+
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.Write(letter);
+                    }
+                    else
+                    {
+                        Console.Write(letter);
+                    }
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                Console.WriteLine("\n\n\nOdszyfrowanie wiadomości zakończone.");
             }
             else if(wybor == 4)
             {

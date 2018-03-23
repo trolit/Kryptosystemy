@@ -18,7 +18,7 @@ namespace eni_one
         public int Value = 0;                        // przechowuje wartości liczbowe liter, domyślnie 0
         //-------------------------------------------------------------------------------------------------//
 
-
+        #region Enigma Encryption
         //-------------------------------------------------------------------------------------------------//
         // Wirnik 1 (+ obsługa Wirnika 2)
         // "FAST ROTOR"
@@ -100,8 +100,8 @@ namespace eni_one
             return (char)Value;
         }
         //-------------------------------------------------------------------------------------------------//
-
-        #region encryption+tracking
+        #endregion
+        #region Enigma Encryption+tracking
         //-------------------------------------------------------------------------------------------------//
         // Wirnik 1 (+ obsługa Wirnika 2)
         // "FAST ROTOR"
@@ -301,11 +301,11 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                               PROJEKT ENIGMA");
             Console.WriteLine("                             Opracowano: 03.2018");
-            Console.WriteLine("                                Wersja: 1.12");
+            Console.WriteLine("                                Wersja: 1.13");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("============================================================================");
             Console.WriteLine("Szczegóły odnośnie projektu:");
-            Console.WriteLine("Obecna implementacja Enigmy(1.12) składa się z trzech wirników(niem. Walzen),");
+            Console.WriteLine("Obecna implementacja Enigmy(1.13) składa się z trzech wirników(niem. Walzen),");
             Console.WriteLine("bez reflektora(niem. Umkehrwalze) i łącznicy kablowej(niem. Steckerbrett)");
             Console.WriteLine("warto mieć na uwadzę, że Enigma miała różne wersje w rzeczywistości. Jedną");
             Console.WriteLine("z najtrudniejszych do rozszyfrowania była Enigma dla Kriegsmarine z racji");

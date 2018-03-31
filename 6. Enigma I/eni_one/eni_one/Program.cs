@@ -16,6 +16,7 @@ namespace eni_one
         public bool Rotor2_rotate = false;           // domyślnie false!
         public bool Rotor3_rotate = false;           // domyślnie false!
         public int Value = 0;                        // przechowuje wartości liczbowe liter, domyślnie 0
+        public int Initiation = 0;
         //-------------------------------------------------------------------------------------------------//
 
         #region Enigma Encryption
@@ -30,7 +31,7 @@ namespace eni_one
             char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika 1
             int y = (int)x + 7;                      // przesuwamy pozycje wirnika o 7
             Rotor1_Position = (char)y;               // przestawiamy wirnik o tyle samo do przodu 
-
+            
             if((int)Rotor1_Position > (int)'Z')      // jeśli wirnik1 przekroczy wartość 90(czyli
                                                      // w nomenklaturze fizycznej budowy wirnika
                                                      // pozycje 26)
@@ -262,16 +263,16 @@ namespace eni_one
         {
             // ZASADA DZIAŁANIA WIRNIKA 1:
             char x = Rotor1_Position;                   // bierzemy aktualne miejsce wirnika 1
-            int y = (int)x - 7;                         // przesuwamy pozycje wirnika o 7 w tył
+            int y = (int)x + 7;                         // przesuwamy pozycje wirnika o 7 w tył
             Rotor1_Position = (char)y;                  // przestawiamy wirnik
 
-            if ((int)Rotor1_Position < (int)'A')        // jeśli wirnik1 < A 
+            if ((int)Rotor1_Position > (int)'Z')        // jeśli wirnik1 < A 
             {
                 Rotor2_rotate = true;                   // zezwól na obrócenie wirnika2
 
                 // zaopiekowanie się stanem Wirnika 1      
                 char temporary = Rotor1_Position;
-                int next = (int)temporary + 26;         // obróć mechanizm 
+                int next = (int)temporary - 26;         // obróć mechanizm 
                 Rotor1_Position = (char)next;
             }
 
@@ -283,16 +284,16 @@ namespace eni_one
         {
             Rotor2_rotate = false;                      // zresetowanie zezwolenia do wykonania obrotu
             char x = Rotor2_Position;                   // pobieramy informacje odnośnie aktualnej pozycji wirnika 2
-            int y = (int)x - 4;                         // wirnik2 zostaje przesunięty o 6 pozycje do przodu
+            int y = (int)x + 4;                         // wirnik2 zostaje przesunięty o 6 pozycje do przodu
             Rotor2_Position = (char)y;                  // przypisujemy do wirnika2 zaktualizowaną pozycję
 
-            if ((int)Rotor2_Position < (int)'A')        // jeśli wirnik2 przekroczy wartość 90
+            if ((int)Rotor2_Position > (int)'Z')        // jeśli wirnik2 przekroczy wartość 90
             {
                 Rotor3_rotate = true;                   // zezwól na obrócenie wirnika3
 
                 // zaopiekowanie się wirnikiem2
                 char temporary = Rotor2_Position;
-                int next = (int)temporary + 26;
+                int next = (int)temporary - 26;
                 Rotor2_Position = (char)next;
             }
 
@@ -304,13 +305,13 @@ namespace eni_one
         {
             Rotor3_rotate = false;                      // zresetowanie zezwolenia do wykonania obrotu
             char x = Rotor3_Position;                   // pobieramy informacje odnośnie aktualnej pozycji wirnika 3
-            int y = (int)x - 3;                         // wirnik3 zostaje przesunięty o 9 pozycje do przodu
+            int y = (int)x + 3;                         // wirnik3 zostaje przesunięty o 9 pozycje do przodu
             Rotor3_Position = (char)y;                  // przypisujemy do wirnika3 zaktualizowaną pozycję
 
-            if ((int)Rotor3_Position < (int)'A')        // jeśli wirnik3 przekroczy wartość 90
+            if ((int)Rotor3_Position > (int)'Z')        // jeśli wirnik3 przekroczy wartość 90
             {
                 char temporary = Rotor3_Position;
-                int next = (int)temporary + 26;
+                int next = (int)temporary - 26;
                 Rotor3_Position = (char)next;
             }
 

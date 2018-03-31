@@ -18,6 +18,25 @@ namespace eni_one
         public int Value = 0;                        // przechowuje wartości liczbowe liter, domyślnie 0
         //-------------------------------------------------------------------------------------------------//
 
+        public char[] Move_array(char[] array)
+        {
+            int i = 0;
+            int j = array.Length;
+            char tmp = array[j];                     // bierzemy ostatni znak
+            array[i] = tmp;                          // ustawiamy go na początku tablicy
+            for(i = 1; i < array.Length; i++)        // wypełniamy pozostałymi znakami tablicę
+            {
+                int value = (int)array[0];
+                value += 1;
+                if(value > 90)
+                {
+                    value -= 26;
+                }
+                array[i] = (char)value;
+            }
+
+            return array;
+        }
     }
 
     class Program
@@ -42,6 +61,15 @@ namespace eni_one
             int rozmiar = tekst.Length;
             char[] Chars_To_Encrypt = new char[rozmiar];
             Chars_To_Encrypt = tekst.ToCharArray();
+
+            char[] Main_Matrix = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+            int i;
+            for(i = 0; i < rozmiar; i++)
+            {
+                Main_Matrix = body.Move_array(Main_Matrix);         // przesuwamy pozycje znaków w tablicy
+
+            }
         }
     }
 }

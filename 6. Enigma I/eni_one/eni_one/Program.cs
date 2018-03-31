@@ -261,34 +261,34 @@ namespace eni_one
         public char Rotor1_Decryption(char Letter)
         {
             // ZASADA DZIAŁANIA WIRNIKA 1:
-            char x = Rotor1_Position;                // bierzemy aktualne miejsce wirnika 1
-            int y = (int)x - 7;                      // przesuwamy pozycje wirnika o 7 w tył
-            Rotor1_Position = (char)y;               // przestawiamy wirnik
+            char x = Rotor1_Position;                   // bierzemy aktualne miejsce wirnika 1
+            int y = (int)x - 7;                         // przesuwamy pozycje wirnika o 7 w tył
+            Rotor1_Position = (char)y;                  // przestawiamy wirnik
 
-            if ((int)Rotor1_Position < (int)'A')      // jeśli wirnik1 < A 
+            if ((int)Rotor1_Position < (int)'A')        // jeśli wirnik1 < A 
             {
-                Rotor2_rotate = true;                // zezwól na obrócenie wirnika2
+                Rotor2_rotate = true;                   // zezwól na obrócenie wirnika2
 
                 // zaopiekowanie się stanem Wirnika 1      
                 char temporary = Rotor1_Position;
-                int next = (int)temporary + 26;      // obróć mechanizm 
+                int next = (int)temporary + 26;         // obróć mechanizm 
                 Rotor1_Position = (char)next;
             }
 
-            Value = Rotor1_Position;   // ta linijka wow?
+            Value = Rotor1_Position;                    // ta linijka wow?
             return (char)Value;
         }
 
         public char Rotor2_Decryption(char Letter)
         {
-            Rotor2_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
-            char x = Rotor2_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 2
-            int y = (int)x - 4;                      // wirnik2 zostaje przesunięty o 6 pozycje do przodu
-            Rotor2_Position = (char)y;               // przypisujemy do wirnika2 zaktualizowaną pozycję
+            Rotor2_rotate = false;                      // zresetowanie zezwolenia do wykonania obrotu
+            char x = Rotor2_Position;                   // pobieramy informacje odnośnie aktualnej pozycji wirnika 2
+            int y = (int)x - 4;                         // wirnik2 zostaje przesunięty o 6 pozycje do przodu
+            Rotor2_Position = (char)y;                  // przypisujemy do wirnika2 zaktualizowaną pozycję
 
-            if ((int)Rotor2_Position < (int)'A')     // jeśli wirnik2 przekroczy wartość 90
+            if ((int)Rotor2_Position < (int)'A')        // jeśli wirnik2 przekroczy wartość 90
             {
-                Rotor3_rotate = true;                // zezwól na obrócenie wirnika3
+                Rotor3_rotate = true;                   // zezwól na obrócenie wirnika3
 
                 // zaopiekowanie się wirnikiem2
                 char temporary = Rotor2_Position;
@@ -302,12 +302,12 @@ namespace eni_one
 
         public char Rotor3_Decryption(char Letter)
         {
-            Rotor3_rotate = false;                   // zresetowanie zezwolenia do wykonania obrotu
-            char x = Rotor3_Position;                // pobieramy informacje odnośnie aktualnej pozycji wirnika 3
-            int y = (int)x - 3;                      // wirnik3 zostaje przesunięty o 9 pozycje do przodu
-            Rotor3_Position = (char)y;               // przypisujemy do wirnika3 zaktualizowaną pozycję
+            Rotor3_rotate = false;                      // zresetowanie zezwolenia do wykonania obrotu
+            char x = Rotor3_Position;                   // pobieramy informacje odnośnie aktualnej pozycji wirnika 3
+            int y = (int)x - 3;                         // wirnik3 zostaje przesunięty o 9 pozycje do przodu
+            Rotor3_Position = (char)y;                  // przypisujemy do wirnika3 zaktualizowaną pozycję
 
-            if ((int)Rotor3_Position < (int)'A')     // jeśli wirnik3 przekroczy wartość 90
+            if ((int)Rotor3_Position < (int)'A')        // jeśli wirnik3 przekroczy wartość 90
             {
                 char temporary = Rotor3_Position;
                 int next = (int)temporary + 26;
@@ -323,7 +323,7 @@ namespace eni_one
     {
         static void Main(string[] args)
         {
-            EnigmaCore body = new EnigmaCore();     // ciało Enigmy
+            EnigmaCore body = new EnigmaCore();         // ciało Enigmy
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                               PROJEKT ENIGMA");
@@ -497,7 +497,8 @@ namespace eni_one
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadKey();
             }
-            else if(wybor == 3)
+            // ---------------------------------->
+            else if (wybor == 3)
             {
                 Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
                 string coding_key = Console.ReadLine();
@@ -549,10 +550,12 @@ namespace eni_one
 
                 Console.WriteLine("\n\n\nOdszyfrowanie wiadomości zakończone.");
             }
-            else if(wybor == 4)
+            // ---------------------------------->
+            else if (wybor == 6)
             {
                 Console.WriteLine("\nNaciśnij dowolny klawisz aby zakończyć...");
             }
+            // ---------------------------------->
             Console.ReadKey();
         }
     }

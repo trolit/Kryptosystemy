@@ -24,9 +24,9 @@ namespace eni_one
             int j = array.Length - 1;
             char tmp = array[j];                     // bierzemy ostatni znak
             array[i] = tmp;                          // ustawiamy go na początku tablicy
-            for(i = 1; i < array.Length; i++)        // wypełniamy pozostałymi znakami tablicę
+            int value = (int)array[0];
+            for (i = 1; i < array.Length; i++)        // wypełniamy pozostałymi znakami tablicę
             {
-                int value = (int)array[0];
                 value += 1;
                 if(value > 90)
                 {
@@ -119,6 +119,9 @@ namespace eni_one
             char[] Encrypted_Text = new char[rozmiar];
             char[] Main_Matrix = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
+            // Przesuwanie TABLICY DZIALA!
+            // POPRAWIC RESZTE!!!!
+
             int i;
             for (i = 0; i < rozmiar; i++)
             {
@@ -146,6 +149,7 @@ namespace eni_one
                             break;
                         }
                     }
+
                     Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
                 }
 
@@ -153,7 +157,7 @@ namespace eni_one
             }
 
             // wypisanie zaszyfrowanego tekstu:
-            for(int w = 0; w < rozmiar; w++)
+            for(int w = 0; w < Encrypted_Text.Length; w++)
             {
                 Console.Write(Encrypted_Text[w]);
             }

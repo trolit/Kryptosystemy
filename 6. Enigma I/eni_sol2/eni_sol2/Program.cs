@@ -20,7 +20,7 @@ namespace eni_one
 
         public char[] Move_array(char[] array)
         {
-            int i = 0;
+            int i = 0;                               // zmienne pomocnicze
             int j = array.Length;
             char tmp = array[j];                     // bierzemy ostatni znak
             array[i] = tmp;                          // ustawiamy go na początku tablicy
@@ -62,14 +62,30 @@ namespace eni_one
             char[] Chars_To_Encrypt = new char[rozmiar];
             Chars_To_Encrypt = tekst.ToCharArray();
 
+            char[] Encrypted_Text = new char[rozmiar];
             char[] Main_Matrix = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
             int i;
-            for(i = 0; i < rozmiar; i++)
+            for (i = 0; i < rozmiar; i++)
             {
-                Main_Matrix = body.Move_array(Main_Matrix);         // przesuwamy pozycje znaków w tablicy
-
+                char letter = Chars_To_Encrypt[i];                          // bierzemy literkę
+                if (letter >= 65 && letter <= 90)                           // sprawdzamy czy się mieści w przedziale 65<>90
+                {
+                    for (int tmp = 0; tmp < rozmiar; tmp++)
+                    {
+                        if (letter == Main_Matrix[tmp])                     // szuka gdzie w tablicy jest ta litera
+                        {
+                            tmp += 1;                                       // przesuwamy literę (narazie o 1)
+                            letter = (char)tmp;
+                            break;
+                        }
+                    }
+                    Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
+                }
+                Encrypted_Text[i] = letter;
             }
+
+            // wypisanie zaszyfrowanego tekstu:
         }
     }
 }

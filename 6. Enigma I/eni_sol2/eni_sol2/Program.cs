@@ -131,6 +131,17 @@ namespace eni_one
                         {
                             tmp += 1;                                       // przesuwamy literę (narazie o 1)
                             body.Rotor1_Encryption();
+
+                            if(body.Rotor2_rotate == true)
+                            {
+                                Main_Matrix = body.Rotor2_Encryption(Main_Matrix);
+                            }
+
+                            if(body.Rotor3_rotate == true)
+                            {
+                                Main_Matrix = body.Rotor3_Encryption(Main_Matrix);
+                            }
+
                             letter = (char)tmp;
                             break;
                         }

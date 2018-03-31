@@ -21,7 +21,7 @@ namespace eni_one
         public char[] Move_array(char[] array)
         {
             int i = 0;                               // zmienne pomocnicze
-            int j = array.Length;
+            int j = array.Length - 1;
             char tmp = array[j];                     // bierzemy ostatni znak
             array[i] = tmp;                          // ustawiamy go na początku tablicy
             for(i = 1; i < array.Length; i++)        // wypełniamy pozostałymi znakami tablicę
@@ -148,10 +148,17 @@ namespace eni_one
                     }
                     Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
                 }
-                Encrypted_Text[i] = letter;
+
+                Encrypted_Text[i] = letter;                                 // wpisujemy znak do tablicy
             }
 
             // wypisanie zaszyfrowanego tekstu:
+            for(int w = 0; w < rozmiar; w++)
+            {
+                Console.Write(Encrypted_Text[w]);
+            }
+
+            Console.ReadKey();
         }
     }
 }

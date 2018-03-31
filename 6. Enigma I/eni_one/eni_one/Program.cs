@@ -328,11 +328,11 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("                               PROJEKT ENIGMA");
             Console.WriteLine("                             Opracowano: 03.2018");
-            Console.WriteLine("                                Wersja: 1.13");
+            Console.WriteLine("                                Wersja: 1.14A");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("============================================================================");
             Console.WriteLine("Szczegóły odnośnie projektu:");
-            Console.WriteLine("Obecna implementacja Enigmy(1.13) składa się z trzech wirników(niem. Walzen),");
+            Console.WriteLine("Obecna implementacja Enigmy(1.14A) składa się z trzech wirników(niem. Walzen),");
             Console.WriteLine("bez reflektora(niem. Umkehrwalze) i łącznicy kablowej(niem. Steckerbrett)");
             Console.WriteLine("warto mieć na uwadzę, że Enigma miała różne wersje w rzeczywistości. Jedną");
             Console.WriteLine("z najtrudniejszych do rozszyfrowania była Enigma dla Kriegsmarine z racji");
@@ -356,6 +356,7 @@ namespace eni_one
             Console.WriteLine("============================================================================");
             Console.WriteLine("kolorem zielonym oznaczono dostępne funkcje");
             int wybor = Convert.ToInt32(Console.ReadLine());
+            // ---------------------------------->
             if (wybor == 1)
             {
                 Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
@@ -549,6 +550,16 @@ namespace eni_one
                 }
 
                 Console.WriteLine("\n\n\nOdszyfrowanie wiadomości zakończone.");
+            }
+            // ---------------------------------->
+            else if(wybor == 4)
+            {
+
+            }
+            // ---------------------------------->
+            else if(wybor == 5)
+            {
+
             }
             // ---------------------------------->
             else if (wybor == 6)

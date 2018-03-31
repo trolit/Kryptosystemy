@@ -37,6 +37,60 @@ namespace eni_one
 
             return array;
         }
+
+        public void Rotor1_Encryption()
+        {
+            int local = (int)Rotor1_Position;        // zmienna tymczasowa przechowująca pozycję wirnika1
+            local += 1;
+            Rotor1_Position = (char)local;
+
+            if(Rotor1_Position > 'Z')
+            {
+                Rotor2_rotate = true;
+                local = (int)Rotor1_Position;
+                local -= 26;
+                Rotor1_Position = (char)local;
+            }
+        }
+
+        public char[] Rotor2_Encryption(char[] array)
+        {
+            Rotor2_rotate = false;
+            int local = (int)Rotor2_Position;
+            local += 1;
+            Rotor2_Position = (char)local;
+
+            array = Move_array(array);
+
+            if(Rotor2_Position > 'Z')
+            {
+                Rotor3_rotate = true;
+                local = (int)Rotor2_Position;
+                local -= 26;
+                Rotor2_Position = (char)local;
+            }
+
+            return array;
+        }
+
+        public char[] Rotor3_Encryption(char[] array)
+        {
+            Rotor3_rotate = false;
+            int local = (int)Rotor3_Position;
+            local += 1;
+            Rotor3_Position = (char)local;
+
+            array = Move_array(array);
+
+            if (Rotor3_Position > 'Z')
+            {
+                local = (int)Rotor3_Position;
+                local -= 26;
+                Rotor3_Position = (char)local;
+            }
+
+            return array;
+        }
     }
 
     class Program
@@ -52,7 +106,7 @@ namespace eni_one
             body.Rotor1_Position = coding_table[0];
             body.Rotor2_Position = coding_table[1];
             body.Rotor3_Position = coding_table[2];
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -76,6 +130,7 @@ namespace eni_one
                         if (letter == Main_Matrix[tmp])                     // szuka gdzie w tablicy jest ta litera
                         {
                             tmp += 1;                                       // przesuwamy literę (narazie o 1)
+                            body.Rotor1_Encryption();
                             letter = (char)tmp;
                             break;
                         }

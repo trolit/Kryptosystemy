@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,12 +10,12 @@ namespace eni_one
     class EnigmaCore
     {
         //-------------------------------------------------------------------------------------------------//
-        // Zmienne Enigma
-        public char Rotor1_Position = '#';           // śledzi aktualną pozycję wirnika 1  
+        // Zmienne dla programu Enigma_sol2
+        public char Rotor1_Position = '#';           // śledzi aktualną pozycję wirnika1  
         public char Rotor2_Position = '#';
         public char Rotor3_Position = '#';
-        public bool Rotor2_rotate = false;           // domyślnie false!
-        public bool Rotor3_rotate = false;           // domyślnie false!
+        public bool Rotor2_rotate = false;           // domyślnie false!!!
+        public bool Rotor3_rotate = false;           // domyślnie false!!!
         public int Value = 0;                        // przechowuje wartości liczbowe liter, domyślnie 0
         //-------------------------------------------------------------------------------------------------//
 
@@ -24,8 +25,8 @@ namespace eni_one
             int j = array.Length - 1;
             char tmp = array[j];                     // bierzemy ostatni znak
             array[i] = tmp;                          // ustawiamy go na początku tablicy
-            int value = (int)array[0];
-            for (i = 1; i < array.Length; i++)        // wypełniamy pozostałymi znakami tablicę
+            int value = (int)array[0];               // rozmiar elementu, który stoi na początku tablicy
+            for (i = 1; i < array.Length; i++)       // wypełniamy pozostałymi znakami tablicę
             {
                 value += 1;
                 if(value > 90)
@@ -34,22 +35,25 @@ namespace eni_one
                 }
                 array[i] = (char)value;
             }
-
             return array;
         }
 
+
+        //-------------------------------------------------------------------------------------------------//
+        // Budowa funkcji: Rotor1, Rotor2, Rotor3 
+
         public void Rotor1_Encryption()
         {
-            int local = (int)Rotor1_Position;        // zmienna tymczasowa przechowująca pozycję wirnika1
-            local += 1;
-            Rotor1_Position = (char)local;
+            int local = (int)Rotor1_Position;        // zmienna tymczasowa local przechowująca pozycję wirnika1
+            local += 1;                              // przesuwamy pozycje wirnika o 1
+            Rotor1_Position = (char)local;           // ustawiamy w nalezytym miejscu wirnik
 
-            if(Rotor1_Position > 'Z')
+            if(Rotor1_Position > 'Z')                // po przekroczeniu pulapu
             {
-                Rotor2_rotate = true;
-                local = (int)Rotor1_Position;
-                local -= 26;
-                Rotor1_Position = (char)local;
+                Rotor2_rotate = true;                // zezwol na obrot drugiego wirnika
+                local = (int)Rotor1_Position;        // architektura wirnika 1 wykonuje obrót o 360*
+                local -= 26;        
+                Rotor1_Position = (char)local;       // spozycjonowanie wirnika1
             }
         }
 
@@ -69,7 +73,6 @@ namespace eni_one
                 local -= 26;
                 Rotor2_Position = (char)local;
             }
-
             return array;
         }
 
@@ -88,7 +91,6 @@ namespace eni_one
                 local -= 26;
                 Rotor3_Position = (char)local;
             }
-
             return array;
         }
     }
@@ -99,6 +101,13 @@ namespace eni_one
         {
             EnigmaCore body = new EnigmaCore();     // ciało Enigmy
 
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("------------------------------");
+            Console.WriteLine("Enigma - sol2");
+            Console.WriteLine("Wersja: 1.0");
+            Console.WriteLine("Ostatnia łatka: 28.05.18");
+            Console.WriteLine("------------------------------\n");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
             string coding_key = Console.ReadLine();
             char[] coding_table = new char[2];
@@ -110,7 +119,7 @@ namespace eni_one
             Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine("\nPodaj tekst do zaszyfrowania(tylko duże litery!)");
+            Console.WriteLine("\nPodaj tekst do zaszyfrowania(uwaga: tylko duże litery!)");
             string tekst = Console.ReadLine();
             int rozmiar = tekst.Length;
             char[] Chars_To_Encrypt = new char[rozmiar];
@@ -121,19 +130,24 @@ namespace eni_one
 
             // Przesuwanie TABLICY DZIALA!
             // POPRAWIC RESZTE!!!!
+            // zajrzenie do kodu: 28 V 18, i O_O ....
 
             int i;
             for (i = 0; i < rozmiar; i++)
             {
                 char letter = Chars_To_Encrypt[i];                          // bierzemy literkę
-                if (letter >= 65 && letter <= 90)                           // sprawdzamy czy się mieści w przedziale 65<>90
+                // sprawdzenie poboru literek:
+                // Console.Write(letter);
+   
+                if (letter >= 65 && letter <= 90)                           // sprawdzamy czy się mieści w przedziale <>65<>90<>
                 {
-                    for (int tmp = 0; tmp < rozmiar; tmp++)
+                    for (int tmp = 0; tmp < Main_Matrix.Length; tmp++)
                     {
-                        if (letter == Main_Matrix[tmp])                     // szuka gdzie w tablicy jest ta litera
+                        if (letter == Main_Matrix[tmp])                     // szukamy gdzie w tablicy jest ta litera
                         {
-                            tmp += 1;                                       // przesuwamy literę (narazie o 1)
-                            body.Rotor1_Encryption();
+                            letter = Main_Matrix[tmp + 1];                  // gdy znaleziono zapisujemy ze letter to kolejna literka
+                                                                            // z głównej "matrycy"
+                            body.Rotor1_Encryption();                       // przesuwamy rotor 1
 
                             if(body.Rotor2_rotate == true)
                             {
@@ -144,15 +158,11 @@ namespace eni_one
                             {
                                 Main_Matrix = body.Rotor3_Encryption(Main_Matrix);
                             }
-
-                            letter = (char)tmp;
                             break;
-                        }
+                       }
                     }
-
                     Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
                 }
-
                 Encrypted_Text[i] = letter;                                 // wpisujemy znak do tablicy
             }
 

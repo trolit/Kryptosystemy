@@ -8,6 +8,18 @@ namespace eni_one
 {
     class EnigmaCore
     {
+        /*
+        ===============================================================================================================
+                                KRÓTKA NOTKA O POMYŚLE ZAPROJEKTOWANIA ENIGMY W PONIŻSZY SPOSÓB:
+        ===============================================================================================================
+            <-> nie jest możliwe odszyfrowanie wiadomości znając klucz kodowania.
+            <-> gdy podamy ten sam klucz kodowania kilka razy np. SDC to przy każdym, ale to każdym trzyliterowym tekście
+            powstanie szyfr ZHN, stąd odszyfrowanie jest niemożliwe
+            <-> sposób implementacji zapobiega zaszyfrowaniu kolejnych takich samych liter w ten sam sposób
+        ===============================================================================================================
+        */
+
+
         //-------------------------------------------------------------------------------------------------//
         // Zmienne Enigma
         public char Rotor1_Position = '#';           // śledzi aktualną pozycję wirnika 1  
@@ -348,9 +360,9 @@ namespace eni_one
             Console.WriteLine("1. Zaszyfruj wiadomość.");
             Console.WriteLine("2. Zaszyfruj wiadomość +tracking.");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("3. -");
+            Console.WriteLine("4. -");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("3. Odszyfruj wiadomość. (niedostępne)");
-            Console.WriteLine("4. Odszyfruj wiadomość +tracking. (niedostępne)");
             Console.WriteLine("5. Łącznica kablowa. (niedostępne)");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("6. Koniec programu.");

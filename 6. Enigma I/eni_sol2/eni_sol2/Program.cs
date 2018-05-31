@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-// komentarz odnośnie eni_sol2:
+// -----------------------------------------------------------------------------------
+//                          komentarz odnośnie eni_sol2:
 // -----------------------------------------------------------------------------------
 // warto rozważyć na potrzeby programu kwestie o ile ustawić przesuwanie wirników,
 // domyślnie każdy wirnik jest przesuwany o 1 pozycję do przodu, jest to jednak
@@ -15,9 +16,10 @@ using System.Threading.Tasks;
 // 2 i 3 wirnik zostaną wprawione w obrót... stąd np. podanie do zaszyfrowania AAA
 // zwróci taki sam rezultat w wielu przypadkach, ale to oczywiście też zależy od tego
 // ile znaków chcemy zaszyfrować
-
+// -----------------------------------------------------------------------------------
 // PS2: istnieje mozliwosc zaszyfrowania litery w te sama litere np. podaj kod KGW i 
 // tekst do zaszyfrowania ABBA pierwsza zaszyfrowana litera bedzie A
+// -----------------------------------------------------------------------------------
 
 namespace eni_one
 {

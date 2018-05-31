@@ -129,7 +129,6 @@ namespace eni_one
             return array;
         }
     }
-
     class EnigmaAnalysis
     {
         //-------------------------------------------------------------------------------------------------//
@@ -239,13 +238,13 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("!> ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(" Czy pozycja wirnika 1: " + Rotor1_Position + "> Z ?");
+            Console.WriteLine(" Czy pozycja wirnika 1: " + Rotor1_Position + " > Z ?");
             Console.ReadKey();
 
             if (Rotor1_Position > 'Z')                // po przekroczeniu pulapu
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("TAK");
+                Console.WriteLine("-> TAK <-");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadKey();
 
@@ -274,7 +273,7 @@ namespace eni_one
             }
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("NIE");
+            Console.WriteLine("-> NIE <-");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
         }
@@ -314,13 +313,13 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("!> ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(" Czy pozycja wirnika 2: " + Rotor2_Position + "> Z ?");
+            Console.WriteLine(" Czy pozycja wirnika 2: " + Rotor2_Position + " > Z ?");
             Console.ReadKey();
 
             if (Rotor2_Position > 'Z')
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("TAK");
+                Console.WriteLine("-> TAK <-");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadKey();
 
@@ -349,7 +348,7 @@ namespace eni_one
             }
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("NIE");
+            Console.WriteLine("-> NIE <-");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
 
@@ -391,13 +390,13 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("!> ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(" Czy pozycja wirnika 3: " + Rotor3_Position + "> Z ?");
+            Console.WriteLine(" Czy pozycja wirnika 3: " + Rotor3_Position + " > Z ?");
             Console.ReadKey();
 
             if (Rotor3_Position > 'Z')
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("TAK");
+                Console.WriteLine("-> TAK <-");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.ReadKey();
 
@@ -419,7 +418,7 @@ namespace eni_one
             }
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("NIE");
+            Console.WriteLine("-> NIE <-");
             Console.ForegroundColor = ConsoleColor.White;
             Console.ReadKey();
 
@@ -445,15 +444,19 @@ namespace eni_one
             Console.WriteLine("1. Zaszyfruj wiadomosc");
             Console.WriteLine("2. Przejrzyj dzialanie programu");
             Console.WriteLine("3. Koniec");
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("!> ");
             int decyzja = Convert.ToInt32(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.White;
 
             if (decyzja == 2)
             {
-                Console.WriteLine("[#] aby przejsc do kolejnego kroku, kliknij dowolny klawisz\n");
+                Console.WriteLine("[uwaga] aby przejsc do kolejnego kroku działania, kliknij dowolny klawisz\n");
                 Console.WriteLine("Proszę ustalić klucz kodowania np. AGR \n(uwaga:tylko duże litery są akceptowalne)");
                 Console.Write("!> ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 string coding_key = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
                 char[] coding_table = new char[2];
                 coding_table = coding_key.ToCharArray();
                 test.Rotor1_Position = coding_table[0];
@@ -465,7 +468,9 @@ namespace eni_one
 
                 Console.WriteLine("\nPodaj tekst do zaszyfrowania(uwaga: tylko duże litery!)");
                 Console.Write("!> ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 string tekst = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
                 int rozmiar = tekst.Length;
                 char[] Chars_To_Encrypt = new char[rozmiar];
                 Chars_To_Encrypt = tekst.ToCharArray();
@@ -487,19 +492,19 @@ namespace eni_one
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.Write("!> ");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(" Aktualna litera pobrana z tekstu: " + letter);
+                    Console.WriteLine(" Litera do zaszyfrowania: " + letter);
                     Console.ReadKey();
 
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.Write("!> ");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(" Czy znak: " + letter + "jest z przedzialu <>65<>90<>??");
+                    Console.WriteLine(" Czy znak: " + letter + " jest z przedzialu 65<>90?");
                     Console.ReadKey();
 
                     if (letter >= 65 && letter <= 90)                           // sprawdzamy czy się mieści w przedziale <>65<>90<>
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write("TAK");
+                        Console.WriteLine("-> TAK <-");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadKey();
 
@@ -549,7 +554,7 @@ namespace eni_one
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write("NIE");
+                        Console.Write("-> NIE <-");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.ReadKey();
                     }
@@ -578,7 +583,9 @@ namespace eni_one
             {
                 Console.WriteLine("Proszę ustalić klucz kodowania np. AGR \n(uwaga:tylko duże litery są akceptowalne)");
                 Console.Write("!> ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 string coding_key = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
                 char[] coding_table = new char[2];
                 coding_table = coding_key.ToCharArray();
                 body.Rotor1_Position = coding_table[0];
@@ -590,7 +597,9 @@ namespace eni_one
 
                 Console.WriteLine("\nPodaj tekst do zaszyfrowania(uwaga: tylko duże litery!)");
                 Console.Write("!> ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 string tekst = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
                 int rozmiar = tekst.Length;
                 char[] Chars_To_Encrypt = new char[rozmiar];
                 Chars_To_Encrypt = tekst.ToCharArray();

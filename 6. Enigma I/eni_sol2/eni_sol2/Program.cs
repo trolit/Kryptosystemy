@@ -13,12 +13,13 @@ using System.Threading.Tasks;
 // domyślnie każdy wirnik jest przesuwany o 1 pozycję do przodu, jest to jednak
 // niezbyt wydajne ponieważ jeżeli nasz klucz kodowania będzie typu ABC, AVW, AXY, 
 // czyli jeżeli pierwszy wirnik ustawimy na A to mała szansa jest na to, że 
-// 2 i 3 wirnik zostaną wprawione w obrót... stąd np. podanie do zaszyfrowania AAA
+// 2 i 3 wirnik zostaną wprawione w obrót... stąd np. podanie do zaszyfrowania tekstu AAA
 // zwróci taki sam rezultat w wielu przypadkach, ale to oczywiście też zależy od tego
 // ile znaków chcemy zaszyfrować
 // -----------------------------------------------------------------------------------
-// PS2: istnieje mozliwosc zaszyfrowania litery w te sama litere np. podaj kod KGW i 
-// tekst do zaszyfrowania ABBA pierwsza zaszyfrowana litera bedzie A
+// PS2: gdy mamy w linii np 664 Main_Matrix[var] to pierwsza litera zawsze bedzie 
+// zaszyfrowana w sama siebie, zeby tego uniknac musimy zrobic Main_Matrix[var+1]
+// o ile oczywiście chcemy
 // -----------------------------------------------------------------------------------
 
 namespace eni_one
@@ -568,7 +569,7 @@ namespace eni_one
                         int var = body.Return_RotorPositionNumber(letter);      // funkcja ktora przeszuka aktualna litere i zamieni ja na odpowiadajaca jej cyfre
 
                         char copy = letter;
-                        letter = Main_Matrix[var];                              // z tablicy Main_Matrix bierzemy element z pozycji var
+                        letter = Main_Matrix[var+1];                              // z tablicy Main_Matrix bierzemy element z pozycji var
 
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.Write("!> ");
@@ -660,7 +661,7 @@ namespace eni_one
 
                         int var = body.Return_RotorPositionNumber(letter);      // funkcja ktora przeszuka aktualna litere i zamieni ja na odpowiadajaca jej cyfre
 
-                        letter = Main_Matrix[var];                              // z tablicy Main_Matrix bierzemy element z pozycji var
+                        letter = Main_Matrix[var+1];                              // z tablicy Main_Matrix bierzemy element z pozycji var
 
                         Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
                     }

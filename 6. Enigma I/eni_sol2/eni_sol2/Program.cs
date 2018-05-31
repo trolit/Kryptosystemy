@@ -141,6 +141,9 @@ namespace eni_one
 
         public char[] Move_array(char[] array)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Stan tablicy przed przesunięciem: ");
             for (int x = 0; x < array.Length; x++)
             {
@@ -162,12 +165,16 @@ namespace eni_one
                 array[i] = (char)value;
             }
 
+            Console.ReadKey();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Stan tablicy po przesunięciu: ");
             for (int x = 0; x < array.Length; x++)
             {
                 Console.Write(array[x]);
             }
-
+            Console.ReadKey();
             return array;
         }
 
@@ -176,9 +183,13 @@ namespace eni_one
 
         public int Return_RotorPositionNumber(char znak)
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Znak: " + znak + " - szukam numeru ustawienia wirnika");
             int[,] tablica_znakowa = new int[,] { { 65, 0 }, { 66, 1 }, { 67, 2 }, { 68, 3 }, { 69, 4 }, { 70, 5 }, { 71, 6 }, { 72, 7 }, { 73, 8 }, { 74, 9 }, { 75, 10 }, { 76, 11 }, { 77, 12 }, { 78, 13 }, { 79, 14 }, { 80, 15 }, { 81, 16 }, { 82, 17 }, { 83, 18 }, { 84, 19 }, { 85, 20 }, { 86, 21 }, { 87, 22 }, { 88, 23 }, { 89, 24 }, { 90, 25 } };
             int i = 0;
-
+            Console.ReadKey();
             // ps: jestem świadom, tego, że ta tablica nie musi być dwuwymiarowa
             // inkrementator i przecież będzie nam mówił w której pozycji jest
             // szukana litera, do przerobienia.
@@ -191,6 +202,13 @@ namespace eni_one
                 }
 
             }
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Znak: " + znak + " - numer na wirniku: " + i);
+            Console.ReadKey();
+
             return i;
         }
 
@@ -199,25 +217,80 @@ namespace eni_one
 
         public void Rotor1_Encryption()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Aktualna pozycja wirnika 1: " + Rotor1_Position);
+            Console.ReadKey();
+
             int local = (int)Rotor1_Position;        // zmienna tymczasowa local przechowująca pozycję wirnika1
             local += 1;                              // przesuwamy pozycje wirnika o 1
             Rotor1_Position = (char)local;           // ustawiamy w nalezytym miejscu wirnik
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Przesunieta pozycja wirnika 1: " + Rotor1_Position);
+            Console.ReadKey();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Czy pozycja wirnika 1: " + Rotor1_Position + "> Z ?");
+            
             if (Rotor1_Position > 'Z')                // po przekroczeniu pulapu
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("TAK");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadKey();
+
                 Rotor2_rotate = true;                // zezwol na obrot drugiego wirnika
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("!> ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Zezwol wirnikowi 2 na obrot");
+                Console.ReadKey();
+
                 local = (int)Rotor1_Position;        // architektura wirnika 1 wykonuje obrót o 360*
                 local -= 26;
                 Rotor1_Position = (char)local;       // spozycjonowanie wirnika1
+
+                Console.Write("!> ");
+                Console.WriteLine("Obróć wirnik 1 o 360* -> pozycja wirnika1: " + Rotor1_Position);
+                Console.ReadKey();
             }
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("NIE");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
         }
 
         public char[] Rotor2_Encryption(char[] array)
         {
             Rotor2_rotate = false;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Ustaw obrot wirnika 2 na false");
+            Console.ReadKey();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Aktualna pozycja wirnika 2: " + Rotor2_Position);
+            Console.ReadKey();
+
             int local = (int)Rotor2_Position;
             local += 1;
             Rotor2_Position = (char)local;
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Przesunieta pozycja wirnika 2: " + Rotor2_Position);
+            Console.ReadKey();
 
             array = Move_array(array);
 

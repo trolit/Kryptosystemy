@@ -38,6 +38,28 @@ namespace eni_one
             return array;
         }
 
+        //-------------------------------------------------------------------------------------------------//
+        // funkcja tłumacząca aktualnie badany znak na pozycję wirnika
+
+        public int Return_RotorPositionNumber(char znak)
+        {
+            int[,] tablica_znakowa = new int[,] { { 65, 0 }, { 66, 1 }, { 67, 2 }, { 68, 3 }, { 69, 4 }, { 70, 5 }, { 71, 6 }, { 72, 7 }, { 73, 8 }, { 74, 9 }, { 75, 10 }, { 76, 11 }, { 77, 12 }, { 78, 13 }, { 79, 14 }, { 80, 15 }, { 81, 16 }, { 82, 17 }, { 83, 18 }, { 84, 19 }, { 85, 20 }, { 86, 21 }, { 87, 22 }, { 88, 23 }, { 89, 24 }, { 90, 25 } };
+            int i = 0;
+
+            // ps: jestem świadom, tego, że ta tablica nie musi być dwuwymiarowa
+            // inkrementator i przecież będzie nam mówił w której pozycji jest
+            // szukana litera, do przerobienia.
+
+            for (i = 0; i < tablica_znakowa.Length; i++)
+            {
+                if ((int)znak == tablica_znakowa[i,0])
+                {
+                    break;
+                }
+                
+            }
+            return i;
+        }
 
         //-------------------------------------------------------------------------------------------------//
         // Budowa funkcji: Rotor1, Rotor2, Rotor3 
@@ -136,32 +158,27 @@ namespace eni_one
             for (i = 0; i < rozmiar; i++)
             {
                 char letter = Chars_To_Encrypt[i];                          // bierzemy literkę
-                // sprawdzenie poboru literek:
-                // Console.Write(letter);
-   
+                                                                            // sprawdzenie poboru literek:
+                                                                            // Console.Write(letter);
                 if (letter >= 65 && letter <= 90)                           // sprawdzamy czy się mieści w przedziale <>65<>90<>
                 {
-                    for (int tmp = 0; tmp < Main_Matrix.Length; tmp++)
-                    {
-                        if (letter == Main_Matrix[tmp])                     // szukamy gdzie w tablicy jest ta litera
-                        {
-                            letter = Main_Matrix[tmp + 1];                  // gdy znaleziono zapisujemy ze letter to kolejna literka
-                                                                            // z głównej "matrycy"
-                            body.Rotor1_Encryption();                       // przesuwamy rotor 1
+                            body.Rotor1_Encryption();
 
-                            if(body.Rotor2_rotate == true)
+                            if (body.Rotor2_rotate == true)
                             {
                                 Main_Matrix = body.Rotor2_Encryption(Main_Matrix);
                             }
 
-                            if(body.Rotor3_rotate == true)
+                            if (body.Rotor3_rotate == true)
                             {
                                 Main_Matrix = body.Rotor3_Encryption(Main_Matrix);
                             }
-                            break;
-                       }
-                    }
-                    Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
+
+                            int var = body.Return_RotorPositionNumber(letter);
+
+                            letter = Main_Matrix[var];                              // z tablicy liter wybieramy element rozmiar + 1   
+
+                            Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
                 }
                 Encrypted_Text[i] = letter;                                 // wpisujemy znak do tablicy
             }

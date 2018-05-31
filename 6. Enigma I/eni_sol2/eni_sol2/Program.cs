@@ -125,68 +125,80 @@ namespace eni_one
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("------------------------------");
-            Console.WriteLine("Enigma - sol2");
-            Console.WriteLine("Wersja: 1.0");
-            Console.WriteLine("Ostatnia łatka: 28.05.18");
+            Console.WriteLine("Nazwa: Enigma - sol2");
+            Console.WriteLine("Wersja: 1.5");
+            Console.WriteLine("Ostatnia łatka: 31.05.18");
             Console.WriteLine("------------------------------\n");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Proszę ustalić klucz kodowania np. AGR - tylko duże litery!");
-            string coding_key = Console.ReadLine();
-            char[] coding_table = new char[2];
-            coding_table = coding_key.ToCharArray();
-            body.Rotor1_Position = coding_table[0];
-            body.Rotor2_Position = coding_table[1];
-            body.Rotor3_Position = coding_table[2];
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
-            Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine("\nPodaj tekst do zaszyfrowania(uwaga: tylko duże litery!)");
-            string tekst = Console.ReadLine();
-            int rozmiar = tekst.Length;
-            char[] Chars_To_Encrypt = new char[rozmiar];
-            Chars_To_Encrypt = tekst.ToCharArray();
+            Console.WriteLine("1. Zaszyfruj wiadomosc");
+            Console.WriteLine("2. Przejrzyj dzialanie programu");
+            Console.WriteLine("3. Koniec");
+            Console.Write("!> ");
+            int decyzja = Convert.ToInt32(Console.ReadLine());
 
-            char[] Encrypted_Text = new char[rozmiar];
-            char[] Main_Matrix = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-
-            // Przesuwanie TABLICY DZIALA!
-            // POPRAWIC RESZTE!!!!
-            // zajrzenie do kodu: 28 V 18, i O_O ....
-
-            int i;
-            for (i = 0; i < rozmiar; i++)
+            if (decyzja == 1)
             {
-                char letter = Chars_To_Encrypt[i];                          // bierzemy literkę
-                                                                            // sprawdzenie poboru literek:
-                                                                            // Console.Write(letter);
-                if (letter >= 65 && letter <= 90)                           // sprawdzamy czy się mieści w przedziale <>65<>90<>
+                Console.WriteLine("Proszę ustalić klucz kodowania np. AGR \n(uwaga:tylko duże litery są akceptowalne)");
+                Console.Write("!> ");
+                string coding_key = Console.ReadLine();
+                char[] coding_table = new char[2];
+                coding_table = coding_key.ToCharArray();
+                body.Rotor1_Position = coding_table[0];
+                body.Rotor2_Position = coding_table[1];
+                body.Rotor3_Position = coding_table[2];
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine("\nPodaj tekst do zaszyfrowania(uwaga: tylko duże litery!)");
+                Console.Write("!> ");
+                string tekst = Console.ReadLine();
+                int rozmiar = tekst.Length;
+                char[] Chars_To_Encrypt = new char[rozmiar];
+                Chars_To_Encrypt = tekst.ToCharArray();
+
+                char[] Encrypted_Text = new char[rozmiar];
+                char[] Main_Matrix = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+                // Przesuwanie TABLICY DZIALA!
+                // POPRAWIC RESZTE!!!!
+                // zajrzenie do kodu: 28 V 18, i O_O ....
+
+                int i;
+                for (i = 0; i < rozmiar; i++)
                 {
-                            body.Rotor1_Encryption();
+                    char letter = Chars_To_Encrypt[i];                          // bierzemy literkę
+                                                                                // sprawdzenie poboru literek:
+                                                                                // Console.Write(letter);
+                    if (letter >= 65 && letter <= 90)                           // sprawdzamy czy się mieści w przedziale <>65<>90<>
+                    {
+                        body.Rotor1_Encryption();
 
-                            if (body.Rotor2_rotate == true)
-                            {
-                                Main_Matrix = body.Rotor2_Encryption(Main_Matrix);
-                            }
+                        if (body.Rotor2_rotate == true)
+                        {
+                            Main_Matrix = body.Rotor2_Encryption(Main_Matrix);
+                        }
 
-                            if (body.Rotor3_rotate == true)
-                            {
-                                Main_Matrix = body.Rotor3_Encryption(Main_Matrix);
-                            }
+                        if (body.Rotor3_rotate == true)
+                        {
+                            Main_Matrix = body.Rotor3_Encryption(Main_Matrix);
+                        }
 
-                            int var = body.Return_RotorPositionNumber(letter);
+                        int var = body.Return_RotorPositionNumber(letter);
 
-                            letter = Main_Matrix[var];                              // z tablicy liter wybieramy element rozmiar + 1   
+                        letter = Main_Matrix[var];                              // z tablicy liter wybieramy element rozmiar + 1   
 
-                            Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
+                        Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
+                    }
+                    Encrypted_Text[i] = letter;                                 // wpisujemy znak do tablicy
                 }
-                Encrypted_Text[i] = letter;                                 // wpisujemy znak do tablicy
-            }
 
-            // wypisanie zaszyfrowanego tekstu:
-            for(int w = 0; w < Encrypted_Text.Length; w++)
-            {
-                Console.Write(Encrypted_Text[w]);
+                // wypisanie zaszyfrowanego tekstu:
+                for (int w = 0; w < Encrypted_Text.Length; w++)
+                {
+                    Console.Write(Encrypted_Text[w]);
+                }
             }
 
             Console.ReadKey();

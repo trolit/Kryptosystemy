@@ -281,11 +281,13 @@ namespace eni_one
                 Console.WriteLine(" Aktualna pozycja wirnika1: " + Rotor1_Position);
                 Console.ReadKey();
             }
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("-> NIE <-");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey();
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("-> NIE <-");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadKey();
+            }
         }
 
         public char[] Rotor2_Encryption(char[] array)
@@ -294,7 +296,7 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("!> ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Ustaw obrot wirnika 2 na false");
+            Console.WriteLine(" Ustaw obrot wirnika 2 na false");
             Console.ReadKey();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -356,11 +358,13 @@ namespace eni_one
                 Console.WriteLine(" Ostatnia pozycja wirnika2: " + Rotor2_Position);
                 Console.ReadKey();
             }
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("-> NIE <-");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey();
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("-> NIE <-");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadKey();
+            }
 
             return array;
         }
@@ -371,7 +375,7 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("!> ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Ustaw obrot wirnika 3 na false");
+            Console.WriteLine(" Ustaw obrot wirnika 3 na false");
             Console.ReadKey();
 
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -426,11 +430,13 @@ namespace eni_one
                 Console.WriteLine(" pozycja wirnika3: " + Rotor3_Position);
                 Console.ReadKey();
             }
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("-> NIE <-");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.ReadKey();
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("-> NIE <-");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadKey();
+            }
 
             return array;
         }
@@ -519,7 +525,7 @@ namespace eni_one
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.Write("!> ");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(" Czy znak: " + letter + " jest z przedzialu 65<>90?");
+                    Console.WriteLine(" Czy znak: " + letter + "(" + (int)letter + ") jest z przedzialu 65<>90?");
                     Console.ReadKey();
 
                     if (letter >= 65 && letter <= 90)                           // sprawdzamy czy się mieści w przedziale <>65<>90<>
@@ -537,7 +543,7 @@ namespace eni_one
 
                         test.Rotor1_Encryption();
 
-                        if (body.Rotor2_rotate == true)
+                        if (test.Rotor2_rotate == true)
                         {
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.Write("!> ");
@@ -567,7 +573,7 @@ namespace eni_one
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.Write("!> ");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("Znak: " + copy + " zaszyfrowano znakiem: " + letter);
+                        Console.WriteLine(" Znak: " + copy + " zaszyfrowano znakiem: " + letter);
                         Console.ReadKey();
 
                         Main_Matrix = test.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
@@ -602,7 +608,7 @@ namespace eni_one
             }
             else if (decyzja == 1)
             {
-                Console.WriteLine("Proszę ustalić klucz kodowania np. AGR \n(uwaga:tylko duże litery są akceptowalne)");
+                Console.WriteLine("\nProszę ustalić klucz kodowania np. AGR \n(uwaga:tylko duże litery są akceptowalne)");
                 Console.Write("!> ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 string coding_key = Console.ReadLine();
@@ -681,3 +687,4 @@ namespace eni_one
         }
     }
 }
+

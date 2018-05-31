@@ -237,7 +237,8 @@ namespace eni_one
             Console.Write("!> ");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(" Czy pozycja wirnika 1: " + Rotor1_Position + "> Z ?");
-            
+            Console.ReadKey();
+
             if (Rotor1_Position > 'Z')                // po przekroczeniu pulapu
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -256,7 +257,9 @@ namespace eni_one
                 local -= 26;
                 Rotor1_Position = (char)local;       // spozycjonowanie wirnika1
 
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.Write("!> ");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Obróć wirnik 1 o 360* -> pozycja wirnika1: " + Rotor1_Position);
                 Console.ReadKey();
             }
@@ -292,26 +295,89 @@ namespace eni_one
             Console.WriteLine(" Przesunieta pozycja wirnika 2: " + Rotor2_Position);
             Console.ReadKey();
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Przesuwanie elementow tablicy...");
+            Console.ReadKey();
             array = Move_array(array);
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Czy pozycja wirnika 2: " + Rotor2_Position + "> Z ?");
+            Console.ReadKey();
 
             if (Rotor2_Position > 'Z')
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("TAK");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadKey();
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("!> ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Zezwol wirnikowi 3 na obrot");
+                Console.ReadKey();
+
                 Rotor3_rotate = true;
                 local = (int)Rotor2_Position;
                 local -= 26;
                 Rotor2_Position = (char)local;
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("!> ");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Obróć wirnik 2 o 360* -> pozycja wirnika2: " + Rotor2_Position);
+                Console.ReadKey();
             }
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("NIE");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+
             return array;
         }
 
         public char[] Rotor3_Encryption(char[] array)
         {
             Rotor3_rotate = false;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Ustaw obrot wirnika 3 na false");
+            Console.ReadKey();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Aktualna pozycja wirnika 3: " + Rotor3_Position);
+            Console.ReadKey();
+
             int local = (int)Rotor3_Position;
             local += 1;
             Rotor3_Position = (char)local;
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Przesunieta pozycja wirnika 3: " + Rotor3_Position);
+            Console.ReadKey();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Przesuwanie elementow tablicy...");
+            Console.ReadKey();
             array = Move_array(array);
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("!> ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" Czy pozycja wirnika 3: " + Rotor3_Position + "> Z ?");
+            Console.ReadKey();
 
             if (Rotor3_Position > 'Z')
             {

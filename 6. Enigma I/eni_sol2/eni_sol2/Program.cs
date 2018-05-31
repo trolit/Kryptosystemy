@@ -445,7 +445,7 @@ namespace eni_one
 
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("------------------------------");
-            Console.WriteLine("Nazwa: ENIGMA - sol2");
+            Console.WriteLine("Nazwa programu: ENIGMA - sol2");
             Console.WriteLine("v. 1.5(finalna)");
             Console.WriteLine("Ostatni patch: 31.05.18");
             Console.WriteLine("------------------------------\n");
@@ -462,7 +462,9 @@ namespace eni_one
 
             if (decyzja == 2)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nuwagi: ");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("- aby przejsc do kolejnego kroku działania, kliknij dowolny klawisz");
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("!> ");

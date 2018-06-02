@@ -159,8 +159,8 @@ namespace eni_one
             Console.WriteLine(" Stan tablicy przed przesunięciem: ");
             for (int x = 0; x < array.Length; x++)
             {
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.Write(array[x] + ":");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write( array[x] + "|");
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
@@ -187,8 +187,8 @@ namespace eni_one
             Console.WriteLine(" Stan tablicy po przesunięciu: ");
             for (int x = 0; x < array.Length; x++)
             {
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.Write(array[x] +":");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write( array[x] +"|");
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
@@ -489,8 +489,8 @@ namespace eni_one
                 Console.WriteLine(" kolorem oznaczono elementy wywoływane przez główny kod enigmy");
 
                 Console.WriteLine("\nProszę ustalić klucz kodowania np. AGR \n(uwaga:tylko duże litery są akceptowalne)");
-                Console.Write("!> ");
                 Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("!> ");
                 string coding_key = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
                 char[] coding_table = new char[2];
@@ -503,8 +503,8 @@ namespace eni_one
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.WriteLine("\nPodaj tekst do zaszyfrowania(uwaga: tylko duże litery!)");
-                Console.Write("!> ");
                 Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write("!> ");
                 string tekst = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
                 int rozmiar = tekst.Length;
@@ -614,8 +614,17 @@ namespace eni_one
                     Encrypted_Text[i] = letter;                                 // wpisujemy znak do szyfrowanej tablicy
                 }
 
+                // wypisanie oryginalnego tekstu:
+                Console.Write("\n\n oryginalna wiadomosc -> ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                for (int w = 0; w < Chars_To_Encrypt.Length; w++)
+                {
+                    Console.Write(Chars_To_Encrypt[w]);
+                }
+                Console.ForegroundColor = ConsoleColor.White;
+
                 // wypisanie zaszyfrowanego tekstu:
-                Console.Write("\n\n-> zaszyfrowana wiadomosc: ");
+                Console.Write("\n zaszyfrowana wiadomosc ->  ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 for (int w = 0; w < Encrypted_Text.Length; w++)
                 {
@@ -623,6 +632,7 @@ namespace eni_one
                 }
                 Console.ForegroundColor = ConsoleColor.White;
 
+                Console.WriteLine();
                 Console.ReadKey();
             }
             else if (decyzja == 1)
@@ -703,6 +713,7 @@ namespace eni_one
                 }
                 Console.ForegroundColor = ConsoleColor.White;
 
+                Console.WriteLine();
                 Console.ReadKey();
             }
             else if (decyzja == 3)

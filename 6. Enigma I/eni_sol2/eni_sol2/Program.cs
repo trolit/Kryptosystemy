@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -493,6 +494,18 @@ namespace eni_one
                 Console.Write("!> ");
                 string coding_key = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
+                if (coding_key.Length < 3)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Podano za mało znaków!!! (wymagane: 3)");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Podaj klucz kodowania jeszcze raz");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("!> ");
+                    coding_key = Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
                 char[] coding_table = new char[2];
                 coding_table = coding_key.ToCharArray();
                 test.Rotor1_Position = coding_table[0];
@@ -642,6 +655,17 @@ namespace eni_one
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 string coding_key = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
+                if (coding_key.Length < 3)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Podano za mało znaków!!! (wymagane: 3)");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Podaj klucz kodowania jeszcze raz");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write("!> ");
+                    coding_key = Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
                 char[] coding_table = new char[2];
                 coding_table = coding_key.ToCharArray();
                 body.Rotor1_Position = coding_table[0];
@@ -730,6 +754,20 @@ namespace eni_one
                 Console.WriteLine();
                 Console.WriteLine("!> Naciśnij dowolny przycisk aby wyjsc...");
                 Console.ReadKey();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Podano niewlasciwa opcje!");
+                Console.Write("Zamykanie programu");
+                Thread.Sleep(500);
+                Console.Write(".");
+                Thread.Sleep(600);
+                Console.Write(".");
+                Thread.Sleep(700);
+                Console.Write(".");
+                Thread.Sleep(800);
+                Console.ForegroundColor = ConsoleColor.White;                
             }
         }
     }

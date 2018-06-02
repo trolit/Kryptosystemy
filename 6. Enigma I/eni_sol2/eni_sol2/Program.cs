@@ -22,6 +22,12 @@ using System.Threading.Tasks;
 // o ile oczywiście chcemy
 // -----------------------------------------------------------------------------------
 
+// propozycja:
+// jezeli nie chcemy aby 1 litera byla szyfrowana w sama siebie to musimy nasza tablice 
+// przed zrobieniem czegokolwiek przesunac raz... bo w tym programie zaczynamy standardowo
+// jak leci alfabet to funkcja szukajaca numer znajdzie oczywiscie pozycje tej litery 
+
+
 namespace eni_one
 {
     class EnigmaCore
@@ -450,11 +456,11 @@ namespace eni_one
             EnigmaCore body = new EnigmaCore();                 // ciało Enigmy
             EnigmaAnalysis test = new EnigmaAnalysis();
 
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("------------------------------");
             Console.WriteLine("Nazwa programu: ENIGMA - sol2");
-            Console.WriteLine("v. 1.5(finalna)");
-            Console.WriteLine("Ostatni patch: 31.05.18");
+            Console.WriteLine("v. 1.6");
+            Console.WriteLine("Ostatni patch: 2.06.18");
             Console.WriteLine("------------------------------\n");
             Console.ForegroundColor = ConsoleColor.White;
 
@@ -462,7 +468,7 @@ namespace eni_one
             Console.WriteLine("2. Przejrzyj dzialanie programu");
             Console.WriteLine("3. Koniec");
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("!> ");
             int decyzja = Convert.ToInt32(Console.ReadLine());
             Console.ForegroundColor = ConsoleColor.White;
@@ -484,7 +490,7 @@ namespace eni_one
 
                 Console.WriteLine("\nProszę ustalić klucz kodowania np. AGR \n(uwaga:tylko duże litery są akceptowalne)");
                 Console.Write("!> ");
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Green;
                 string coding_key = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
                 char[] coding_table = new char[2];
@@ -498,7 +504,7 @@ namespace eni_one
 
                 Console.WriteLine("\nPodaj tekst do zaszyfrowania(uwaga: tylko duże litery!)");
                 Console.Write("!> ");
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Green;
                 string tekst = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
                 int rozmiar = tekst.Length;

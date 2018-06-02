@@ -647,7 +647,7 @@ namespace eni_one
                 body.Rotor1_Position = coding_table[0];
                 body.Rotor2_Position = coding_table[1];
                 body.Rotor3_Position = coding_table[2];
-                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("\nUstalony klucz kodowania: \n => " + body.Rotor1_Position + body.Rotor2_Position + body.Rotor3_Position);
                 Console.ForegroundColor = ConsoleColor.White;
 
@@ -704,9 +704,18 @@ namespace eni_one
                     Encrypted_Text[i] = letter;                                 // wpisujemy znak do szyfrowanej tablicy
                 }
 
-                // wypisanie zaszyfrowanego tekstu:
-                Console.Write("zaszyfrowana wiadomosc: ");
+                // wypisanie oryginalnego tekstu:
+                Console.Write("\n\n oryginalna wiadomosc -> ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
+                for (int w = 0; w < Chars_To_Encrypt.Length; w++)
+                {
+                    Console.Write(Chars_To_Encrypt[w]);
+                }
+                Console.ForegroundColor = ConsoleColor.White;
+
+                // wypisanie zaszyfrowanego tekstu:
+                Console.Write("\n zaszyfrowana wiadomosc ->  ");
+                Console.ForegroundColor = ConsoleColor.Green;
                 for (int w = 0; w < Encrypted_Text.Length; w++)
                 {
                     Console.Write(Encrypted_Text[w]);

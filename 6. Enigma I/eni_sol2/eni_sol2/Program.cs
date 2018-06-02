@@ -476,7 +476,7 @@ namespace eni_one
 
             if (decyzja == 2)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\nuwagi: ");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("- aby przejsc do kolejnego kroku działania, kliknij dowolny klawisz");

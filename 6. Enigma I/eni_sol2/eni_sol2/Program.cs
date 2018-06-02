@@ -568,8 +568,20 @@ namespace eni_one
 
                         int var = body.Return_RotorPositionNumber(letter);      // funkcja ktora przeszuka aktualna litere i zamieni ja na odpowiadajaca jej cyfre
 
+                        // gdy var 25 , to jesli wezmiemy Main_Matrix[25+1] 
+                        // otrzymamy blad o przekroczeniu indeksu,
+                        // gdy var bedzie 25 to nie dodamy +1 tylko odejmiemy -1
+                        // bo Main_Matrix jest od 0-25 (26 liter)
+
                         char copy = letter;
-                        letter = Main_Matrix[var+1];                              // z tablicy Main_Matrix bierzemy element z pozycji var
+                        if (var != 25)
+                        {
+                            letter = Main_Matrix[var + 1];                              // z tablicy Main_Matrix bierzemy element z pozycji var
+                        }
+                        else
+                        {
+                            letter = Main_Matrix[var - 1];
+                        }
 
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.Write("!> ");
@@ -661,7 +673,15 @@ namespace eni_one
 
                         int var = body.Return_RotorPositionNumber(letter);      // funkcja ktora przeszuka aktualna litere i zamieni ja na odpowiadajaca jej cyfre
 
-                        letter = Main_Matrix[var+1];                              // z tablicy Main_Matrix bierzemy element z pozycji var
+
+                        if (var != 25)
+                        {
+                            letter = Main_Matrix[var + 1];                              // z tablicy Main_Matrix bierzemy element z pozycji var
+                        }
+                        else
+                        {
+                            letter = Main_Matrix[var - 1];
+                        }
 
                         Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
                     }

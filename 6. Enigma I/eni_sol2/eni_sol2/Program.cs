@@ -10,23 +10,12 @@ using System.Threading.Tasks;
 // -----------------------------------------------------------------------------------
 //                          komentarz odnośnie eni_sol2:
 // -----------------------------------------------------------------------------------
-// warto rozważyć na potrzeby programu kwestie o ile ustawić przesuwanie wirników,
-// domyślnie każdy wirnik jest przesuwany o 1 pozycję do przodu, jest to jednak
-// niezbyt wydajne ponieważ jeżeli nasz klucz kodowania będzie typu ABC, AVW, AXY, 
-// czyli jeżeli pierwszy wirnik ustawimy na A to mała szansa jest na to, że 
-// 2 i 3 wirnik zostaną wprawione w obrót... stąd np. podanie do zaszyfrowania tekstu AAA
-// zwróci taki sam rezultat w wielu przypadkach, ale to oczywiście też zależy od tego
-// ile znaków chcemy zaszyfrować
-// -----------------------------------------------------------------------------------
-// PS2: gdy mamy w linii np 664 Main_Matrix[var] to pierwsza litera zawsze bedzie 
-// zaszyfrowana w sama siebie, zeby tego uniknac musimy zrobic Main_Matrix[var+1]
-// o ile oczywiście chcemy
-// -----------------------------------------------------------------------------------
+// domyślnie rotor1, 2 i 3 przesuwały swoje pozycje o 1. Problem tego był taki, że
+// pierwsza litera zawsze była kodowana w samą siebie (niemile widziany feature) zatem
+// Main_Matrix[var + 1] zrobiłem - lub Main_Matrix[var - 1] ale to też nie było zadowalające
+// zatem przestawiłem przesuwanie wirnika1 na 3 
 
-// propozycja:
-// jezeli nie chcemy aby 1 litera byla szyfrowana w sama siebie to musimy nasza tablice 
-// przed zrobieniem czegokolwiek przesunac raz... bo w tym programie zaczynamy standardowo
-// jak leci alfabet to funkcja szukajaca numer znajdzie oczywiscie pozycje tej litery 
+
 
 
 namespace eni_one
@@ -91,7 +80,7 @@ namespace eni_one
         public void Rotor1_Encryption()
         {
             int local = (int)Rotor1_Position;        // zmienna tymczasowa local przechowująca pozycję wirnika1
-            local += 1;                              // przesuwamy pozycje wirnika o 1
+            local += 3;                              // przesuwamy pozycje wirnika o 3
             Rotor1_Position = (char)local;           // ustawiamy w nalezytym miejscu wirnik
 
             if(Rotor1_Position > 'Z')                // po przekroczeniu pulapu
@@ -244,7 +233,7 @@ namespace eni_one
             Console.ReadKey();
 
             int local = (int)Rotor1_Position;        // zmienna tymczasowa local przechowująca pozycję wirnika1
-            local += 1;                              // przesuwamy pozycje wirnika o 1
+            local += 3;                              // przesuwamy pozycje wirnika o 1
             Rotor1_Position = (char)local;           // ustawiamy w nalezytym miejscu wirnik
 
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -460,7 +449,7 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("------------------------------");
             Console.WriteLine("Nazwa programu: ENIGMA - sol2");
-            Console.WriteLine("v. 1.6");
+            Console.WriteLine("v. 1.60");
             Console.WriteLine("Ostatni patch: 2.06.18");
             Console.WriteLine("------------------------------\n");
             Console.ForegroundColor = ConsoleColor.White;

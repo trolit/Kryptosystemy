@@ -13,9 +13,8 @@ using System.Threading.Tasks;
 // domyślnie rotor1, 2 i 3 przesuwały swoje pozycje o 1. Problem tego był taki, że
 // pierwsza litera zawsze była kodowana w samą siebie (niemile widziany feature) zatem
 // Main_Matrix[var + 1] zrobiłem - lub Main_Matrix[var - 1] ale to też nie było zadowalające
-// zatem przestawiłem przesuwanie wirnika1 na 3 
-
-
+// zatem przestawiłem przesuwanie wirnika1 na 3 - aktualizacja: jednak ... zdarza sie 
+// sytuacja zakodowania w sama siebie ... hmm, zalezy od klucza i wiadomosci jeszcze..
 
 
 namespace eni_one
@@ -444,13 +443,13 @@ namespace eni_one
         static void Main(string[] args)
         {
             EnigmaCore body = new EnigmaCore();                 // ciało Enigmy
-            EnigmaAnalysis test = new EnigmaAnalysis();
+            EnigmaAnalysis test = new EnigmaAnalysis();         // ciało Enigmy do testów
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("------------------------------");
             Console.WriteLine("Nazwa programu: ENIGMA - sol2");
-            Console.WriteLine("v. 1.60");
-            Console.WriteLine("Ostatni patch: 2.06.18");
+            Console.WriteLine("v. 1.65");
+            Console.WriteLine("Ostatni patch: 3.06.18");
             Console.WriteLine("------------------------------\n");
             Console.ForegroundColor = ConsoleColor.White;
 

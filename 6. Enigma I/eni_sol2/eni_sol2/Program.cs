@@ -174,7 +174,7 @@ namespace eni_one
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("!> ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(" Stan tablicy po przesunięciu: ");
+            Console.WriteLine(" Stan tablicy po przesunięciu(obrócenie wirnika): ");
             for (int x = 0; x < array.Length; x++)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
@@ -457,16 +457,17 @@ namespace eni_one
             for (int e = 0; e < 1;)
             {
                 Console.WriteLine("1. Zaszyfruj wiadomosc(widok slowny)");
-                Console.WriteLine("2. Zbadaj działanie programu eni_sol2");
-                Console.WriteLine("3. Zaszyfruj wiadomosc(widok strzalkowy)");
+                Console.WriteLine("2. Zaszyfruj wiadomosc(widok strzalkowy)");
+                Console.WriteLine("3. Zbadaj działanie programu eni_sol2");
                 Console.WriteLine("4. Koniec");
 
+                string decyzja;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("!> ");
-                int decyzja = Convert.ToInt32(Console.ReadLine());
+                decyzja = Console.ReadLine();
                 Console.ForegroundColor = ConsoleColor.White;
 
-                if (decyzja == 2)
+                if (decyzja == "3")
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nuwagi: ");
@@ -641,7 +642,7 @@ namespace eni_one
                     Console.ReadKey();
                     Console.WriteLine();
                 }
-                else if (decyzja == 1)
+                else if (decyzja == "1")
                 {
                     Console.WriteLine("\nProszę ustalić klucz kodowania np. AGR \n(uwaga:tylko duże litery są akceptowalne)");
                     Console.Write("!> ");
@@ -743,7 +744,7 @@ namespace eni_one
                     Console.ReadKey();
                     Console.WriteLine();
                 }
-                else if (decyzja == 3)
+                else if (decyzja == "2")
                 {
                     Console.WriteLine("\nProszę ustalić klucz kodowania np. AGR \n(uwaga:tylko duże litery są akceptowalne)");
                     Console.Write("!> ");
@@ -839,7 +840,7 @@ namespace eni_one
                     Console.ReadKey();
                     Console.WriteLine();
                 }
-                else if (decyzja == 4)
+                else if (decyzja == "4")
                 {
                     Console.WriteLine();
                     Console.WriteLine("!> Naciśnij dowolny przycisk aby wyjsc...");

@@ -860,6 +860,7 @@ namespace eni_one
                     Console.Write(".");
                     Thread.Sleep(800);
                     Console.ForegroundColor = ConsoleColor.White;
+                    break;
                 }
             }
         }

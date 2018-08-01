@@ -92,7 +92,6 @@ Widok z konsoli                                   |   Przykładowy efekt(widok s
 :------------------------------------------------:|:------------------------------------------------:
 ![error](https://github.com/trolit/Kryptosystemy/blob/master/images/enigma_menu.PNG) | ![error](https://github.com/trolit/Kryptosystemy/blob/master/images/enigma_szyfr01.PNG)
 Pokaz badania działania programu                  |   Przykładowy efekt(widok strzałkowy)
-:------------------------------------------------:|:------------------------------------------------:
 ![error](https://github.com/trolit/Kryptosystemy/blob/master/images/enigma_gif.gif) | ![error](https://github.com/trolit/Kryptosystemy/blob/master/images/enigma_szyfr02.PNG)
 
 

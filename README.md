@@ -89,18 +89,6 @@ Widok z konsoli                                   |   Wynik działania programu 
 ![error](https://github.com/trolit/Kryptosystemy/blob/master/images/szyfr_homofoniczny01.PNG) | ![error](https://github.com/trolit/Kryptosystemy/blob/master/images/homofoniczny02.PNG)
 
 
-
-
-### Projekt Enigma(wersja - sol2, v1.65) ###
-Widok z konsoli                                   |   Przykładowy efekt(widok słowny)
-:------------------------------------------------:|:------------------------------------------------:
-![error](https://github.com/trolit/Kryptosystemy/blob/master/images/enigma_menu.PNG) | ![error](https://github.com/trolit/Kryptosystemy/blob/master/images/enigma_szyfr01.PNG)
-Pokaz działania badania programu                  |   Przykładowy efekt(widok strzałkowy)
-![error](https://github.com/trolit/Kryptosystemy/blob/master/images/enigma_gif.gif) | ![error](https://github.com/trolit/Kryptosystemy/blob/master/images/enigma_szyfr02.PNG)
-
-
-
-
 #### Atak na algorytmy szyfrujące(rodzaje): ####
 - atak w oparciu o słabość algorytmu
 - atak brute force;

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{896F3C5D-EDEB-4F7A-B1A2-1628BE0166B0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>eni_sol2</RootNamespace>
-    <AssemblyName>eni_sol2</AssemblyName>
+    <RootNamespace>eni_sol3</RootNamespace>
+    <AssemblyName>eni_sol3</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -47,9 +47,9 @@ litery w samą siebie. Na pomysł wpadłem w trakcie tworzenia projektu w Unity 
 Mianowicie, w wersji 2.0 został zaimplementowany system, który liczy odległość pierwszego znaku
 podanego do klucza kodowania od pierwszej litery alfabetu(czyli A). Odległość ta jest wykorzystywana
 do tego aby przed rozpoczęciem jakiegokolwiek szyfrowania wiadomości obrócić tablicę zawierającą
-znaki. Znaki w tablicy są przemieszczane tyle razy ile wyniosła odległość. Niestety czeka tą wersję
-jeszcze jedna poprawka do wykonania - istnieje prawdopodobieństwo, że litera do zaszyfrowania 
-zaszyfruje się w identyczną literę. Poprawka zostanie wdrożona w późniejszym czasie.
+znaki. Znaki w tablicy są przemieszczane tyle razy ile wyniosła odległość. Na ten moment zostało
+wprowadzone profilaktyczne rozwiązanie sprawy kodowania litery w samą siebie. Jeżeli tak się 
+wydarzy program dostanie rozkaz aby dodatkową przesunąć zakodowaną literę o jeden dalej.
 
 Widok z konsoli                                   |   Przykładowy efekt(widok słowny)
 :------------------------------------------------:|:------------------------------------------------:

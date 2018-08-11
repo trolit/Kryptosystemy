@@ -774,6 +774,17 @@ namespace eni_one
 
                             Main_Matrix = body.Move_array(Main_Matrix);             // przesuwamy pozycje znaków w tablicy
                         }
+
+                        // jeżeli litera do zaszyfrowania była taka
+                        // sama jak litera szyfrująca to przesuń
+                        // o 1 dodatkowo
+                        if(Chars_To_Encrypt[i] == letter)
+                        {
+                            int holder = (int)letter;
+                            holder += 1;
+                            letter = (char)holder;
+                        }
+
                         Encrypted_Text[i] = letter;                                 // wpisujemy znak do szyfrowanej tablicy
                     }
 

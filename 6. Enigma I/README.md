@@ -1,5 +1,16 @@
 # Projekty ENIGMA
 
+<table>
+  <tbody>
+    <tr>
+      <td>
+        Ramy czasowe
+      </td>
+      <td>07.01.2018 – 14.08.2018</td>
+    </tr>
+  </tbody>
+</table>
+
 W tym folderze znajdziesz wszelkie wersje odnośnie programu działającego na wzór Engimy.
 __Poniżej znajdują się opisy do każdej wersji, czym się różnią, co wprowadzają itd..__
 
@@ -42,6 +53,7 @@ Pokaz działania badania programu                  |   Przykładowy efekt(widok 
 
 
 ### Projekt Enigma(wersja - sol3, v2.0) ###
+
 Autorska wersja __ulepszonej__ Enigmy w której rozwiązany został problem kodowania drugiej 
 litery w samą siebie. Na pomysł wpadłem w trakcie tworzenia projektu w Unity zupełnie przypadkowo.
 Mianowicie, w wersji 2.0 został zaimplementowany system, który liczy odległość pierwszego znaku
